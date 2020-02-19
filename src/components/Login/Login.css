@@ -1,0 +1,25 @@
+.logo {
+  text-align: center;
+  margin-bottom: 3%;
+  margin-top: 2%;
+}
+img{
+  border-radius: 50%;
+  width: 25%;
+  height: 25%;
+}
+
+.form-control {
+  width: 100%;
+}
+
+.loginInfo {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+}
+
+button{
+    width: 100%;
+}
