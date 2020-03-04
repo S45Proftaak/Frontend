@@ -3,9 +3,16 @@
     {
         "Title" : "Welkom op onze website"
     },
+<<<<<<< HEAD
     "Login": {
         "Username": "Gebruikersnaam",
         "Password": "Wachtwoord",
         "Login": "Inloggen"
+=======
+
+    "App":
+    {
+        "Home": "Hoofdpagina"
+>>>>>>> origin/App
     }
 }

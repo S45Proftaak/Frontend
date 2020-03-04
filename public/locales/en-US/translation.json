@@ -7,5 +7,9 @@
         "Username": "Username",
         "Password": "Password",
         "Login": "Login"
+    }, 
+    "App":
+    {
+        "Home": "Home"
     }
 }
