@@ -6,7 +6,9 @@
     "Login": {
         "Username": "Username",
         "Password": "Password",
-        "Login": "Login"
+        "Login": "Login",
+        "UsernameError": "Username is empty",
+        "PasswordError": "Password is empty"
     }, 
     "App":
     {
