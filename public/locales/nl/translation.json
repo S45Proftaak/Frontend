@@ -1,0 +1,11 @@
+{
+    "Welcome":
+    {
+        "Title" : "Welkom op onze website"
+    },
+    "Login": {
+        "Username": "Gebruikersnaam",
+        "Password": "Wachtwoord",
+        "Login": "Inloggen"
+    }
+}
