@@ -8,7 +8,7 @@ import LanguageDetector from 'i18next-browser-languagedetector';
 // have a look at the Quick start guide 
 // for passing in lng and translations on init
 
-const languages = ['en', 'nl'];
+const languages = ['en-US', 'nl'];
 
 i18n
   // load translation using xhr -> see /public/locales (i.e. https://github.com/i18next/react-i18next/tree/master/example/react/public/locales)
