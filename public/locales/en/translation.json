@@ -2,5 +2,10 @@
     "Welcome":
     {
         "Title" : "Welcome to our website"
+    },
+
+    "App":
+    {
+        "Home": "Home"
     }
 }
