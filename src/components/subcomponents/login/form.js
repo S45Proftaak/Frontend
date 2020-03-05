@@ -3,16 +3,12 @@ import { Form as F } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
 import { useForm } from "react-hook-form";
 
-export default function Form() {
+export default function Form(props) {
   const { t } = useTranslation();
   const { register, errors, handleSubmit } = useForm();
 
-  function Submit(event) {
-    event.preventdefault();
-  }
-
   return (
-    <F onSubmit={handleSubmit(Submit)}>
+    <F onSubmit={handleSubmit(props.onSubmit)}>
       <F.Group controlId="formBasicUsername">
         <F.Label>{t("Login.Username")}</F.Label>
         <input
@@ -40,7 +36,7 @@ export default function Form() {
             required: true
           })}
         ></input>
-        {errors.username && errors.username.type === "required" && (
+        {errors.password && errors.password.type === "required" && (
           <span className="text-danger">{t("Login.PasswordError")}</span>
         )}
       </F.Group>
