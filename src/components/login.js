@@ -6,6 +6,9 @@ import { useTranslation } from "react-i18next";
 export default function Login() {
   const { t } = useTranslation();
 
+  function Submit(event){
+  }
+
   return (
     <Container>
       <Row className="justify-content-center">
@@ -15,7 +18,7 @@ export default function Login() {
               {t("Login.Login")}
             </Card.Header>
             <Card.Body>
-              <Form />
+              <Form onSubmit={Submit} />
             </Card.Body>
           </Card>
         </Col>
