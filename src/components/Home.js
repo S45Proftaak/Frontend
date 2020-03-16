@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Col, Row, Container } from 'react-bootstrap';
+import WeekOvervieuw from './subcomponents/Home/WeekOvervieuw';
 
 class Home extends Component {
     constructor(props) {
@@ -17,6 +18,7 @@ class Home extends Component {
                 </Row>
                 <Row>
                     <Col lg>
+                        <WeekOvervieuw/>
                     </Col>
                 </Row>
             </Container>

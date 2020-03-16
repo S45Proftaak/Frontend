@@ -11,5 +11,8 @@
     "App":
     {
         "Home": "Hoofdpagina"
+    },
+    "Week":{
+        "weeknumber": "Week nummer"
     }
 }
