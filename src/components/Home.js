@@ -14,11 +14,12 @@ class Home extends Component {
                     <Col sm="3">
                     </Col>
                     <Col md="8">
+                        <WeekOvervieuw/>
                     </Col>
                 </Row>
                 <Row>
                     <Col lg>
-                        <WeekOvervieuw/>
+                        
                     </Col>
                 </Row>
             </Container>
