@@ -7,6 +7,17 @@ export default function Login() {
   const { t } = useTranslation();
 
   function Submit(event){
+    const form = document.getElementById('LoginForm');
+    const data = new FormData(form);
+    const formmodel = {};
+    for (var pair of data.entries()){
+      formmodel[pair[0]] = pair[1];
+    }
+    FetchLoginData(formmodel);
+  }
+
+  let FetchLoginData = async(formData) => {
+    console.log(JSON.stringify(formData));
   }
 
   return (
