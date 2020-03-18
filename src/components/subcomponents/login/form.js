@@ -8,7 +8,7 @@ export default function Form(props) {
   const { register, errors, handleSubmit } = useForm();
 
   return (
-    <F onSubmit={handleSubmit(props.onSubmit)}>
+    <F id="LoginForm" onSubmit={handleSubmit(props.onSubmit)}>
       <F.Group controlId="formBasicUsername">
         <F.Label>{t("Login.Username")}</F.Label>
         <input
