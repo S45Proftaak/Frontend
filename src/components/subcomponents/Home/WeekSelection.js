@@ -36,8 +36,11 @@ export default function WeekSelection(props) {
             <Col sm="3"></Col>
           </Row>
           <Row className="justify-content-center">
-            <Col>
-              <Pagination style={{ overflow: "hidden" }}>
+            <Col xs="12" sm="12" md="12" lg="12" xl="12">
+              <Pagination
+                className="justify-content-center"
+                style={{ overflow: "hidden" }}
+              >
                 <Pagination.Prev />
                 {renderWeeks()}
                 <Pagination.Next />
