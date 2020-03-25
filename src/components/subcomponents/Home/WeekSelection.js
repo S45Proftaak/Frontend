@@ -1,9 +1,9 @@
 import React from "react";
-import { useTranslation } from "react-i18next";
+import { withTranslation } from "react-i18next";
 import { Card, Container, Pagination } from "react-bootstrap";
 import { getCurrentWeek } from "../../../helpers/helpers.js";
 
-export default class WeekSelection extends React.Component {
+class WeekSelection extends React.Component {
   // Constructor including properties
   constructor(props) {
     super(props); //default
@@ -51,11 +51,12 @@ export default class WeekSelection extends React.Component {
 
   // Main renderer
   render() {
+    const { t } = this.props;
     return (
       <Card style={{ margin: 5 }}>
         <Card.Body>
           <Container>
-            <h4 className="text-center">"Week.weeknumber"</h4>
+            <h4 className="text-center">{t("Week.weeknumber")}</h4>
             <Pagination
               className="justify-content-center"
               style={{ overflow: "hidden" }}
@@ -77,6 +78,18 @@ export default class WeekSelection extends React.Component {
       </Card>
     );
   }
+}
+
+const MyComponent = withTranslation()(WeekSelection);
+
+// i18n translations might still be loaded by the xhr backend
+// use react's Suspense
+export default function App() {
+  return (
+    <React.Suspense fallback="loading">
+      <MyComponent />
+    </React.Suspense>
+  );
 }
 
 /*
