@@ -1,18 +1,23 @@
 {
-    "Welcome":
-    {
-        "Title" : "Welcome to our website"
-    },
-    "Login": {
-        "Username": "Username",
-        "Password": "Password",
-        "Login": "Login"
-    }, 
-    "App":
-    {
-        "Home": "Home"
-    },
-    "Week":{
-        "weeknumber": "Week number"
-    }
+  "Welcome": {
+    "Title": "Welcome to our website"
+  },
+  "Utils": {
+    "Monday": "Monday",
+    "Tuesday": "Tuesday",
+    "Wednesday": "Wednesday",
+    "Thursday": "Thursday",
+    "Friday": "Friday"
+  },
+  "Login": {
+    "Username": "Username",
+    "Password": "Password",
+    "Login": "Login"
+  },
+  "App": {
+    "Home": "Home"
+  },
+  "Week": {
+    "weeknumber": "Week number"
+  }
 }

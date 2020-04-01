@@ -11,18 +11,17 @@ class EetMeeSelector extends Component {
     const { t } = this.props;
     let renderedDays = [];
     let days = [
-      t("Monday"),
-      t("Tuesday"),
-      t("Wednesday"),
-      t("Thursday"),
-      t("Friday")
+      { key: 0, name: t("Utils.Monday") },
+      { key: 1, name: t("Utils.Tuesday") },
+      { key: 2, name: t("Utils.Wednesday") },
+      { key: 3, name: t("Utils.Thursday") },
+      { key: 4, name: t("Utils.Friday") }
     ];
-    console.log(days);
     for (let day of days) {
       renderedDays.push(
         <Col>
           <Card>
-            <Card.Header>{day.toString()}</Card.Header>
+            <Card.Header>{day.name}</Card.Header>
             <Card.Body>
               <Button>{t("Eet Mee")}</Button>
             </Card.Body>
@@ -33,7 +32,6 @@ class EetMeeSelector extends Component {
     return renderedDays;
   }
   render() {
-    const { t } = this.props;
     return (
       <Card style={{ margin: 5 }}>
         <Card.Body>
