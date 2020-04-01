@@ -12,7 +12,9 @@
   "Login": {
     "Username": "Gebruikersnaam",
     "Password": "Wachtwoord",
-    "Login": "Inloggen"
+    "Login": "Inloggen",
+    "UsernameError": "Gebruikersnaam is niet ingevuld!",
+    "PasswordError": "Wachtwoord is niet ingevuld"
   },
   "App": {
     "Home": "Hoofdpagina"
