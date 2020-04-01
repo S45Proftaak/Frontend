@@ -11,5 +11,8 @@
     "App":
     {
         "Home": "Home"
+    },
+    "Week":{
+        "weeknumber": "Week number"
     }
 }

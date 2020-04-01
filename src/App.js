@@ -3,6 +3,7 @@ import './App.css';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Navbar from './components/navbar';
 import { useTranslation } from 'react-i18next';
+import Home from './components/Home';
 
 function App() {
   const {t} = useTranslation();
@@ -17,7 +18,9 @@ function App() {
 
 
          <Switch>
-           <Route exact key='/'></Route>
+           <Route exact key='/'>
+             <Home />
+           </Route>
          </Switch>
        </Router>
       </div>
