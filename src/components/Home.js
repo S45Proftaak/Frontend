@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Col, Row, Container } from "react-bootstrap";
 import WeekSelection from "./subcomponents/Home/WeekSelection";
+import EetMeeSelector from "./subcomponents/Home/EetMeeSelector";
 
 class Home extends Component {
   constructor(props) {
@@ -17,7 +18,9 @@ class Home extends Component {
           </Col>
         </Row>
         <Row>
-          <Col lg></Col>
+          <Col lg>
+            <EetMeeSelector />
+          </Col>
         </Row>
       </Container>
     );
