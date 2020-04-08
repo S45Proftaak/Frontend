@@ -1,18 +1,25 @@
 {
-    "Welcome":
-    {
-        "Title" : "Welkom op onze website"
-    },
-    "Login": {
-        "Username": "Gebruikersnaam",
-        "Password": "Wachtwoord",
-        "Login": "Inloggen"
-    },
-    "App":
-    {
-        "Home": "Hoofdpagina"
-    },
-    "Week":{
-        "weeknumber": "Week nummer"
-    }
+  "Welcome": {
+    "Title": "Welkom op onze website"
+  },
+  "Utils": {
+    "Monday": "Maandag",
+    "Tuesday": "Dinsdag",
+    "Wednesday": "Woensdag",
+    "Thursday": "Donderdag",
+    "Friday": "Vrijdag"
+  },
+  "Login": {
+    "Username": "Gebruikersnaam",
+    "Password": "Wachtwoord",
+    "Login": "Inloggen",
+    "UsernameError": "Gebruikersnaam is niet ingevuld!",
+    "PasswordError": "Wachtwoord is niet ingevuld"
+  },
+  "App": {
+    "Home": "Hoofdpagina"
+  },
+  "Week": {
+    "weeknumber": "Week nummer"
+  }
 }
