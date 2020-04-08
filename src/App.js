@@ -3,6 +3,7 @@ import './App.css';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Navbar from './components/navbar';
 import { useTranslation } from 'react-i18next';
+import Login from './components/login';
 
 function App() {
   const {t} = useTranslation();
@@ -14,10 +15,12 @@ function App() {
          <Navbar Navs={[
            {link: "/", name: t('App.Home')}
          ]}/>
+         <div style={{margin: 30}}/>
 
 
          <Switch>
-           <Route exact key='/'></Route>
+           <Route exact path='/'></Route>
+           <Route exact path='/login'><Login/></Route>
          </Switch>
        </Router>
       </div>
