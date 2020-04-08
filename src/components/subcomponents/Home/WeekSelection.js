@@ -2,21 +2,25 @@ import React from "react";
 import { withTranslation } from "react-i18next";
 import { Card, Container, Pagination } from "react-bootstrap";
 import { getCurrentWeek } from "../../../helpers/helpers.js";
+import { selectWeek } from "../../../redux/actions/DaySelectionActions.js";
+import { connect } from "react-redux";
+import { compose } from "redux";
 
 class WeekSelection extends React.Component {
   // Constructor including properties
   constructor(props) {
     super(props); //default
     this.state = {
-      selectedWeek: getCurrentWeek()
+      selectedWeek: getCurrentWeek(),
     };
   }
 
   // Setter methods
   setSelectedWeek(event, week) {
     if (week >= getCurrentWeek() - 2 && week < getCurrentWeek() + 6) {
+      this.props.dispatch(selectWeek(week));
       this.setState({
-        selectedWeek: week
+        selectedWeek: week,
       });
     }
   }
@@ -32,12 +36,12 @@ class WeekSelection extends React.Component {
       renderedWeeks.push(
         <Pagination.Item
           active={getCurrentWeek() + week === this.state.selectedWeek}
-          onClick={event =>
+          onClick={(event) =>
             this.setSelectedWeek(event, getCurrentWeek() + week)
           }
           key={week}
           style={{
-            textDecoration: styling
+            textDecoration: styling,
           }}
         >
           {getCurrentWeek() + week}
@@ -62,13 +66,13 @@ class WeekSelection extends React.Component {
               style={{ overflow: "hidden" }}
             >
               <Pagination.Prev
-                onClick={event =>
+                onClick={(event) =>
                   this.setSelectedWeek(event, this.state.selectedWeek - 1)
                 }
               />
               {this.renderWeeks()}
               <Pagination.Next
-                onClick={event =>
+                onClick={(event) =>
                   this.setSelectedWeek(event, this.state.selectedWeek + 1)
                 }
               />
@@ -80,7 +84,8 @@ class WeekSelection extends React.Component {
   }
 }
 
-const MyComponent = withTranslation()(WeekSelection);
+const MyComponent = compose(withTranslation(), connect())(WeekSelection);
+//const MySecondComponent = useDispatch()(WeekSelection);
 
 // i18n translations might still be loaded by the xhr backend
 // use react's Suspense
