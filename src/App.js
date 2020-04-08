@@ -4,7 +4,6 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Navbar from './components/navbar';
 import { useTranslation } from 'react-i18next';
 import Login from './components/login';
-import Home from './components/Home';
 
 function App() {
   const {t} = useTranslation();

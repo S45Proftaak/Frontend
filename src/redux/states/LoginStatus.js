@@ -5,3 +5,5 @@ const Login = {
     payload: [],
     loggedin: false
 }
+
+export default Login;
