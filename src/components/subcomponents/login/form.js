@@ -10,12 +10,12 @@ export default function Form(props) {
   return (
     <F id="LoginForm" onSubmit={handleSubmit(props.onSubmit)}>
       <F.Group controlId="formBasicUsername">
-        <F.Label>{t("Login.Username")}</F.Label>
+        <F.Label>{t("Login.Email")}</F.Label>
         <input
-          type="text"
+          type="email"
           className="form-control"
-          id="username"
-          name="username"
+          id="email"
+          name="email"
           ref={register({
             required: true
           })}
