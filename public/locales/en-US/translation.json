@@ -10,7 +10,7 @@
     "Friday": "Friday"
   },
   "Login": {
-    "Username": "Username",
+    "Email": "Email",
     "Password": "Password",
     "Login": "Login",
     "UsernameError": "Username is empty",

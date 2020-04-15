@@ -10,7 +10,7 @@
     "Friday": "Vrijdag"
   },
   "Login": {
-    "Username": "Gebruikersnaam",
+    "Email": "Email",
     "Password": "Wachtwoord",
     "Login": "Inloggen",
     "UsernameError": "Gebruikersnaam is niet ingevuld!",
