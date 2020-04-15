@@ -1,6 +1,6 @@
 //import axios from "axios";
 
-async function getData(link, type) {
+async function sendToServer(link, type) {
   const response = await fetch(link, {
     method: type,
     headers: {
@@ -15,11 +15,11 @@ async function getData(link, type) {
 
 /* ------------------------------------------ */
 
-export async function makeRESTcall(link, type) {
+export async function makeHttpCall(link, type) {
   if (typeof link === "string" || link instanceof String) {
     if (validURL(link)) {
       var toReturn = null;
-      await getData(link, type)
+      await sendToServer(link, type)
         .then(function (response) {
           toReturn = response;
         })
