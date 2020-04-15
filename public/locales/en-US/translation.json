@@ -2,6 +2,9 @@
   "Welcome": {
     "Title": "Welcome to our website"
   },
+  "SelectedUser":{
+    "CurrentlySelectedUser": "Current selected user"
+  },
   "Utils": {
     "Monday": "Monday",
     "Tuesday": "Tuesday",
@@ -17,7 +20,8 @@
     "PasswordError": "Password is empty"
   },
   "App": {
-    "Home": "Home"
+    "Home": "Home",
+    "Administration": "Administration"
   },
   "Week": {
     "weeknumber": "Week number"
