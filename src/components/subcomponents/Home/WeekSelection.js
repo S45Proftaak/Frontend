@@ -1,7 +1,7 @@
 import React from "react";
 import { withTranslation } from "react-i18next";
 import { Card, Container, Pagination } from "react-bootstrap";
-import { getCurrentWeek } from "../../../helpers/helpers.js";
+import { getCurrentWeek } from "../../../helpers/dateHelpers.js";
 import { selectWeek } from "../../../redux/actions/DaySelectionActions.js";
 import { connect } from "react-redux";
 import { compose } from "redux";

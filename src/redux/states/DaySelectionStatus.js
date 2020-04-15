@@ -1,4 +1,4 @@
-import { getCurrentWeek } from "../../helpers/helpers.js";
+import { getCurrentWeek } from "../../helpers/dateHelpers.js";
 
 const WeekSelection = {
   selectedWeek: getCurrentWeek(),
