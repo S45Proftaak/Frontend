@@ -8,6 +8,7 @@ import {
   fetchedLoginData,
 } from "../redux/actions/LoginActions";
 import { Redirect } from "react-router-dom";
+import { fetchedLinks, errorLinks } from "../redux/actions/LinkActions";
 
 export default function Login() {
   const { t } = useTranslation();
@@ -37,10 +38,12 @@ export default function Login() {
       .then((res) => res.json())
       .then(
         (result) => {
-          dispatch(fetchedLoginData(result));
+          dispatch(fetchedLoginData(result.token));
+          dispatch(fetchedLinks(result.links));
         },
         (error) => {
           console.error(error);
+          dispatch(errorLinks(error));
         }
       );
   };
