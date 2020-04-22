@@ -38,9 +38,9 @@ class EetMeeSelector extends Component {
       const date = getDayOfMonthByWeekAndDay(this.props.selectedWeek, day.key);
       let styling = "normal";
       if (
-        new Date().getDate() == date.getDate() &&
-        new Date().getMonth() == date.getMonth() &&
-        new Date().getFullYear() == date.getFullYear()
+        new Date().getDate() === date.getDate() &&
+        new Date().getMonth() === date.getMonth() &&
+        new Date().getFullYear() === date.getFullYear()
       ) {
         styling = "bold";
       }

@@ -16,13 +16,13 @@ function getFirstMonday() {
   let firstMonday;
 
   // If January 1st is a SUNDAY, January 2nd is a MONDAY.
-  if (onejan.getDay() == 0) {
+  if (onejan.getDay() === 0) {
     firstMonday = new Date(onejan.getFullYear(), 0, 2);
     weekOfFirstMonday = 1;
   }
 
   // Else if January 1st is a MONDAY, set as the first day
-  else if (onejan.getDay() == 1) {
+  else if (onejan.getDay() === 1) {
     firstMonday = onejan;
     weekOfFirstMonday = 2;
   }
