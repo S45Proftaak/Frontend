@@ -2,10 +2,11 @@ async function sendToServer(link, type, data) {
   // When GET request
   let response;
   if (type === requestTypes.GET) {
+    console.log("Executing GET request!");
     var url = new URL(link);
     url.search = new URLSearchParams(data).toString();
-    console.log(url);
-    console.log(data);
+    //console.log(url);
+    //console.log(data);
     response = await fetch(url.href, {
       method: "GET",
       headers: {
@@ -16,8 +17,10 @@ async function sendToServer(link, type, data) {
 
   // When POST, PUT OR DELETE
   else {
+    console.log("Executing " + type + " request with data:");
+    console.log(data);
     response = await fetch(link, {
-      method: "GET",
+      method: type,
       headers: {
         "Content-Type": "application/json",
       },

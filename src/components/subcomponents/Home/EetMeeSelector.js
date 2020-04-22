@@ -12,28 +12,57 @@ class EetMeeSelector extends Component {
     this.state = {};
     console.log(this.props);
   }
-  submitDay(dayNr) {
-    console.log("Hey you clicked on " + dayNr);
+  submitDay(day) {
+    console.log("Hey you clicked on " + day.key);
     makeHttpCall(
-      "http://localhost:8020/foodorder/all-orders-per-week",
-      requestTypes.GET,
-      { dates: ["2011-22-03", "2011-23-03", "2020-04-08"] }
+      "http://localhost:8020/foodorder/add-order",
+      requestTypes.POST,
+      { date: this.formatDateToString(day.date) }
     ).then((response) => {
       console.log(response);
     });
+  }
+  formatDateToString(date) {
+    let formattedDate = date.getDate().toString();
+    let formattedMonth = (parseInt(date.getMonth()) + 1).toString();
+    if (formattedDate.length === 1) {
+      formattedDate = "0" + formattedDate;
+    }
+    if (formattedMonth.length === 1) {
+      formattedMonth = "0" + formattedMonth;
+    }
+    return date.getFullYear() + "-" + formattedMonth + "-" + formattedDate;
+  }
+  calculateDays() {
+    const { t } = this.props;
+    let days = [
+      { key: 0, name: t("Utils.Monday"), date: null, disabled: false },
+      { key: 1, name: t("Utils.Tuesday"), date: null, disabled: false },
+      { key: 2, name: t("Utils.Wednesday"), date: null, disabled: false },
+      { key: 3, name: t("Utils.Thursday"), date: null, disabled: false },
+      { key: 4, name: t("Utils.Friday"), date: null, disabled: false },
+    ];
+    let formattedStringDays = [];
+    for (let day of days) {
+      day.date = getDayOfMonthByWeekAndDay(this.props.selectedWeek, day.key);
+      formattedStringDays.push(this.formatDateToString(day.date));
+    }
+    console.log(formattedStringDays);
+    makeHttpCall(
+      "http://localhost:8020/foodorder/all-orders-per-week",
+      requestTypes.GET,
+      { dates: formattedStringDays }
+    ).then((response) => {
+      console.log(response);
+    });
+    return days;
   }
   renderDays() {
     const { t } = this.props;
     let renderedDays = [];
     console.log("The selected week by renderDays() is");
     console.log(this.props.selectedWeek);
-    let days = [
-      { key: 0, name: t("Utils.Monday") },
-      { key: 1, name: t("Utils.Tuesday") },
-      { key: 2, name: t("Utils.Wednesday") },
-      { key: 3, name: t("Utils.Thursday") },
-      { key: 4, name: t("Utils.Friday") },
-    ];
+    const days = this.calculateDays();
     for (let day of days) {
       const date = getDayOfMonthByWeekAndDay(this.props.selectedWeek, day.key);
       let styling = "normal";
@@ -54,7 +83,7 @@ class EetMeeSelector extends Component {
               </p>
             </Card.Header>
             <Card.Body>
-              <Button onClick={(event) => this.submitDay(day.key)}>
+              <Button onClick={(event) => this.submitDay(day)}>
                 {t("Eet Mee")}
               </Button>
             </Card.Body>

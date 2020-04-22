@@ -10,7 +10,7 @@ export function getCurrentWeek() {
 let weekOfFirstMonday;
 
 function getFirstMonday() {
-  console.log("Executing getFirstMonday()");
+  //console.log("Executing getFirstMonday()");
   let now = new Date();
   let onejan = new Date(now.getFullYear(), 0, 1);
   let firstMonday;
@@ -37,8 +37,8 @@ function getFirstMonday() {
     );
     weekOfFirstMonday = 2;
   }
-  console.log("First monday is the following:");
-  console.log(firstMonday);
+  //console.log("First monday is the following:");
+  //console.log(firstMonday);
   return firstMonday;
 }
 
@@ -50,7 +50,7 @@ export function getDayOfMonthByWeekAndDay(week, day) {
   const myDate = new Date(
     firstMonday.getTime() + dayAmount * 24 * 60 * 60 * 1000
   );
-  console.log("Final time is the following:");
-  console.log(myDate);
+  //console.log("Final time is the following:");
+  //console.log(myDate);
   return myDate;
 }
