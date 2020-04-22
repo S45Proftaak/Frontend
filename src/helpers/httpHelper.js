@@ -1,13 +1,30 @@
-//import axios from "axios";
+async function sendToServer(link, type, data) {
+  // When GET request
+  let response;
+  if (type === requestTypes.GET) {
+    var url = new URL(link);
+    url.search = new URLSearchParams(data).toString();
+    console.log(url);
+    console.log(data);
+    response = await fetch(url.href, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+  }
 
-async function sendToServer(link, type) {
-  const response = await fetch(link, {
-    method: type,
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
-  if (response.status != 200) {
+  // When POST, PUT OR DELETE
+  else {
+    response = await fetch(link, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+  }
+  if (response.status !== 200) {
     console.log("Something went wrong! [Code is " + response.status + "]");
   }
   return await response.json();
@@ -15,11 +32,16 @@ async function sendToServer(link, type) {
 
 /* ------------------------------------------ */
 
-export async function makeHttpCall(link, type) {
+export const requestTypes = Object.freeze({
+  GET: "GET",
+  POST: "POST",
+});
+
+export async function makeHttpCall(link, type, body) {
   if (typeof link === "string" || link instanceof String) {
-    if (validURL(link)) {
+    if (true) {
       var toReturn = null;
-      await sendToServer(link, type)
+      await sendToServer(link, type, body)
         .then(function (response) {
           toReturn = response;
         })
@@ -38,7 +60,7 @@ export async function makeHttpCall(link, type) {
 
 function validURL(str) {
   var pattern = new RegExp(
-    "^(https?:\\/\\/)?" + // protocol
+    "^(http?:\\/\\/)?" + // protocol
     "((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|" + // domain name
     "((\\d{1,3}\\.){3}\\d{1,3}))" + // OR ip (v4) address
     "(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*" + // port and path

@@ -5,6 +5,9 @@ export default function DaySelectionReducer(state = DaySelection, action) {
     case "SELECT_WEEK": {
       return { ...state, selectedWeek: action.payload };
     }
+    case "GET_WEEK": {
+      return state.selectedWeek;
+    }
     case "SELECT_DAY": {
       return { ...state, selectedDay: action.payload };
     }

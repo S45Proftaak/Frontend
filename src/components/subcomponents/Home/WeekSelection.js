@@ -13,6 +13,7 @@ class WeekSelection extends React.Component {
     this.state = {
       selectedWeek: getCurrentWeek(),
     };
+    this.props.dispatch(selectWeek(this.state.selectedWeek));
   }
 
   // Setter methods

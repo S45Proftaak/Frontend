@@ -4,6 +4,9 @@ export function selectWeek(week) {
     payload: week,
   };
 }
+export function getWeek() {
+  return;
+}
 
 export const selectDay = (day) => ({
   type: "SELECT_DAY",
