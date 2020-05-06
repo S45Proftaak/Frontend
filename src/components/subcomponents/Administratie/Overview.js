@@ -18,7 +18,7 @@ class Overview extends Component {
   render() {
       const {t} = this.props;
     return (
-      <Card style={{ margin: 5 }}>
+      <Card className="HeightContainer">
         <Card.Body>
           <Container>
             <table>

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Col, Row, Container } from "react-bootstrap";
+import { Col, Row, Container, Card } from "react-bootstrap";
 import CurrentSelectedUser from "./subcomponents/Administratie/CurrentSelectedUser";
 import DatePicker from "./subcomponents/Administratie/DatePicker";
 import Overview from "./subcomponents/Administratie/Overview";
@@ -13,19 +13,17 @@ class Administration extends Component {
     return (
       <Container>
         <Row>
-            <Col sm="3">
-              <CurrentSelectedUser />
+            <Col md="4">
+              <Card>
+                <CurrentSelectedUser />
+                <DatePicker/>
+              </Card>
             </Col>
+          <Col md="8">
               <Overview/>
-            <Col md="8">
             </Col>
         </Row>
-        <Row>
-            <Col sm="3">
-            </Col>
-
-          <Col md="8"></Col>
-        </Row>
+            
       </Container>
     );
   }

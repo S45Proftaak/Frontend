@@ -1,11 +1,28 @@
- th, td {
+ th  {
     border: 1px solid black;
     border-collapse: collapse;
-    text-align: center;
-    padding:10px;
+    text-align: left;
+    padding:5px;
+    background-color: cornflowerblue;
+  }
+
+  td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    text-align: left;
+    padding:5px;
+    background-color: lightsteelblue ;
   }
 
   table {
     border: 1px solid black;
     border-collapse: collapse;
+    height: 100%;
+    width: 100%;
+    border-radius: 5%;
+  }
+
+  .HeightContainer {
+    height:100%;
+    margin: 5px;
   }
