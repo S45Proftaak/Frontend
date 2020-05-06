@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { withTranslation } from "react-i18next";
 import { Card, Container, Row, Col, Button } from "react-bootstrap";
+import "./CSS/CurrentSelectedUserStyle.css"
 
 class CurrentSelectedUser extends Component {
     
