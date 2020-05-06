@@ -16,14 +16,12 @@ class Administration extends Component {
             <Col sm="3">
               <CurrentSelectedUser />
             </Col>
-            
+              <Overview/>
             <Col md="8">
-                <Overview/>
             </Col>
         </Row>
         <Row>
             <Col sm="3">
-              <DatePicker />
             </Col>
 
           <Col md="8"></Col>

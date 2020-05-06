@@ -13,7 +13,7 @@ function App() {
   return (
     <div className="App-header">
       <Router>
-        <Navbar Navs={[{ link: "/", name: t("App.Home") }, {link: "/Administration", name: t("App.Administration") }]} />
+        <Navbar Navs={[{ link: "/", name: t("App.Home") }, {link: "/administration", name: t("App.Administration") }]} />
         <div style={{ margin: 30 }} />
 
         <Switch>
@@ -23,7 +23,7 @@ function App() {
           <Route exact path="/login">
             <Login />
           </Route>
-          <Route exact path="/Administration">
+          <Route path="/administration">
             <Administration />
           </Route>
         </Switch>

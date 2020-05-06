@@ -11,7 +11,6 @@ class CurrentSelectedUser extends Component {
 
   renderSelectedUser() {
     let renderedSelectedUser = "Testing";
-
     return renderedSelectedUser;
   }
 
