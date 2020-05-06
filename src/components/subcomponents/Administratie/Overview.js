@@ -23,19 +23,54 @@ class Overview extends Component {
           <Container>
             <table>
                 <tr>
-                    <th>Firstname</th>
-                    <th>Lastname</th>
-                    <th>Age</th>
+                    <th>Date</th>
+                    <th>Name</th>
+                    <th>In Time</th>
                 </tr>
                 <tr>
-                    <td>Jill</td>
-                    <td>Smith</td>
-                    <td>50</td>
+                    <td>15/08/2019</td>
+                    <td>Jill Smith</td>
+                    <td>&#10003;</td>
                 </tr>
                 <tr>
-                    <td>Eve</td>
-                    <td>Jackson</td>
-                    <td>94</td>
+                    <td>15/08/2019</td>
+                    <td>Archie John</td>
+                    <td>&#10005;</td>
+                </tr>
+                <tr>
+                    <td>15/08/2019</td>
+                    <td>Ethan Johnson</td>
+                    <td>&#10005;</td>
+                </tr>
+                <tr>
+                    <td>16/08/2019</td>
+                    <td>Jill Smith</td>
+                    <td>&#10003;</td>
+                </tr>
+                <tr>
+                    <td>16/08/2019</td>
+                    <td>Archie John</td>
+                    <td>&#10005;</td>
+                </tr>
+                <tr>
+                    <td>16/08/2019</td>
+                    <td>Ethan Johnson</td>
+                    <td>&#10005;</td>
+                </tr>
+                <tr>
+                    <td>17/08/2019</td>
+                    <td>Jill Smith</td>
+                    <td>&#10003;</td>
+                </tr>
+                <tr>
+                    <td>17/08/2019</td>
+                    <td>Archie John</td>
+                    <td>&#10005;</td>
+                </tr>
+                <tr>
+                    <td>17/08/2019</td>
+                    <td>Ethan Johnson</td>
+                    <td>&#10005;</td>
                 </tr>
             </table>
           </Container>

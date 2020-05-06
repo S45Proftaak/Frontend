@@ -1,77 +1,45 @@
-import React, { Component } from "react";
-import { withTranslation } from "react-i18next";
-import { Card, Container, Row, Col, Button } from "react-bootstrap";
-import "./CSS/DatePickerStyle.css";
+import React from 'react';
+import {makeHttpCall, requestTypes} from "../../../helpers/httpHelper";
+import {useSelector} from 'react-redux';
 import DayPicker from 'react-day-picker';
+import RangeSelector from './RangeSelector.js';
 import 'react-day-picker/lib/style.css';
-import Helmet from 'react-helmet';
 
-class DatePicker extends Component {
-  static defaultProps = {
-    numberOfMonths: 2,
-  };
+export default function DatePicker(){
 
-  constructor(props) {
-    super(props);
-    this.handleDayClick = this.handleDayClick.bind(this);
-    this.handleResetClick = this.handleResetClick.bind(this);
-    this.state = this.getInitialState();
-  }
+    const getUsersBetweenDatesLink = null;
+    const baseLink = null;
 
-  getInitialState() {
-    return {
-      from: undefined,
-      to: undefined,
-    };
-  }
+    const basemodel = useSelector(state => state.loginReducer.payload.links);
+    if(basemodel != undefined){
+        getUsersBetweenDatesLink = basemodel.secretaryLinks.GET_USERS_BETWEEN_DATES;
+        baseLink = basemodel.secretaryLinks.BASE;
+    }
 
-  handleDayClick(day) {
-    const range = DateUtils.addDayToRange(day, this.state);
-    this.setState(range);
-  }
+    let fetchUserByDate = async (startDate, endDate) => {
+        if(getUsersBetweenDatesLink === undefined){
+            console.error("Request link could not be found");
+            return undefined;
+        }
 
-  handleResetClick() {
-    this.setState(this.getInitialState());
-  }
+        if(baseLink === undefined){
+            console.error("Base link could not be found");
+            return undefined;
+        }
 
-  render() {
-    const { from, to } = this.state;
-    const modifiers = { start: from, end: to };
-    return (
-      <div className="RangeExample">
-        <p>
-          {!from && !to && 'Please select the first day.'}
-          {from && !to && 'Please select the last day.'}
-          {from &&
-            to &&
-            `Selected from ${from.toLocaleDateString()} to
-                ${to.toLocaleDateString()}`}{' '}
-          {from && to && (
-            <button className="link" onClick={this.handleResetClick}>
-              Reset
-            </button>
-          )}
-        </p>
-        <DayPicker
-          className="Selectable"
-          numberOfMonths={this.props.numberOfMonths}
-          selectedDays={[from, { from, to }]}
-          modifiers={modifiers}
-          onDayClick={this.handleDayClick}
-        />
-        <Helmet></Helmet>
+        if(startDate === undefined || endDate === undefined){
+            console.error("Missing parameter");
+            return undefined;
+        }
+
+        const fullLink = "http://localhost:8020" + baseLink + getUsersBetweenDatesLink + "?start=" + startDate + "&end=" + endDate;
+        const result = await makeHttpCall(fullLink, requestTypes.GET, undefined);
+        return result;
+    }
+
+    return(
+        <div>
+            <RangeSelector></RangeSelector>
         </div>
+    );
   }
-}
-
-const MyComponent = withTranslation()(DatePicker);
-
-// i18n translations might still be loaded by the xhr backend
-// use react's Suspense
-export default function App() {
-  return (
-    <React.Suspense fallback="loading">
-      <MyComponent />
-    </React.Suspense>
-  );
-}
