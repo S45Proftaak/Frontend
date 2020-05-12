@@ -1,16 +1,15 @@
-async function sendToServer(link, type, data) {
+async function sendToServer(link, token, type, data) {
   // When GET request
   let response;
   if (type === requestTypes.GET) {
     console.log("Executing GET request!");
     var url = new URL(link);
     url.search = new URLSearchParams(data).toString();
-    //console.log(url);
-    //console.log(data);
     response = await fetch(url.href, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
+        Authorization: "Bearer " + token,
       },
     });
   }
@@ -23,6 +22,7 @@ async function sendToServer(link, type, data) {
       method: type,
       headers: {
         "Content-Type": "application/json",
+        Authorization: "Bearer " + token,
       },
       body: JSON.stringify(data),
     });
@@ -40,21 +40,17 @@ export const requestTypes = Object.freeze({
   POST: "POST",
 });
 
-export async function makeHttpCall(link, type, body) {
+export async function makeHttpCall(link, token, type, body) {
   if (typeof link === "string" || link instanceof String) {
-    if (true) {
-      var toReturn = null;
-      await sendToServer(link, type, body)
-        .then(function (response) {
-          toReturn = response;
-        })
-        .catch(function (error) {
-          console.log("ERROR! [" + error + "]");
-          return error;
-        });
-    } else {
-      return "Not a valid url.";
-    }
+    var toReturn = null;
+    await sendToServer(link, token, type, body)
+      .then(function (response) {
+        toReturn = response;
+      })
+      .catch(function (error) {
+        console.log("ERROR! [" + error + "]");
+        return error;
+      });
     return toReturn;
   }
 }

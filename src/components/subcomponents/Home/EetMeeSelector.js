@@ -35,6 +35,7 @@ class EetMeeSelector extends Component {
   componentDidMount() {
     makeHttpCall(
       "http://localhost:8020/foodorder/all-orders-per-week",
+      this.props.token,
       requestTypes.GET,
       { dates: this.state.formattedStringDays }
     ).then((response) => {
@@ -49,6 +50,7 @@ class EetMeeSelector extends Component {
   submitDay(day) {
     makeHttpCall(
       "http://localhost:8020/foodorder/add-order",
+      this.props.token,
       requestTypes.POST,
       { date: formatDateToString(day.date) }
     ).then((response) => {
@@ -123,6 +125,7 @@ function mapStateToProps(state) {
   console.log("Mapping state to props!!");
   return {
     selectedWeek: state.daySelectionReducer.selectedWeek,
+    token: state.loginReducer.payload.token,
   };
 }
 
