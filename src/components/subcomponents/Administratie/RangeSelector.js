@@ -30,13 +30,10 @@ class RangeSelector extends Component {
       to: range.to,
     });
     if (range.to !== undefined) {
-      this.setState({
-        payload: this.fetchUserByDate(
-          formatFetchDate(range.from),
-          formatFetchDate(range.to)
-        ),
-      });
-      console.log(this.state.payload);
+      this.fetchUserByDate(
+        formatFetchDate(range.from),
+        formatFetchDate(range.to)
+      );
     }
   }
 
@@ -76,8 +73,14 @@ class RangeSelector extends Component {
       start: startDate,
       end: endDate,
     };
-    const result = makeHttpCall(fullLink, requestTypes.GET, body);
-    return result;
+    makeHttpCall(fullLink, this.props.token, requestTypes.GET, body).then(
+      (res) => {
+        this.setState({
+          payload: res,
+        });
+        return res;
+      }
+    );
   };
 
   render() {
@@ -103,6 +106,7 @@ const MyComponent = compose(
   connect((state) => {
     return {
       links: state.loginReducer.payload.links,
+      token: state.loginReducer.payload.token,
     };
   })
 )(RangeSelector);
