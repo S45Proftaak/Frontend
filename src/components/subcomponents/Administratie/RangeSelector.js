@@ -1,10 +1,9 @@
 import React, { Component } from "react";
 import { withTranslation } from "react-i18next";
-import { Card, Container, Row, Col, Button } from "react-bootstrap";
 import "./CSS/RangeSelectorStyle.css"
 import DayPicker, { DateUtils } from 'react-day-picker';
 import 'react-day-picker/lib/style.css';
-import DatePicker from './DatePicker';
+import { formatFetchDate } from "../../../helpers/dateHelpers";
 
 class RangeSelector extends Component {
     constructor(props) {
@@ -24,6 +23,7 @@ class RangeSelector extends Component {
     handleDayClick(day) {
       const range = DateUtils.addDayToRange(day, this.state);
       this.setState(range);
+      console.log(this.state.payload);
     }
   
     handleResetClick() {

@@ -54,3 +54,13 @@ export function getDayOfMonthByWeekAndDay(week, day) {
   //console.log(myDate);
   return myDate;
 }
+
+export function formatFetchDate(date){
+  if (typeof(date) === "object")
+  {
+    let stringdate = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate();
+    return stringdate;
+  } else {
+    throw 'Type is not a Date';
+  }
+}

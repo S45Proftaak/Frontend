@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { withTranslation } from "react-i18next";
-import { Card, Container, Row, Col, Button } from "react-bootstrap";
+import { Card, Container} from "react-bootstrap";
 import "./CSS/OverviewStyle.css"
 
 class Overview extends Component {
@@ -16,7 +16,6 @@ class Overview extends Component {
   }
 
   render() {
-      const {t} = this.props;
     return (
       <Card className="HeightContainer">
         <Card.Body>

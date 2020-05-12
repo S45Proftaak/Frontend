@@ -1,17 +1,18 @@
 import React from 'react';
 import {makeHttpCall, requestTypes} from "../../../helpers/httpHelper";
 import {useSelector} from 'react-redux';
-import DayPicker from 'react-day-picker';
 import RangeSelector from './RangeSelector.js';
 import 'react-day-picker/lib/style.css';
 
 export default function DatePicker(){
 
-    const getUsersBetweenDatesLink = null;
-    const baseLink = null;
+    let getUsersBetweenDatesLink = null;
+    let baseLink = null;
+    let start = undefined;
+    let end = undefined;
 
     const basemodel = useSelector(state => state.loginReducer.payload.links);
-    if(basemodel != undefined){
+    if(basemodel !== undefined){
         getUsersBetweenDatesLink = basemodel.secretaryLinks.GET_USERS_BETWEEN_DATES;
         baseLink = basemodel.secretaryLinks.BASE;
     }
@@ -39,7 +40,7 @@ export default function DatePicker(){
 
     return(
         <div>
-            <RangeSelector></RangeSelector>
+            <RangeSelector fetch={fetchUserByDate}></RangeSelector>
         </div>
     );
   }
