@@ -7,6 +7,10 @@ import { formatFetchDate } from "../../../helpers/dateHelpers";
 import { compose } from "redux";
 import { connect } from "react-redux";
 import { makeHttpCall, requestTypes } from "../../../helpers/httpHelper";
+import {
+  fetchOvervieuwData,
+  fetchedOvervieuwData,
+} from "../../../redux/actions/AdminOvervieuwActions";
 
 class RangeSelector extends Component {
   constructor(props) {
@@ -42,6 +46,7 @@ class RangeSelector extends Component {
   }
 
   fetchUserByDate = (startDate, endDate) => {
+    this.props.fetchOvervieuwData();
     let getUsersBetweenDatesLink = undefined;
     let baseLink = undefined;
     if (this.props.links !== undefined) {
@@ -75,9 +80,7 @@ class RangeSelector extends Component {
     };
     makeHttpCall(fullLink, this.props.token, requestTypes.GET, body).then(
       (res) => {
-        this.setState({
-          payload: res,
-        });
+        this.props.fetchedOvervieuwData(res);
         return res;
       }
     );
@@ -103,12 +106,18 @@ class RangeSelector extends Component {
 
 const MyComponent = compose(
   withTranslation(),
-  connect((state) => {
-    return {
-      links: state.loginReducer.payload.links,
-      token: state.loginReducer.payload.token,
-    };
-  })
+  connect(
+    (state) => {
+      return {
+        links: state.loginReducer.payload.links,
+        token: state.loginReducer.payload.token,
+      };
+    },
+    {
+      fetchOvervieuwData,
+      fetchedOvervieuwData,
+    }
+  )
 )(RangeSelector);
 // i18n translations might still be loaded by the xhr backend
 // use react's Suspense
