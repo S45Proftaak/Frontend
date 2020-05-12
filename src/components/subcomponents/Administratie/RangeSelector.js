@@ -26,19 +26,25 @@ class RangeSelector extends Component {
   handleDayClick(day) {
     const range = DateUtils.addDayToRange(day, this.state);
     this.setState({
-      payload: this.fetchUserByDate(
-        formatFetchDate(range.from),
-        formatFetchDate(range.to)
-      ),
+      from: range.from,
+      to: range.to,
     });
-    console.log(this.state.payload);
+    if (range.to !== undefined) {
+      this.setState({
+        payload: this.fetchUserByDate(
+          formatFetchDate(range.from),
+          formatFetchDate(range.to)
+        ),
+      });
+      console.log(this.state.payload);
+    }
   }
 
   handleResetClick() {
     this.setState(this.getInitialState());
   }
 
-  fetchUserByDate = async (startDate, endDate) => {
+  fetchUserByDate = (startDate, endDate) => {
     let getUsersBetweenDatesLink = undefined;
     let baseLink = undefined;
     if (this.props.links !== undefined) {
@@ -72,7 +78,7 @@ class RangeSelector extends Component {
       startDate +
       "&end=" +
       endDate;
-    const result = await makeHttpCall(fullLink, requestTypes.GET, undefined);
+    const result = makeHttpCall(fullLink, requestTypes.GET, undefined);
     return result;
   };
 
