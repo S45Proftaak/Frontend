@@ -5,6 +5,7 @@ import Navbar from "./components/navbar";
 import { useTranslation } from "react-i18next";
 import Login from "./components/login";
 import Home from "./components/Home";
+import Administration from "./components/Administration";
 
 function App() {
   const { t } = useTranslation();
@@ -12,7 +13,7 @@ function App() {
   return (
     <div className="App-header">
       <Router>
-        <Navbar Navs={[{ link: "/", name: t("App.Home") }]} />
+        <Navbar Navs={[{ link: "/", name: t("App.Home") }, {link: "/administration", name: t("App.Administration") }]} />
         <div style={{ margin: 30 }} />
 
         <Switch>
@@ -21,6 +22,9 @@ function App() {
           </Route>
           <Route exact path="/login">
             <Login />
+          </Route>
+          <Route path="/administration">
+            <Administration />
           </Route>
         </Switch>
       </Router>

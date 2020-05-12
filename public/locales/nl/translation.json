@@ -2,6 +2,9 @@
   "Welcome": {
     "Title": "Welkom op onze website"
   },
+  "SelectedUser":{
+    "CurrentlySelectedUser": "Geselecteerde gebruiker"
+  },
   "Utils": {
     "Monday": "Maandag",
     "Tuesday": "Dinsdag",
@@ -31,7 +34,8 @@
     "PasswordError": "Wachtwoord is niet ingevuld"
   },
   "App": {
-    "Home": "Hoofdpagina"
+    "Home": "Hoofdpagina",
+    "Administration": "Administratie"
   },
   "Week": {
     "weeknumber": "Week nummer"
