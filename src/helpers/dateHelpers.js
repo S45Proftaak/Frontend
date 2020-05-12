@@ -30,11 +30,11 @@ export function formatDateToString(date) {
 }
 
 export function formatFetchDate(date) {
-  if (typeof date === "object") {
+  if (typeof date === "object" && date !== undefined && date !== null) {
     let stringdate =
       date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate();
     return stringdate;
   } else {
-    throw new Error("Type is not a Date");
+    console.error("No Date Filled in");
   }
 }
