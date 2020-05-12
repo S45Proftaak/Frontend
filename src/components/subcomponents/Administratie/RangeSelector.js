@@ -71,14 +71,12 @@ class RangeSelector extends Component {
     }
 
     const fullLink =
-      "http://localhost:8020" +
-      baseLink +
-      getUsersBetweenDatesLink +
-      "?start=" +
-      startDate +
-      "&end=" +
-      endDate;
-    const result = makeHttpCall(fullLink, requestTypes.GET, undefined);
+      "http://localhost:8020" + baseLink + getUsersBetweenDatesLink;
+    const body = {
+      start: startDate,
+      end: endDate,
+    };
+    const result = makeHttpCall(fullLink, requestTypes.GET, body);
     return result;
   };
 
