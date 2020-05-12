@@ -16,7 +16,6 @@ class EetMeeSelector extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      disabledDates: [],
       days: [
         { key: 0, tName: "Utils.Monday", date: null, disabled: false },
         { key: 1, tName: "Utils.Tuesday", date: null, disabled: false },
@@ -24,15 +23,15 @@ class EetMeeSelector extends Component {
         { key: 3, tName: "Utils.Thursday", date: null, disabled: false },
         { key: 4, tName: "Utils.Friday", date: null, disabled: false },
       ],
-      formattedStringDays: [],
+      //formattedStringDays: [],
     };
     for (let day of this.state.days) {
       day.date = getDayOfMonthByWeekAndDay(this.props.selectedWeek, day.key);
-      this.state.formattedStringDays.push(formatDateToString(day.date));
+      /*this.state.formattedStringDays.push(formatDateToString(day.date));*/
     }
     console.log(this.props);
   }
-  componentDidMount() {
+  /*componentDidMount() {
     makeHttpCall(
       "http://localhost:8020/foodorder/all-orders-per-week",
       this.props.token,
@@ -43,7 +42,8 @@ class EetMeeSelector extends Component {
       console.log(response);
       this.setState({ disabledDates: response });
     });
-  }
+  }*/
+
   /* --------------------------------------- */
   // When clicking on a "Take part" button
   /* --------------------------------------- */
@@ -66,6 +66,7 @@ class EetMeeSelector extends Component {
     for (let day of this.state.days) {
       const date = getDayOfMonthByWeekAndDay(this.props.selectedWeek, day.key);
       let fontWeightStyling = "normal";
+      let colorStyling = "primary";
       if (
         new Date().getDate() === date.getDate() &&
         new Date().getMonth() === date.getMonth() &&
@@ -74,9 +75,10 @@ class EetMeeSelector extends Component {
         fontWeightStyling = "bold";
       }
       let disabledButton = false;
-      if (this.state.disabledDates.length > 0) {
-        if (this.state.disabledDates.includes(formatDateToString(day.date))) {
+      if (this.props.disabledDates.length > 0) {
+        if (this.props.disabledDates.includes(formatDateToString(day.date))) {
           disabledButton = true;
+          colorStyling = "success";
         }
       }
       renderedDays.push(
@@ -92,16 +94,17 @@ class EetMeeSelector extends Component {
             <Card.Body>
               <Button
                 disabled={disabledButton}
+                variant={colorStyling}
                 onClick={(event) => this.submitDay(day)}
               >
-                {t("Eet Mee")}
+                {t("Week.participate")}
               </Button>
             </Card.Body>
           </Card>
         </Col>
       );
     }
-    console.log(renderedDays);
+    //console.log(renderedDays);
     return renderedDays;
   }
   render() {
@@ -122,9 +125,12 @@ class EetMeeSelector extends Component {
 }
 
 function mapStateToProps(state) {
-  console.log("Mapping state to props!!");
+  console.log("[EetMeeSelector] Mapping state to props!!");
+  //console.log("[EetMeeSelector] disabledDays is the following:");
+  //console.log(state.daySelectionReducer.disabledDays);
   return {
     selectedWeek: state.daySelectionReducer.selectedWeek,
+    disabledDates: state.daySelectionReducer.disabledDays,
     token: state.loginReducer.payload.token,
   };
 }

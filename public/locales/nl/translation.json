@@ -2,7 +2,7 @@
   "Welcome": {
     "Title": "Welkom op onze website"
   },
-  "SelectedUser":{
+  "SelectedUser": {
     "CurrentlySelectedUser": "Geselecteerde gebruiker"
   },
   "Utils": {
@@ -38,6 +38,7 @@
     "Administration": "Administratie"
   },
   "Week": {
-    "weeknumber": "Week nummer"
+    "weeknumber": "Week nummer",
+    "participate": "Eet Mee"
   }
 }

@@ -2,7 +2,15 @@ import React from "react";
 import { withTranslation } from "react-i18next";
 import { Card, Container, Pagination } from "react-bootstrap";
 import { getCurrentWeek } from "../../../helpers/dateHelpers.js";
-import { selectWeek } from "../../../redux/actions/DaySelectionActions.js";
+import {
+  selectWeek,
+  setDisabledDays,
+} from "../../../redux/actions/DaySelectionActions.js";
+import { requestTypes, makeHttpCall } from "../../../helpers/httpHelper.js";
+import {
+  getDayOfMonthByWeekAndDay,
+  formatDateToString,
+} from "../../../helpers/dateHelpers.js";
 import { connect } from "react-redux";
 import { compose } from "redux";
 
@@ -12,16 +20,48 @@ class WeekSelection extends React.Component {
     super(props); //default
     this.state = {
       selectedWeek: getCurrentWeek(),
+      days: [
+        { key: 0, tName: "Utils.Monday", date: null, disabled: false },
+        { key: 1, tName: "Utils.Tuesday", date: null, disabled: false },
+        { key: 2, tName: "Utils.Wednesday", date: null, disabled: false },
+        { key: 3, tName: "Utils.Thursday", date: null, disabled: false },
+        { key: 4, tName: "Utils.Friday", date: null, disabled: false },
+      ],
+      formattedStringDays: [],
     };
-    this.props.dispatch(selectWeek(this.state.selectedWeek));
+    for (let day of this.state.days) {
+      day.date = getDayOfMonthByWeekAndDay(this.state.selectedWeek, day.key);
+      this.state.formattedStringDays.push(formatDateToString(day.date));
+    }
+    this.setSelectedWeek(this.state.selectedWeek);
+  }
+
+  formatStringDays(week) {
+    let stringDays = [];
+    for (let day of this.state.days) {
+      day.date = getDayOfMonthByWeekAndDay(week, day.key);
+      stringDays.push(formatDateToString(day.date));
+    }
+    return stringDays;
   }
 
   // Setter methods
-  setSelectedWeek(event, week) {
+  setSelectedWeek(week) {
     if (week >= getCurrentWeek() - 2 && week < getCurrentWeek() + 6) {
-      this.props.dispatch(selectWeek(week));
-      this.setState({
-        selectedWeek: week,
+      this.setState({ selectedWeek: week });
+      const stringDays = this.formatStringDays(week);
+      console.log("[WeekSelection] FormattedStringDays is the following:");
+      console.log(stringDays);
+      makeHttpCall(
+        "http://localhost:8020/foodorder/all-orders-per-week",
+        this.props.token,
+        requestTypes.GET,
+        { dates: stringDays }
+      ).then((response) => {
+        console.log("[WeekSelection] The response is the following:");
+        console.log(response);
+        this.props.dispatch(setDisabledDays(response));
+        this.props.dispatch(selectWeek(week));
       });
     }
   }
@@ -37,9 +77,7 @@ class WeekSelection extends React.Component {
       renderedWeeks.push(
         <Pagination.Item
           active={getCurrentWeek() + week === this.state.selectedWeek}
-          onClick={(event) =>
-            this.setSelectedWeek(event, getCurrentWeek() + week)
-          }
+          onClick={(event) => this.setSelectedWeek(getCurrentWeek() + week)}
           key={week}
           style={{
             textDecoration: styling,
@@ -68,13 +106,13 @@ class WeekSelection extends React.Component {
             >
               <Pagination.Prev
                 onClick={(event) =>
-                  this.setSelectedWeek(event, this.state.selectedWeek - 1)
+                  this.setSelectedWeek(this.state.selectedWeek - 1)
                 }
               />
               {this.renderWeeks()}
               <Pagination.Next
                 onClick={(event) =>
-                  this.setSelectedWeek(event, this.state.selectedWeek + 1)
+                  this.setSelectedWeek(this.state.selectedWeek + 1)
                 }
               />
             </Pagination>
@@ -85,7 +123,17 @@ class WeekSelection extends React.Component {
   }
 }
 
-const MyComponent = compose(withTranslation(), connect())(WeekSelection);
+function mapStateToProps(state) {
+  console.log("[WeekSelection] Mapping state to props!!");
+  return {
+    token: state.loginReducer.payload.token,
+  };
+}
+
+const MyComponent = compose(
+  withTranslation(),
+  connect(mapStateToProps)
+)(WeekSelection);
 //const MySecondComponent = useDispatch()(WeekSelection);
 
 // i18n translations might still be loaded by the xhr backend

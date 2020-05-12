@@ -2,7 +2,7 @@ async function sendToServer(link, token, type, data) {
   // When GET request
   let response;
   if (type === requestTypes.GET) {
-    console.log("Executing GET request!");
+    console.log("[HttpHelper] Executing GET request!");
     var url = new URL(link);
     url.search = new URLSearchParams(data).toString();
     response = await fetch(url.href, {

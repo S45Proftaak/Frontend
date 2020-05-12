@@ -2,7 +2,7 @@
   "Welcome": {
     "Title": "Welcome to our website"
   },
-  "SelectedUser":{
+  "SelectedUser": {
     "CurrentlySelectedUser": "Current selected user"
   },
   "Utils": {
@@ -38,6 +38,7 @@
     "Administration": "Administration"
   },
   "Week": {
-    "weeknumber": "Week number"
+    "weeknumber": "Week number",
+    "participate": "Participate"
   }
 }

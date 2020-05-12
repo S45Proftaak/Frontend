@@ -4,6 +4,12 @@ export function selectWeek(week) {
     payload: week,
   };
 }
+export function setDisabledDays(days) {
+  return {
+    type: "DISABLED_DAYS",
+    payload: days,
+  };
+}
 export function getWeek() {
   return;
 }

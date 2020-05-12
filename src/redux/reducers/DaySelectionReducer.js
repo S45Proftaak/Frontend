@@ -8,8 +8,8 @@ export default function DaySelectionReducer(state = DaySelection, action) {
     case "GET_WEEK": {
       return state.selectedWeek;
     }
-    case "SELECT_DAY": {
-      return { ...state, selectedDay: action.payload };
+    case "DISABLED_DAYS": {
+      return { ...state, disabledDays: action.payload };
     }
     default: {
       return state;
