@@ -1,0 +1,16 @@
+:root {
+    --BackgroundLayer1: #92A1BA;
+    --BackgroundLayer2: #748CAB;
+    --TextColor: #212227;
+    --fullwidth: 100%;
+  }
+
+.DefaultCardLayer1 {
+    background-color: var(--BackgroundLayer1);
+    color: var(--TextColor);
+}
+
+.DefaultCardLayer2 {
+    background-color: var(--BackgroundLayer2);
+    color: var(--TextColor);
+}
