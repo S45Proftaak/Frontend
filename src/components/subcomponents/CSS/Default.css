@@ -1,16 +1,21 @@
 :root {
-    --BackgroundLayer1: #92A1BA;
-    --BackgroundLayer2: #748CAB;
+    --BackgroundLayer2: #92A1BA;
+    --BackgroundLayer1: #748CAB;
+    --PageBackGround: #8397B3;
     --TextColor: #212227;
     --fullwidth: 100%;
   }
 
+html {
+    background-color: var(--PageBackGround);
+}
+
 .DefaultCardLayer2 {
-    background-color: var(--BackgroundLayer1);
+    background-color: var(--BackgroundLayer2);
     color: var(--TextColor);
 }
 
 .DefaultCardLayer1 {
-    background-color: var(--BackgroundLayer2);
+    background-color: var(--BackgroundLayer1);
     color: var(--TextColor);
 }
