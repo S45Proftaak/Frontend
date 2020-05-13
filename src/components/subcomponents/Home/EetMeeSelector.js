@@ -17,11 +17,11 @@ class EetMeeSelector extends Component {
     super(props);
     this.state = {
       days: [
-        { key: 0, tName: "Utils.Monday", date: null, disabled: false },
-        { key: 1, tName: "Utils.Tuesday", date: null, disabled: false },
-        { key: 2, tName: "Utils.Wednesday", date: null, disabled: false },
-        { key: 3, tName: "Utils.Thursday", date: null, disabled: false },
-        { key: 4, tName: "Utils.Friday", date: null, disabled: false },
+        { key: 0, tName: "Utils.Monday", disabled: false },
+        { key: 1, tName: "Utils.Tuesday", disabled: false },
+        { key: 2, tName: "Utils.Wednesday", disabled: false },
+        { key: 3, tName: "Utils.Thursday", disabled: false },
+        { key: 4, tName: "Utils.Friday", disabled: false },
       ],
       //formattedStringDays: [],
     };
@@ -47,12 +47,12 @@ class EetMeeSelector extends Component {
   /* --------------------------------------- */
   // When clicking on a "Take part" button
   /* --------------------------------------- */
-  submitDay(day) {
+  submitDay(date) {
     makeHttpCall(
       "http://localhost:8020/foodorder/add-order",
       this.props.token,
       requestTypes.POST,
-      { date: formatDateToString(day.date) }
+      { date: formatDateToString(date) }
     ).then((response) => {
       console.log(response);
     });
@@ -78,7 +78,7 @@ class EetMeeSelector extends Component {
       //console.log("Checking the DisabledDates!");
       //console.log(this.props.disabledDates);
       if (this.props.disabledDates.length > 0) {
-        if (this.props.disabledDates.includes(formatDateToString(day.date))) {
+        if (this.props.disabledDates.includes(formatDateToString(date))) {
           colorStyling = "success";
           text = t("Week.participated");
         }
@@ -96,7 +96,7 @@ class EetMeeSelector extends Component {
             <Card.Body>
               <Button
                 variant={colorStyling}
-                onClick={(event) => this.submitDay(day)}
+                onClick={(event) => this.submitDay(date)}
               >
                 {text}
               </Button>
