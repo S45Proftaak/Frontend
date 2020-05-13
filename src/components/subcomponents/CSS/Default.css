@@ -19,3 +19,7 @@ html {
     background-color: var(--BackgroundLayer1);
     color: var(--TextColor);
 }
+
+.PageBackground{
+    background-color: var(--PageBackGround);
+}
