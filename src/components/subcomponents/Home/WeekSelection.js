@@ -5,6 +5,7 @@ import { getCurrentWeek } from "../../../helpers/dateHelpers.js";
 import { selectWeek } from "../../../redux/actions/DaySelectionActions.js";
 import { connect } from "react-redux";
 import { compose } from "redux";
+import "../CSS/Default.css"
 
 class WeekSelection extends React.Component {
   // Constructor including properties
@@ -59,7 +60,7 @@ class WeekSelection extends React.Component {
     const { t } = this.props;
     return (
       <Card style={{ margin: 5 }}>
-        <Card.Body>
+        <Card.Body className="DefaultCardLayer1">
           <Container>
             <h4 className="text-center">{t("Week.weeknumber")}</h4>
             <Pagination
