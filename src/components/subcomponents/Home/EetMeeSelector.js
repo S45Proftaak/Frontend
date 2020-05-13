@@ -67,6 +67,7 @@ class EetMeeSelector extends Component {
       const date = getDayOfMonthByWeekAndDay(this.props.selectedWeek, day.key);
       let fontWeightStyling = "normal";
       let colorStyling = "primary";
+      let text = t("Week.participate");
       if (
         new Date().getDate() === date.getDate() &&
         new Date().getMonth() === date.getMonth() &&
@@ -74,11 +75,12 @@ class EetMeeSelector extends Component {
       ) {
         fontWeightStyling = "bold";
       }
-      let disabledButton = false;
+      //console.log("Checking the DisabledDates!");
+      //console.log(this.props.disabledDates);
       if (this.props.disabledDates.length > 0) {
         if (this.props.disabledDates.includes(formatDateToString(day.date))) {
-          disabledButton = true;
           colorStyling = "success";
+          text = t("Week.participated");
         }
       }
       renderedDays.push(
@@ -93,11 +95,10 @@ class EetMeeSelector extends Component {
             </Card.Header>
             <Card.Body>
               <Button
-                disabled={disabledButton}
                 variant={colorStyling}
                 onClick={(event) => this.submitDay(day)}
               >
-                {t("Week.participate")}
+                {text}
               </Button>
             </Card.Body>
           </Card>

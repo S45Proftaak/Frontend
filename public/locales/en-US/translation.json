@@ -39,6 +39,7 @@
   },
   "Week": {
     "weeknumber": "Week number",
-    "participate": "Participate"
+    "participate": "Participate",
+    "participated": "✔️"
   }
 }
