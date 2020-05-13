@@ -12,7 +12,7 @@ class Administration extends Component {
   }
   render() {
     return (
-      <Container>
+      <Container className="PageBackground">
         <Row>
             <Col md="4">
               <Card>
