@@ -5,12 +5,12 @@
     --fullwidth: 100%;
   }
 
-.DefaultCardLayer1 {
+.DefaultCardLayer2 {
     background-color: var(--BackgroundLayer1);
     color: var(--TextColor);
 }
 
-.DefaultCardLayer2 {
+.DefaultCardLayer1 {
     background-color: var(--BackgroundLayer2);
     color: var(--TextColor);
 }
