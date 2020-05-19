@@ -19,7 +19,7 @@ class CurrentSelectedUser extends Component {
     const { t } = this.props;
     return (
       <Card style={{ margin: 5 }}>
-        <Card.Body className="DefaultCardLayer2">
+        <Card.Body className="SelectedUser">
           <Container>
             <h4 className="text-center">
               {t("SelectedUser.CurrentlySelectedUser")}

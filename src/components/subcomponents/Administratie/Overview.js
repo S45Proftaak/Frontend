@@ -4,6 +4,7 @@ import { Card, Container } from "react-bootstrap";
 import "./CSS/OverviewStyle.css";
 import { compose } from "redux";
 import { connect } from "react-redux";
+import "../CSS/Default.css";
 
 class Overview extends Component {
   constructor(props) {
@@ -19,7 +20,7 @@ class Overview extends Component {
   render() {
     return (
       <Card className="HeightContainer">
-        <Card.Body>
+        <Card.Body className="DefaultCardLayer1">
           <Container>
             <table>
               <thead>
@@ -30,6 +31,12 @@ class Overview extends Component {
                 </tr>
               </thead>
               <tbody>
+              <tr>
+                  <td>test</td>
+                  <td>test</td>
+                  <td>test</td>
+                </tr>
+
                 {this.props.payload.map((item, key) => (
                   <tr key={key}>
                     <td>{item.date}</td>
