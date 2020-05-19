@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { withTranslation } from "react-i18next";
-import { Card, Container, Row, Col, Button } from "react-bootstrap";
+import { Card, Container, Row, Col, Button, Spinner } from "react-bootstrap";
 import { requestTypes, makeHttpCall } from "../../../helpers/httpHelper.js";
 import {
   getDayOfMonthByWeekAndDay,
@@ -24,6 +24,7 @@ class EetMeeSelector extends Component {
         { key: 3, tName: "Utils.Thursday", disabled: false },
         { key: 4, tName: "Utils.Friday", disabled: false },
       ],
+      isLoading: false,
       //lastClickedDate: null,
       //formattedStringDays: [],
     };
@@ -58,6 +59,7 @@ class EetMeeSelector extends Component {
   // When clicking on a "Take part" button
   /* --------------------------------------- */
   submitDay(date) {
+    this.setState({ isLoading: true });
     makeHttpCall(
       "http://localhost:8020/foodorder/add-order",
       this.props.token,
@@ -72,12 +74,12 @@ class EetMeeSelector extends Component {
         requestTypes.GET,
         { dates: stringDays }
       ).then((response) => {
+        this.setState({ isLoading: false });
         console.log("[WeekSelection] The response is the following:");
         console.log(response);
         this.props.dispatch(setDisabledDays(response));
       });
       //this.props.dispatch(selectDay(date));
-      //this.setState({ lastClickedDate: date });
     });
   }
   /* ------------------------------------------------- */
@@ -106,27 +108,47 @@ class EetMeeSelector extends Component {
           text = t("Week.participated");
         }
       }
-      renderedDays.push(
-        <Col key={day.key}>
-          <Card>
-            <Card.Header>
-              <p style={{ fontWeight: fontWeightStyling }}>
-                {t(day.tName)}
-                {"  "} {date.getDate()}{" "}
-                {t("Utils.Months." + date.getMonth().toString())}
-              </p>
-            </Card.Header>
-            <Card.Body>
-              <Button
-                variant={colorStyling}
-                onClick={(event) => this.submitDay(date)}
-              >
-                {text}
-              </Button>
-            </Card.Body>
-          </Card>
-        </Col>
-      );
+      if (!this.state.isLoading) {
+        renderedDays.push(
+          <Col key={day.key}>
+            <Card>
+              <Card.Header>
+                <p style={{ fontWeight: fontWeightStyling }}>
+                  {t(day.tName)}
+                  {"  "} {date.getDate()}{" "}
+                  {t("Utils.Months." + date.getMonth().toString())}
+                </p>
+              </Card.Header>
+              <Card.Body>
+                <Button
+                  variant={colorStyling}
+                  onClick={(event) => this.submitDay(date)}
+                  disabled={this.state.isLoading}
+                >
+                  {text}
+                </Button>
+              </Card.Body>
+            </Card>
+          </Col>
+        );
+      } else {
+        renderedDays.push(
+          <Col key={day.key}>
+            <Card>
+              <Card.Header>
+                <p style={{ fontWeight: fontWeightStyling }}>
+                  {t(day.tName)}
+                  {"  "} {date.getDate()}{" "}
+                  {t("Utils.Months." + date.getMonth().toString())}
+                </p>
+              </Card.Header>
+              <Card.Body>
+                <Spinner animation="border" size="sm" />
+              </Card.Body>
+            </Card>
+          </Col>
+        );
+      }
     }
     //console.log(renderedDays);
     return renderedDays;
