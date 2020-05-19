@@ -11,6 +11,9 @@ export default function DaySelectionReducer(state = DaySelection, action) {
     case "DISABLED_DAYS": {
       return { ...state, disabledDays: action.payload };
     }
+    case "SELECT_DAY": {
+      return { ...state, lastClickedDate: action.payload };
+    }
     default: {
       return state;
     }

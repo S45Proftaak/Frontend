@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import { withTranslation } from "react-i18next";
-import { Card, Container, Row, Col, Button } from "react-bootstrap";
+import { Card, Container, Row, Col, Button, Spinner } from "react-bootstrap";
 import { requestTypes, makeHttpCall } from "../../../helpers/httpHelper.js";
 import {
   getDayOfMonthByWeekAndDay,
   formatDateToString,
 } from "../../../helpers/dateHelpers.js";
+import { setDisabledDays } from "../../../redux/actions/DaySelectionActions.js";
 import { connect } from "react-redux";
 import { compose } from "redux";
 
@@ -23,6 +24,8 @@ class EetMeeSelector extends Component {
         { key: 3, tName: "Utils.Thursday", disabled: false },
         { key: 4, tName: "Utils.Friday", disabled: false },
       ],
+      isLoading: false,
+      //lastClickedDate: null,
       //formattedStringDays: [],
     };
     for (let day of this.state.days) {
@@ -43,11 +46,20 @@ class EetMeeSelector extends Component {
       this.setState({ disabledDates: response });
     });
   }*/
+  formatStringDays(week) {
+    let stringDays = [];
+    for (let day of this.state.days) {
+      day.date = getDayOfMonthByWeekAndDay(week, day.key);
+      stringDays.push(formatDateToString(day.date));
+    }
+    return stringDays;
+  }
 
   /* --------------------------------------- */
   // When clicking on a "Take part" button
   /* --------------------------------------- */
   submitDay(date) {
+    this.setState({ isLoading: true });
     makeHttpCall(
       "http://localhost:8020/foodorder/add-order",
       this.props.token,
@@ -55,6 +67,19 @@ class EetMeeSelector extends Component {
       { date: formatDateToString(date) }
     ).then((response) => {
       console.log(response);
+      const stringDays = this.formatStringDays(this.props.selectedWeek);
+      makeHttpCall(
+        "http://localhost:8020/foodorder/all-orders-per-week",
+        this.props.token,
+        requestTypes.GET,
+        { dates: stringDays }
+      ).then((response) => {
+        this.setState({ isLoading: false });
+        console.log("[WeekSelection] The response is the following:");
+        console.log(response);
+        this.props.dispatch(setDisabledDays(response));
+      });
+      //this.props.dispatch(selectDay(date));
     });
   }
   /* ------------------------------------------------- */
@@ -83,27 +108,47 @@ class EetMeeSelector extends Component {
           text = t("Week.participated");
         }
       }
-      renderedDays.push(
-        <Col key={day.key}>
-          <Card>
-            <Card.Header>
-              <p style={{ fontWeight: fontWeightStyling }}>
-                {t(day.tName)}
-                {"  "} {date.getDate()}{" "}
-                {t("Utils.Months." + date.getMonth().toString())}
-              </p>
-            </Card.Header>
-            <Card.Body>
-              <Button
-                variant={colorStyling}
-                onClick={(event) => this.submitDay(date)}
-              >
-                {text}
-              </Button>
-            </Card.Body>
-          </Card>
-        </Col>
-      );
+      if (!this.state.isLoading) {
+        renderedDays.push(
+          <Col key={day.key}>
+            <Card>
+              <Card.Header>
+                <p style={{ fontWeight: fontWeightStyling }}>
+                  {t(day.tName)}
+                  {"  "} {date.getDate()}{" "}
+                  {t("Utils.Months." + date.getMonth().toString())}
+                </p>
+              </Card.Header>
+              <Card.Body>
+                <Button
+                  variant={colorStyling}
+                  onClick={(event) => this.submitDay(date)}
+                  disabled={this.state.isLoading}
+                >
+                  {text}
+                </Button>
+              </Card.Body>
+            </Card>
+          </Col>
+        );
+      } else {
+        renderedDays.push(
+          <Col key={day.key}>
+            <Card>
+              <Card.Header>
+                <p style={{ fontWeight: fontWeightStyling }}>
+                  {t(day.tName)}
+                  {"  "} {date.getDate()}{" "}
+                  {t("Utils.Months." + date.getMonth().toString())}
+                </p>
+              </Card.Header>
+              <Card.Body>
+                <Spinner animation="border" size="sm" />
+              </Card.Body>
+            </Card>
+          </Col>
+        );
+      }
     }
     //console.log(renderedDays);
     return renderedDays;
@@ -127,8 +172,8 @@ class EetMeeSelector extends Component {
 
 function mapStateToProps(state) {
   console.log("[EetMeeSelector] Mapping state to props!!");
-  //console.log("[EetMeeSelector] disabledDays is the following:");
-  //console.log(state.daySelectionReducer.disabledDays);
+  console.log("[EetMeeSelector] disabledDays is the following:");
+  console.log(state.daySelectionReducer.disabledDays);
   return {
     selectedWeek: state.daySelectionReducer.selectedWeek,
     disabledDates: state.daySelectionReducer.disabledDays,
