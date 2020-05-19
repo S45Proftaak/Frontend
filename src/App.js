@@ -7,6 +7,7 @@ import Login from "./components/login";
 import Home from "./components/Home";
 import Administration from "./components/Administration";
 import Redirect from "./components/Redirect";
+import Leaderboard from "./components/Leaderboard";
 
 function App() {
   const { t } = useTranslation();
@@ -35,6 +36,11 @@ function App() {
             <Redirect>
               <Administration />
             </Redirect>
+          </Route>
+          <Route path={"/leaderboard"}>
+              <Redirect>
+                <Leaderboard />
+              </Redirect>
           </Route>
         </Switch>
       </Router>
