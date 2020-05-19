@@ -19,6 +19,7 @@ function App() {
           Navs={[
             { link: "/", name: t("App.Home") },
             { link: "/administration", name: t("App.Administration") },
+            { link: "/leaderboard", name: t("App.Leaderboard") },
           ]}
         />
         <div style={{ margin: 30 }} />
