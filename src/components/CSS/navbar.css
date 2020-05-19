@@ -1,0 +1,9 @@
+@import url("../subcomponents/CSS/Default.css");
+
+#Nav {
+    background-color: var(--NavigationBackground) !important;
+}
+
+#Nav a{
+    color: var(--NavText) !important;
+}

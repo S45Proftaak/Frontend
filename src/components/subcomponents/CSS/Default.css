@@ -1,0 +1,43 @@
+:root {
+    --SelectedUserBackground: #508CA4;
+
+    --TableHeaderBackground: #508CA4;
+
+    --PageBackGround: rgb(246, 246, 246);
+    --BorderColor: #2D4658 ;
+    --TextColor: #212227;
+
+    --WhiteText: rgb(255, 255, 255);
+
+    --Fullwidth: 100%;
+    --FontStyle: Calibri;
+
+    --NavigationBackground: #2D4658;
+    --NavText: #E6E6E6;
+}
+
+html {
+    background-color: var(--PageBackGround);
+}
+
+.SelectedUser {
+    background-color: var(--SelectedUserBackground);
+}
+
+.DefaultCardLayer2 {
+    background-color: var(--BackgroundLayer2);
+    color: var(--TextColor);
+    border-color: var(--BorderColor) !important;
+    font-family: var(--FontStyle);
+}
+
+.DefaultCardLayer1 {
+    background-color: var(--BackgroundLayer1);
+    color: var(--TextColor);
+    font-family: var(--FontStyle);
+    border-color: var(--BorderColor) !important;
+}
+
+.PageBackground{
+    background-color: var(--PageBackGround);
+}

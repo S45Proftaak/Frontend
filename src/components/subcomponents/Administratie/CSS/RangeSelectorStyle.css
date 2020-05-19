@@ -9,4 +9,5 @@
 
   .Selectable .DayPicker-Day--start,   .Selectable .DayPicker-Day--end {
     border-radius: 10% !important;
+    
   }

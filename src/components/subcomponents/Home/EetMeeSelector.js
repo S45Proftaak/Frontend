@@ -9,6 +9,7 @@ import {
 import { setDisabledDays } from "../../../redux/actions/DaySelectionActions.js";
 import { connect } from "react-redux";
 import { compose } from "redux";
+import "../CSS/Default.css"
 
 class EetMeeSelector extends Component {
   /* ------------------------------------ */
@@ -156,7 +157,7 @@ class EetMeeSelector extends Component {
   render() {
     return (
       <Card style={{ margin: 5 }}>
-        <Card.Body>
+        <Card.Body className="DefaultCardLayer1">
           <Container>
             <h4 className="text-center">Eet Mee Selector</h4>
             <p style={{ textDecoration: "underline" }}>
