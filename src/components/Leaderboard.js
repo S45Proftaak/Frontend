@@ -12,6 +12,9 @@ class Leaderboard extends Component {
     render() {
         return (
             <Container>
+                <h1 className="text-center">
+                    Leaderboard
+                </h1>
                 <Row>
                     <Col md="4">
                         <Card>

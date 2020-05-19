@@ -10,7 +10,9 @@ class MinstOptijdIngevuldLeaderboard extends Component {
     render() {
         return (
             <Container>
-            "MinstOptijdIngevuldLeaderboard"
+            <h5 className="text-center">
+            MinstOptijdIngevuldLeaderboard
+            </h5>
 
             </Container>
     );

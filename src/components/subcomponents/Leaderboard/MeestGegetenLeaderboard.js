@@ -9,7 +9,10 @@ class MeestGegetenLeaderboard extends Component {
     render() {
         return (
             <Container>
-            "MeestGegetenLeaderboard"
+            <h5 className="text-center">
+            MeestGegetenLeaderboard
+            </h5>
+
 
             </Container>
     );

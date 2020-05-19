@@ -10,8 +10,9 @@ class OpTijdIngevuldLeaderboard extends Component {
     render() {
         return (
             <Container>
-            "OpTijdIngevuldLeaderboard"
-
+            <h5 className="text-center">
+            OpTijdIngevuldLeaderboard
+            </h5>
             </Container>
     );
     }
