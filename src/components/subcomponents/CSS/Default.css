@@ -11,14 +11,18 @@ html {
     background-color: var(--PageBackGround);
 }
 
+
+
 .DefaultCardLayer2 {
     background-color: var(--BackgroundLayer2);
     color: var(--TextColor);
+    border-color: var(--borderColor) !important;
 }
 
 .DefaultCardLayer1 {
     background-color: var(--BackgroundLayer1);
     color: var(--TextColor);
+    border-color: var(--borderColor) !important;
 }
 
 .PageBackground{
