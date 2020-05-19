@@ -6,6 +6,7 @@ import {
   getDayOfMonthByWeekAndDay,
   formatDateToString,
 } from "../../../helpers/dateHelpers.js";
+import { setDisabledDays } from "../../../redux/actions/DaySelectionActions.js";
 import { connect } from "react-redux";
 import { compose } from "redux";
 
@@ -23,6 +24,7 @@ class EetMeeSelector extends Component {
         { key: 3, tName: "Utils.Thursday", disabled: false },
         { key: 4, tName: "Utils.Friday", disabled: false },
       ],
+      //lastClickedDate: null,
       //formattedStringDays: [],
     };
     for (let day of this.state.days) {
@@ -43,6 +45,14 @@ class EetMeeSelector extends Component {
       this.setState({ disabledDates: response });
     });
   }*/
+  formatStringDays(week) {
+    let stringDays = [];
+    for (let day of this.state.days) {
+      day.date = getDayOfMonthByWeekAndDay(week, day.key);
+      stringDays.push(formatDateToString(day.date));
+    }
+    return stringDays;
+  }
 
   /* --------------------------------------- */
   // When clicking on a "Take part" button
@@ -55,6 +65,19 @@ class EetMeeSelector extends Component {
       { date: formatDateToString(date) }
     ).then((response) => {
       console.log(response);
+      const stringDays = this.formatStringDays(this.props.selectedWeek);
+      makeHttpCall(
+        "http://localhost:8020/foodorder/all-orders-per-week",
+        this.props.token,
+        requestTypes.GET,
+        { dates: stringDays }
+      ).then((response) => {
+        console.log("[WeekSelection] The response is the following:");
+        console.log(response);
+        this.props.dispatch(setDisabledDays(response));
+      });
+      //this.props.dispatch(selectDay(date));
+      //this.setState({ lastClickedDate: date });
     });
   }
   /* ------------------------------------------------- */
@@ -127,8 +150,8 @@ class EetMeeSelector extends Component {
 
 function mapStateToProps(state) {
   console.log("[EetMeeSelector] Mapping state to props!!");
-  //console.log("[EetMeeSelector] disabledDays is the following:");
-  //console.log(state.daySelectionReducer.disabledDays);
+  console.log("[EetMeeSelector] disabledDays is the following:");
+  console.log(state.daySelectionReducer.disabledDays);
   return {
     selectedWeek: state.daySelectionReducer.selectedWeek,
     disabledDates: state.daySelectionReducer.disabledDays,
