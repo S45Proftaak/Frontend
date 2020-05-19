@@ -1,0 +1,45 @@
+{
+  "Welcome": {
+    "Title": "Welkom op onze website"
+  },
+  "SelectedUser": {
+    "CurrentlySelectedUser": "Geselecteerde gebruiker"
+  },
+  "Utils": {
+    "Monday": "Maandag",
+    "Tuesday": "Dinsdag",
+    "Wednesday": "Woensdag",
+    "Thursday": "Donderdag",
+    "Friday": "Vrijdag",
+    "Months": {
+      "0": "Januari",
+      "1": "Februari",
+      "2": "Maart",
+      "3": "April",
+      "4": "Mei",
+      "5": "Juni",
+      "6": "Juli",
+      "7": "Augustus",
+      "8": "September",
+      "9": "Oktober",
+      "10": "November",
+      "11": "December"
+    }
+  },
+  "Login": {
+    "Email": "Email",
+    "Password": "Wachtwoord",
+    "Login": "Inloggen",
+    "UsernameError": "Gebruikersnaam is niet ingevuld!",
+    "PasswordError": "Wachtwoord is niet ingevuld"
+  },
+  "App": {
+    "Home": "Hoofdpagina",
+    "Administration": "Administratie"
+  },
+  "Week": {
+    "weeknumber": "Week nummer",
+    "participate": "Eet Mee",
+    "participated": "✔️"
+  }
+}
