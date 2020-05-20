@@ -51,9 +51,8 @@ render() {
                         <div key={id}>
                             <ul>
                                 <li>
-                                    <div>{res.user.name}</div>
+                                    <div>{res.user.name} : {res.totalPoints}</div>
                                     <div>{res.user.role.name}</div>
-                                    <div>{res.totalPoints}</div>
                                 </li>
                             </ul>
 
