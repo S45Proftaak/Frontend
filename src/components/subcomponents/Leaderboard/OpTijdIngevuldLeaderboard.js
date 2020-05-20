@@ -1,21 +1,84 @@
 import React, { Component } from "react";
 import { Col, Row, Container, Card } from "react-bootstrap";
+import { requestTypes, makeHttpCall } from "../../../helpers/httpHelper.js";
+import { connect } from "react-redux";
+import { compose } from "redux";
+import { withTranslation } from "react-i18next";
 
-class OpTijdIngevuldLeaderboard extends Component {
+class MinstOptijdIngevuldLeaderboard extends Component {
     constructor(props) {
         super(props);
-        this.state = {};
+        this.state = {
+            fetchedData: undefined,
+            fetching: false,
+            fetched: false,
+        };
     }
 
-    render() {
-        return (
-            <Container>
-            <h5 className="text-center">
-            OpTijdIngevuldLeaderboard
-            </h5>
-            </Container>
+    function
+
+    componentDidMount() {
+        this.GetScoreboardValues();
+    }
+
+    GetScoreboardValues = () => {
+        this.setState({
+              fetching: true,
+        });
+        makeHttpCall(
+            "http://localhost:8020/scoreboard/get-scoreboard-in-time",
+            this.props.token,
+            requestTypes.GET
+            ).then((response) => {
+            this.setState({
+                      fetching: false,
+                      fetched: true,
+                      fetchedData: response,
+            });
+            console.log(response);
+            console.log(this.state);
+        });
+    };
+
+render() {
+    return (
+        <Container>
+        <h5 className="text-center">Meest Op Tijd Ingevuld</h5>
+            <div className="text-center">
+                {this.state.fetched ? (
+                <div>
+                   {this.state.fetchedData.map((res, id) => (
+                        <div key={id}>
+                            <ul>
+                                <li>
+                                    <div>{res.user.name}</div>
+                                    <div>{res.user.role.name}</div>
+                                    <div>{res.totalPoints}</div>
+                                </li>
+                            </ul>
+
+                        </div>
+                    ))}
+                </div>
+            ) : (
+            <div></div>
+            )}
+        </div>
+    </Container>
     );
     }
 }
 
-export default OpTijdIngevuldLeaderboard;
+function mapStateToProps(state) {
+    console.log(state.loginReducer.payload.token);
+    return {
+        token: state.loginReducer.payload.token,
+    };
+}
+
+const MyComponent = compose(
+    withTranslation(),
+    connect(mapStateToProps)
+)(MinstOptijdIngevuldLeaderboard);
+
+export default MyComponent;
