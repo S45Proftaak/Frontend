@@ -26,7 +26,7 @@ class MinstOptijdIngevuldLeaderboard extends Component {
               fetching: true,
         });
         makeHttpCall(
-            "http://localhost:8020/scoreboard/get-scoreboard-in-time",
+            this.props.fetchLocation,
             this.props.token,
             requestTypes.GET
             ).then((response) => {
@@ -43,7 +43,9 @@ class MinstOptijdIngevuldLeaderboard extends Component {
 render() {
     return (
         <Container>
-        <h5 className="text-center">Meest Op Tijd Ingevuld</h5>
+        <h5 className="text-center">
+        {this.props.name}
+        </h5>
             <div className="text-center">
                 {this.state.fetched ? (
                 <div>

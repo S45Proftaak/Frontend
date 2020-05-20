@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import { Col, Row, Container, Card } from "react-bootstrap";
-import OpTijdIngevuldLeaderboard from "./subcomponents/Leaderboard/OpTijdIngevuldLeaderboard";
-import MeestGegetenLeaderboard from "./subcomponents/Leaderboard/MeestGegetenLeaderboard";
-import MinstOpTijdIngevuldLeaderboard from "./subcomponents/Leaderboard/MinstOptijdIngevuldLeaderboard";
+import GeneralLeaderboard from "./subcomponents/Leaderboard/GeneralLeaderboard";
 
 class Leaderboard extends Component {
     constructor(props) {
@@ -18,17 +16,17 @@ class Leaderboard extends Component {
                 <Row>
                     <Col md="4">
                         <Card>
-                            <OpTijdIngevuldLeaderboard/>
+                            <GeneralLeaderboard name={"Meest Op Tijd Ingevuld"} fetchLocation={"http://localhost:8020/scoreboard/get-scoreboard-in-time"}/>
                         </Card>
                     </Col>
                     <Col md="4">
                         <Card>
-                            <MeestGegetenLeaderboard/>
+                            <GeneralLeaderboard name={"Meest Mee Gegeten"} fetchLocation={"http://localhost:8020/scoreboard/get-scoreboard-most-eaten"}/>
                         </Card>
                     </Col>
                     <Col md="4">
                         <Card>
-                            <MinstOpTijdIngevuldLeaderboard/>
+                            <GeneralLeaderboard name={"Minst Op tijd Ingevuld"} fetchLocation={"http://localhost:8020/scoreboard/get-scoreboard-too-late"}/>
                         </Card>
                     </Col>
                 </Row>
