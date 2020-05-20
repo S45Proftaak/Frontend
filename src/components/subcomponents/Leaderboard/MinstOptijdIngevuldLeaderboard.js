@@ -1,22 +1,64 @@
 import React, { Component } from "react";
 import { Col, Row, Container, Card } from "react-bootstrap";
+import { requestTypes, makeHttpCall } from "../../../helpers/httpHelper.js";
+import { connect } from "react-redux";
+import { compose } from "redux";
+import { withTranslation } from "react-i18next";
 
 class MinstOptijdIngevuldLeaderboard extends Component {
     constructor(props) {
         super(props);
-        this.state = {};
+        this.state = {
+            fetchedData: undefined,
+            fetching: false,
+            fetched: false
+        };
+    }
+
+
+    GetScoreboardValues = () => {
+        this.setState({
+            fetching: true,
+        });
+        makeHttpCall(
+            "http://localhost:8020/scoreboard/get-scoreboard-too-late",
+            this.props.token,
+            requestTypes.GET,
+        ).then((response) => {
+            this.setState({
+                fetching: false,
+                fetched: true,
+                fetchedData: response,
+            });
+        });
     }
 
     render() {
         return (
             <Container>
-            <h5 className="text-center">
-            MinstOptijdIngevuldLeaderboard
-            </h5>
-
+                <h5 className="text-center">
+                    Minst Op tijd Ingevuld
+                </h5>
+                <div className ="text-center">
+                    {this.state.fetchedData}
+                </div>
             </Container>
-    );
+                );
+    }
+
+
+}
+
+function mapStateToProps(state) {
+    console.log(state.loginReducer.payload.token);
+    return {
+        token: state.loginReducer.payload.token,
     }
 }
 
-export default MinstOptijdIngevuldLeaderboard;
+const MyComponent = compose(
+    withTranslation(),
+    connect(mapStateToProps)
+)(MinstOptijdIngevuldLeaderboard);
+
+export default MyComponent;
