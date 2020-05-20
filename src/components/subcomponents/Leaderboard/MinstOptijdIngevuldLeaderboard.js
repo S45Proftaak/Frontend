@@ -15,7 +15,13 @@ class MinstOptijdIngevuldLeaderboard extends Component {
     };
   }
 
-  GetScoreboardValues = () => {
+    function
+
+    componentDidMount() {
+      this.GetScoreboardValues();
+    }
+
+    GetScoreboardValues = () => {
     this.setState({
       fetching: true,
     });
@@ -29,6 +35,8 @@ class MinstOptijdIngevuldLeaderboard extends Component {
         fetched: true,
         fetchedData: response,
       });
+      console.log(response);
+      console.log(this.state);
     });
   };
 
@@ -39,11 +47,16 @@ class MinstOptijdIngevuldLeaderboard extends Component {
         <div className="text-center">
           {this.state.fetched ? (
             <div>
-              {this.state.fetchedData.map((res) => (
-                <div>
-                  {res.user.name}
-                  {res.user.role.name}
-                  {res.user.totalPoints}
+              {this.state.fetchedData.map((res, id) => (
+                <div key={id}>
+                  <ul>
+                      <li>
+                          <div>{res.user.name}</div>
+                          <div>{res.user.role.name}</div>
+                          <div>{res.totalPoints}</div>
+                      </li>
+                  </ul>
+
                 </div>
               ))}
             </div>
