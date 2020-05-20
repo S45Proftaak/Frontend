@@ -40,6 +40,7 @@ class MinstOptijdIngevuldLeaderboard extends Component {
         });
     };
 
+
 render() {
     return (
         <Container>
@@ -54,7 +55,6 @@ render() {
                             <ul>
                                 <li>
                                     <div>{res.user.name} : {res.totalPoints}</div>
-                                    <div>{res.user.role.name}</div>
                                 </li>
                             </ul>
 
