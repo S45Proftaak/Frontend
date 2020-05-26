@@ -45,24 +45,26 @@ class UserLeaderboardScore extends Component {
 render() {
     return (
         <div className="YourScore">
+            <div className="Header"> <h3>Uw score</h3> </div>
             {this.state.fetched ? (
                         <div className="YourScoreList">
-                            <div className="BottomBorderItem">
-                            <h5>Optijd ingevuld</h5>
-                                <div>Your current position: {this.state.fetchedData.positionInTime}</div>
-                                <div>Your current score: {this.state.fetchedData.inTimePoints}</div>
+                            <div className="YourScoreItem PaddedItem">
+                                <h5>Optijd ingevuld</h5>
+                                    <div>Jou huidige positie: {this.state.fetchedData.positionInTime}</div>
+                                    <div>Jou huidige score: {this.state.fetchedData.inTimePoints}</div>
                             </div>
-                            <div className="YourScoreItem">
+                            <div className="YourScoreItem PaddedItem">
                                 <h5>Telaat ingevuld</h5>
-                                <div>positie: {this.state.fetchedData.positionTooLate}</div>
-                                <div>score: {this.state.fetchedData.tooLatePoints}</div>
+                                <div>Jou huidige positie: {this.state.fetchedData.positionTooLate}</div>
+                                <div>Jou huidige score: {this.state.fetchedData.tooLatePoints}</div>
                             </div>
-                            <div className="TopBorderItem">
+                            <div className="YourScoreItem-Borderless PaddedItem">
                                 <h5>Meeste meegegeten</h5>
-                                <div>positie: {this.state.fetchedData.positionGeneralRanking}</div>
-                                <div>score: {this.state.fetchedData.totalPoints}</div>
+                                <div>Jou huidige positie: {this.state.fetchedData.positionGeneralRanking}</div>
+                                <div>Jou huidige score: {this.state.fetchedData.totalPoints}</div>
                             </div>
                         </div>
+                        
                     ) : (
                         <div></div>
                     )}
