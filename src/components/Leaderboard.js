@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Col, Row, Container, Card } from "react-bootstrap";
 import GeneralLeaderboard from "./subcomponents/Leaderboard/GeneralLeaderboard";
+import CurrentSelectedUser from "./subcomponents/Administratie/CurrentSelectedUser";
 
 class Leaderboard extends Component {
     constructor(props) {
@@ -14,21 +15,21 @@ class Leaderboard extends Component {
                     Leaderboard
                 </h1>
                 <Row>
-                    <Col md="4">
+                    <Col>
                         <Card>
                             <GeneralLeaderboard name={"Meest Op Tijd Ingevuld"} fetchLocation={"http://localhost:8020/scoreboard/get-scoreboard-in-time"}/>
                         </Card>
                     </Col>
-                    <Col md="4">
-                        <Card>
-                            <GeneralLeaderboard name={"Meest Mee Gegeten"} fetchLocation={"http://localhost:8020/scoreboard/get-scoreboard-most-eaten"}/>
-                        </Card>
-                    </Col>
-                    <Col md="4">
-                        <Card>
-                            <GeneralLeaderboard name={"Minst Op tijd Ingevuld"} fetchLocation={"http://localhost:8020/scoreboard/get-scoreboard-too-late"}/>
-                        </Card>
-                    </Col>
+                    {/*<Col md="4">*/}
+                    {/*    <Card>*/}
+                    {/*        <GeneralLeaderboard name={"Meest Mee Gegeten"} fetchLocation={"http://localhost:8020/scoreboard/get-scoreboard-most-eaten"}/>*/}
+                    {/*    </Card>*/}
+                    {/*</Col>*/}
+                    {/*<Col md="4">*/}
+                    {/*    <Card>*/}
+                    {/*        <GeneralLeaderboard name={"Minst Op tijd Ingevuld"} fetchLocation={"http://localhost:8020/scoreboard/get-scoreboard-too-late"}/>*/}
+                    {/*    </Card>*/}
+                    {/*</Col>*/}
                 </Row>
 
             </Container>
