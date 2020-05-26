@@ -1,13 +1,45 @@
 @import url("../../CSS/Default.css");
 
+:root{
+    --BorderSize: 1px;
+    --BorderStyle: solid;
+}
+
 .Header{
     text-align: center;
     color: var(--TextColor);
     width: 100%;
 }
 
-.Body{
+.YourScoreList{
     color: var(--TextColor);
+    text-align: center;
+    border: 2px;
+    border-left: 3px;
+    border-right: 3px;
+    border-color: var(--BorderColor);
+    border-style: var(--BorderStyle); 
+    padding: 10px;
+}
+
+.YourScoreItem{
+    border: 0px;
+    border-color: var(--BorderColor);
+    border-style: var(--BorderStyle); 
+}
+
+.BottomBorderItem{
+    border: 0px;
+    border-color: var(--BorderColor);
+    border-style: var(--BorderStyle); 
+    border-bottom: var(--BorderSize);
+}
+
+.TopBorderItem{
+    border: 0px;
+    border-color: var(--BorderColor);
+    border-style: var(--BorderStyle); 
+    border-top: var(--BorderSize);
 }
 
 .YourScore{

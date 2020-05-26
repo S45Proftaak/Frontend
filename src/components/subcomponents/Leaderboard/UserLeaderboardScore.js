@@ -21,10 +21,24 @@ render() {
     return (
         <div className="YourScore">
             <div className="Header">
-                <h2>dit is uw score</h2>
+                <h2>Uw score</h2>
             </div>
-            <div className="Body">
-                <p>eerste score</p>
+            <div className="YourScoreList">
+                <div className="BottomBorderItem">
+                    <h5>Optijd ingevuld</h5>
+                    <p>Your current position: 100 <br/> 
+                    Your current score : 40</p>
+                </div>
+                <div className="YourScoreItem">
+                    <h5>Meeste meegegeten</h5>
+                    <p>Your current position: 200 <br/> 
+                    Your current score : 30</p>
+                </div>
+                <div className="TopBorderItem">
+                    <h5>Telaat ingevuld</h5>
+                    <p>Your current position: 4 <br/> 
+                    Your current score : 300</p>
+                </div>
             </div>
         </div>
     );
