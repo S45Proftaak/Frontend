@@ -57,12 +57,12 @@ class Leaderboard extends Component {
                         <Card>
                             <Card>
                                 <Card.Body className="SelectedUser">
-                                    <CurrentSelectedUser></CurrentSelectedUser> 
+                                    <CurrentSelectedUser/>
                                 </Card.Body>
                             </Card>
                             <Card>
-                                <Card.Body className="YourScore">
-                                    <UserLeaderboardScore> </UserLeaderboardScore>
+                                <Card.Body>
+                                    <UserLeaderboardScore fetchLocation={"http://localhost:8020/scoreboard/get-own-scores"}/>
                                 </Card.Body>
                             </Card>
                         </Card>
