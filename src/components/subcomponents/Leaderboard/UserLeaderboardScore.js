@@ -4,6 +4,7 @@ import { requestTypes, makeHttpCall } from "../../../helpers/httpHelper.js";
 import { connect } from "react-redux";
 import { compose } from "redux";
 import { withTranslation } from "react-i18next";
+import "./CSS/UserLeaderboardScoreStyle.css";
 
 class MinstOptijdIngevuldLeaderboard extends Component {
     constructor(props) {
@@ -18,7 +19,14 @@ class MinstOptijdIngevuldLeaderboard extends Component {
 
 render() {
     return (
-            <h2>dit is uw score</h2>
+        <div className="YourScore">
+            <div className="Header">
+                <h2>dit is uw score</h2>
+            </div>
+            <div className="Body">
+                <p>eerste score</p>
+            </div>
+        </div>
     );
     }
 }

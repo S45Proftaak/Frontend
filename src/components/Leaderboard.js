@@ -25,8 +25,8 @@ class Leaderboard extends Component {
                                 </Card.Body>
                             </Card>
                             <Card>
-                                <Card.Body>
-                                    <UserLeaderboardScore></UserLeaderboardScore>
+                                <Card.Body className="YourScore">
+                                    <UserLeaderboardScore> </UserLeaderboardScore>
                                 </Card.Body>
                             </Card>
                         </Card>

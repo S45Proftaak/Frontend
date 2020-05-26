@@ -1,0 +1,15 @@
+@import url("../../CSS/Default.css");
+
+.Header{
+    text-align: center;
+    color: var(--TextColor);
+    width: 100%;
+}
+
+.Body{
+    color: var(--TextColor);
+}
+
+.YourScore{
+    width: 100%;
+}
