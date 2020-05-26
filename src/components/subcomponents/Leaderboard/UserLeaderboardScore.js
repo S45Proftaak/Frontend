@@ -6,7 +6,7 @@ import { compose } from "redux";
 import { withTranslation } from "react-i18next";
 import "./CSS/UserLeaderboardScoreStyle.css";
 
-class MinstOptijdIngevuldLeaderboard extends Component {
+class UserLeaderboardScore extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -15,6 +15,31 @@ class MinstOptijdIngevuldLeaderboard extends Component {
             fetched: false,
         };
     }
+
+
+    componentDidMount() {
+        this.GetScoreboardValues(this.props.fetchLocation);
+    }
+
+    GetScoreboardValues = (fetchAdress) => {
+        this.setState({
+            fetching: true,
+        });
+        console.log(fetchAdress);
+        makeHttpCall(
+            fetchAdress,
+            this.props.token,
+            requestTypes.GET
+        ).then((response) => {
+            this.setState({
+                fetching: false,
+                fetched: true,
+                fetchedData: response,
+            });
+            console.log(response);
+            console.log(this.state);
+        });
+    };
 
 
 render() {
@@ -39,14 +64,40 @@ render() {
                     <p>Your current position: 4 <br/> 
                     Your current score : 300</p>
                 </div>
+            <div className="Body">
+                    {this.state.fetched ? (
+                        <div>
+                            <div>Op tijd ingevuld
+                                <div>positie: {this.state.fetchedData.positionInTime}</div>
+                                <div>score: {this.state.fetchedData.inTimePoints}</div>
+                            </div>
+                            <div>Te laat ingevuld
+                                <div>positie: {this.state.fetchedData.positionTooLate}</div>
+                                <div>score: {this.state.fetchedData.tooLatePoints}</div>
+                            </div>
+                            <div>Meest mee gegeten
+                                <div>positie: {this.state.fetchedData.positionGeneralRanking}</div>
+                                <div>score: {this.state.fetchedData.totalPoints}</div>
+                            </div>
+                        </div>
+                    ) : (
+                        <div></div>
+                    )}
             </div>
         </div>
     );
     }
 }
 
+function mapStateToProps(state) {
+    return {
+        token: state.loginReducer.payload.token,
+    };
+}
+
 const MyComponent = compose(
-    withTranslation()
-)(MinstOptijdIngevuldLeaderboard);
+    withTranslation(),
+    connect(mapStateToProps)
+)(UserLeaderboardScore);
 
 export default MyComponent;

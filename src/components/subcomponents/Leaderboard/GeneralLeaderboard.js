@@ -35,7 +35,6 @@ class GeneralLeaderboard extends Component {
         this.setState({
               fetching: true,
         });
-        console.log(fetchAdress);
         makeHttpCall(
             fetchAdress,
             this.props.token,
@@ -46,8 +45,6 @@ class GeneralLeaderboard extends Component {
                       fetched: true,
                       fetchedData: response,
             });
-            console.log(response);
-            console.log(this.state);
         });
     };
 
@@ -82,7 +79,6 @@ render() {
 }
 
 function mapStateToProps(state) {
-    console.log(state.loginReducer.payload.token);
     return {
         token: state.loginReducer.payload.token,
     };
