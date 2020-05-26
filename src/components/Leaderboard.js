@@ -72,22 +72,6 @@ class Leaderboard extends Component {
                             <GeneralLeaderboard name={this.state.leaderboardName} fetchLocation={this.state.fetchAdress}/>
                         </Card>
                     </Col>
-
-                    <div>
-                        <Card>
-                            <GeneralLeaderboard name={"Meest Op Tijd Ingevuld"} fetchLocation={"http://localhost:8020/scoreboard/get-scoreboard-in-time"}/>
-                        </Card>
-                    </div>
-                    <div>
-                        <Card>
-                            <GeneralLeaderboard name={"Meest Mee Gegeten"} fetchLocation={"http://localhost:8020/scoreboard/get-scoreboard-most-eaten"}/>
-                        </Card>
-                    </div>
-                    <div>
-                        <Card>
-                            <GeneralLeaderboard name={"Minst Op tijd Ingevuld"} fetchLocation={"http://localhost:8020/scoreboard/get-scoreboard-too-late"}/>
-                        </Card>
-                    </div>
                 </Row>
 
             </Container>

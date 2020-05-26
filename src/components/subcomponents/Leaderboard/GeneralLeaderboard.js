@@ -13,7 +13,6 @@ class GeneralLeaderboard extends Component {
             fetching: false,
             fetched: false,
 
-            fetchLocation : this.props.fetchLocation,
             name : this.props.name,
         };
     }
