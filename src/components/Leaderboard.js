@@ -3,6 +3,7 @@ import { Col, Row, Container, Card } from "react-bootstrap";
 import GeneralLeaderboard from "./subcomponents/Leaderboard/GeneralLeaderboard";
 import UserLeaderboardScore from "./subcomponents/Leaderboard/UserLeaderboardScore";
 import CurrentSelectedUser from "./subcomponents/Administratie/CurrentSelectedUser";
+import "../components/subcomponents/CSS/Default.css";
 
 class Leaderboard extends Component {
     constructor(props) {
@@ -18,16 +19,16 @@ class Leaderboard extends Component {
                 <Row>
                     <Col md="4">
                         <Card>
-                            <Row>
-                                <Card>
+                            <Card>
+                                <Card.Body className="SelectedUser">
                                     <CurrentSelectedUser></CurrentSelectedUser> 
-                                </Card>
-                            </Row>
-                            <Row>
-                                <Card>
+                                </Card.Body>
+                            </Card>
+                            <Card>
+                                <Card.Body>
                                     <UserLeaderboardScore></UserLeaderboardScore>
-                                </Card>
-                            </Row>
+                                </Card.Body>
+                            </Card>
                         </Card>
                     </Col>
                     <Col md="8">

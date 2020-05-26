@@ -18,15 +18,11 @@ class CurrentSelectedUser extends Component {
   render() {
     const { t } = this.props;
     return (
-      <Card style={{ margin: 5 }}>
-        <Card.Body className="SelectedUser">
           <Container>
             <h4 className="text-center">
               {t("SelectedUser.CurrentlySelectedUser")}
             </h4>
           </Container>
-        </Card.Body>
-      </Card>
     );
   }
 }
