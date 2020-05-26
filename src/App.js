@@ -13,7 +13,7 @@ function App() {
   const { t } = useTranslation();
 
   return (
-    <div className="App-header">
+    <div className="PageBackground">
       <Router>
         <Navbar
           Navs={[

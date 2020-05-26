@@ -10,7 +10,7 @@ class Home extends Component {
   }
   render() {
     return (
-      <Container>
+      <Container className="PageBackground">
         <Row>
           <Col sm="3"></Col>
           <Col md="8">
