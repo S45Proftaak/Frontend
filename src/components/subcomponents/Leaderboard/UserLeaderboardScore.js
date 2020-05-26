@@ -45,37 +45,20 @@ class UserLeaderboardScore extends Component {
 render() {
     return (
         <div className="YourScore">
-            <div className="Header">
-                <h2>Uw score</h2>
-            </div>
-            <div className="YourScoreList">
-                <div className="BottomBorderItem">
-                    <h5>Optijd ingevuld</h5>
-                    <p>Your current position: 100 <br/> 
-                    Your current score : 40</p>
-                </div>
-                <div className="YourScoreItem">
-                    <h5>Meeste meegegeten</h5>
-                    <p>Your current position: 200 <br/> 
-                    Your current score : 30</p>
-                </div>
-                <div className="TopBorderItem">
-                    <h5>Telaat ingevuld</h5>
-                    <p>Your current position: 4 <br/> 
-                    Your current score : 300</p>
-                </div>
-            <div className="Body">
-                    {this.state.fetched ? (
-                        <div>
-                            <div>Op tijd ingevuld
-                                <div>positie: {this.state.fetchedData.positionInTime}</div>
-                                <div>score: {this.state.fetchedData.inTimePoints}</div>
+            {this.state.fetched ? (
+                        <div className="YourScoreList">
+                            <div className="BottomBorderItem">
+                            <h5>Optijd ingevuld</h5>
+                                <div>Your current position: {this.state.fetchedData.positionInTime}</div>
+                                <div>Your current score: {this.state.fetchedData.inTimePoints}</div>
                             </div>
-                            <div>Te laat ingevuld
+                            <div className="YourScoreItem">
+                                <h5>Telaat ingevuld</h5>
                                 <div>positie: {this.state.fetchedData.positionTooLate}</div>
                                 <div>score: {this.state.fetchedData.tooLatePoints}</div>
                             </div>
-                            <div>Meest mee gegeten
+                            <div className="TopBorderItem">
+                                <h5>Meeste meegegeten</h5>
                                 <div>positie: {this.state.fetchedData.positionGeneralRanking}</div>
                                 <div>score: {this.state.fetchedData.totalPoints}</div>
                             </div>
@@ -83,7 +66,6 @@ render() {
                     ) : (
                         <div></div>
                     )}
-            </div>
         </div>
     );
     }
