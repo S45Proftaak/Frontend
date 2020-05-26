@@ -8,14 +8,50 @@ import "../components/subcomponents/CSS/Default.css";
 class Leaderboard extends Component {
     constructor(props) {
         super(props);
-        this.state = {};
+        this.state = {
+            currentLeaderboard : 0,
+            leaderboardName : "Meest Op Tijd Ingevuld",
+            fetchAdress : "http://localhost:8020/scoreboard/get-scoreboard-in-time",
+        };
     }
+
+    CycleLeaderboards(index){
+        switch (index) {
+            case 0:
+                this.setState({
+                    currentLeaderboard : 0,
+                    leaderboardName : "Meest Op Tijd Ingevuld",
+                    fetchAdress : "http://localhost:8020/scoreboard/get-scoreboard-in-time",
+                });
+
+                break;
+            case 1:
+                this.setState({
+                    currentLeaderboard : 1,
+                    leaderboardName : "Meest Mee Gegeten",
+                    fetchAdress : "http://localhost:8020/scoreboard/get-scoreboard-most-eaten",
+                });
+
+                break;
+            case 2:
+                this.setState({
+                    currentLeaderboard : 2,
+                    leaderboardName : "Minst Op Tijd Ingevuld",
+                    fetchAdress : "http://localhost:8020/scoreboard/get-scoreboard-too-late",
+                });
+
+                break;
+        }
+    }
+
     render() {
         return (
             <Container>
                 <h1 className="text-center">
                     Leaderboard
                 </h1>
+                <button onClick={() => this.CycleLeaderboards(this.state.currentLeaderboard - 1)}>previous</button>
+                <button onClick={() => this.CycleLeaderboards(this.state.currentLeaderboard + 1)}>next</button>
                 <Row>
                     <Col md="4">
                         <Card>
@@ -33,19 +69,25 @@ class Leaderboard extends Component {
                     </Col>
                     <Col md="8">
                         <Card>
-                            <GeneralLeaderboard name={"Meest Op Tijd Ingevuld"} fetchLocation={"http://localhost:8020/scoreboard/get-scoreboard-in-time"}/>
+                            <GeneralLeaderboard name={this.state.leaderboardName} fetchLocation={this.state.fetchAdress}/>
                         </Card>
                     </Col>
-                    {/*<Col md="4">*/}
-                    {/*    <Card>*/}
-                    {/*        <GeneralLeaderboard name={"Meest Mee Gegeten"} fetchLocation={"http://localhost:8020/scoreboard/get-scoreboard-most-eaten"}/>*/}
-                    {/*    </Card>*/}
-                    {/*</Col>*/}
-                    {/*<Col md="4">*/}
-                    {/*    <Card>*/}
-                    {/*        <GeneralLeaderboard name={"Minst Op tijd Ingevuld"} fetchLocation={"http://localhost:8020/scoreboard/get-scoreboard-too-late"}/>*/}
-                    {/*    </Card>*/}
-                    {/*</Col>*/}
+
+                    <div>
+                        <Card>
+                            <GeneralLeaderboard name={"Meest Op Tijd Ingevuld"} fetchLocation={"http://localhost:8020/scoreboard/get-scoreboard-in-time"}/>
+                        </Card>
+                    </div>
+                    <div>
+                        <Card>
+                            <GeneralLeaderboard name={"Meest Mee Gegeten"} fetchLocation={"http://localhost:8020/scoreboard/get-scoreboard-most-eaten"}/>
+                        </Card>
+                    </div>
+                    <div>
+                        <Card>
+                            <GeneralLeaderboard name={"Minst Op tijd Ingevuld"} fetchLocation={"http://localhost:8020/scoreboard/get-scoreboard-too-late"}/>
+                        </Card>
+                    </div>
                 </Row>
 
             </Container>

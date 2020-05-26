@@ -5,28 +5,40 @@ import { connect } from "react-redux";
 import { compose } from "redux";
 import { withTranslation } from "react-i18next";
 
-class MinstOptijdIngevuldLeaderboard extends Component {
+class GeneralLeaderboard extends Component {
     constructor(props) {
         super(props);
         this.state = {
             fetchedData: undefined,
             fetching: false,
             fetched: false,
+
+            fetchLocation : this.props.fetchLocation,
+            name : this.props.name,
         };
     }
 
-    function
+    function;
 
     componentDidMount() {
-        this.GetScoreboardValues();
+        this.GetScoreboardValues(this.props.fetchLocation);
     }
 
-    GetScoreboardValues = () => {
+    componentWillReceiveProps(nextProps, nextContext) {
+        this.setState({
+            fetchLocation : nextProps.fetchLocation,
+            name : nextProps.name,
+        });
+        this.GetScoreboardValues(nextProps.fetchLocation);
+    }
+
+    GetScoreboardValues = (fetchAdress) => {
         this.setState({
               fetching: true,
         });
+        console.log(fetchAdress);
         makeHttpCall(
-            this.props.fetchLocation,
+            fetchAdress,
             this.props.token,
             requestTypes.GET
             ).then((response) => {
@@ -45,7 +57,7 @@ render() {
     return (
         <Container>
         <h5 className="text-center">
-        {this.props.name}
+        {this.state.name}
         </h5>
             <div className="text-center">
                 {this.state.fetched ? (
@@ -80,6 +92,6 @@ function mapStateToProps(state) {
 const MyComponent = compose(
     withTranslation(),
     connect(mapStateToProps)
-)(MinstOptijdIngevuldLeaderboard);
+)(GeneralLeaderboard);
 
 export default MyComponent;
