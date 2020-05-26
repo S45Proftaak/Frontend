@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Col, Row, Container, Card } from "react-bootstrap";
 import GeneralLeaderboard from "./subcomponents/Leaderboard/GeneralLeaderboard";
+import UserLeaderboardScore from "./subcomponents/Leaderboard/UserLeaderboardScore";
 import CurrentSelectedUser from "./subcomponents/Administratie/CurrentSelectedUser";
 
 class Leaderboard extends Component {
@@ -15,7 +16,21 @@ class Leaderboard extends Component {
                     Leaderboard
                 </h1>
                 <Row>
-                    <Col>
+                    <Col md="4">
+                        <Card>
+                            <Row>
+                                <Card>
+                                    <CurrentSelectedUser></CurrentSelectedUser> 
+                                </Card>
+                            </Row>
+                            <Row>
+                                <Card>
+                                    <UserLeaderboardScore></UserLeaderboardScore>
+                                </Card>
+                            </Row>
+                        </Card>
+                    </Col>
+                    <Col md="8">
                         <Card>
                             <GeneralLeaderboard name={"Meest Op Tijd Ingevuld"} fetchLocation={"http://localhost:8020/scoreboard/get-scoreboard-in-time"}/>
                         </Card>
