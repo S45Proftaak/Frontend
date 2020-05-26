@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Col, Row, Container, Card } from "react-bootstrap";
 import GeneralLeaderboard from "./subcomponents/Leaderboard/GeneralLeaderboard";
 import UserLeaderboardScore from "./subcomponents/Leaderboard/UserLeaderboardScore";
-import CurrentSelectedUser from "./subcomponents/Administratie/CurrentSelectedUser";
+import CurrentUser from "./subcomponents/Leaderboard/CurrentUser";
 import "../components/subcomponents/CSS/Default.css";
 
 class Leaderboard extends Component {
@@ -57,7 +57,7 @@ class Leaderboard extends Component {
                         <Card>
                             <Card>
                                 <Card.Body className="SelectedUser">
-                                    <CurrentSelectedUser/>
+                                    <CurrentUser fetchLocation={"http://localhost:8020/scoreboard/get-own-scores"}/>
                                 </Card.Body>
                             </Card>
                             <Card>
