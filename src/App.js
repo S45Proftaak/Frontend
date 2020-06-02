@@ -8,6 +8,7 @@ import Home from "./components/Home";
 import Administration from "./components/Administration";
 import Redirect from "./components/Redirect";
 import Leaderboard from "./components/Leaderboard";
+import Logout from "./components/Logout";
 
 function App() {
   const { t } = useTranslation();
@@ -39,9 +40,14 @@ function App() {
             </Redirect>
           </Route>
           <Route path={"/leaderboard"}>
-              <Redirect>
-                <Leaderboard />
-              </Redirect>
+            <Redirect>
+              <Leaderboard />
+            </Redirect>
+          </Route>
+          <Route exact path="/logout">
+            <Redirect>
+              <Logout />
+            </Redirect>
           </Route>
         </Switch>
       </Router>
