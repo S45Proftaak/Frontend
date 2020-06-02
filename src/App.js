@@ -7,6 +7,7 @@ import Login from "./components/login";
 import Home from "./components/Home";
 import Administration from "./components/Administration";
 import Redirect from "./components/Redirect";
+import Admin from "./components/Admin";
 
 function App() {
   const { t } = useTranslation();
@@ -18,6 +19,7 @@ function App() {
           Navs={[
             { link: "/", name: t("App.Home") },
             { link: "/administration", name: t("App.Administration") },
+            { link: "/admin", name: t("Admin.Home")},
           ]}
         />
         <div style={{ margin: 30 }} />
@@ -34,6 +36,11 @@ function App() {
           <Route path="/administration">
             <Redirect>
               <Administration />
+            </Redirect>
+          </Route>
+          <Route path="/admin">
+            <Redirect>
+              <Admin></Admin>
             </Redirect>
           </Route>
         </Switch>

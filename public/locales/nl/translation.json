@@ -41,5 +41,14 @@
     "weeknumber": "Week nummer",
     "participate": "Eet Mee",
     "participated": "✔️"
+  },
+  "Admin" : {
+    "Admin" : "Administrator",
+    "Secretary" : "Secretaris",
+    "Employee" : "Medewerker",
+    "Email" : "Email",
+    "Name" : "Name",
+    "Role" : "Role",
+    "Home" : "Beheer"
   }
 }
