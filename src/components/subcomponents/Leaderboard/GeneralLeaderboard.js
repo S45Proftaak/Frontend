@@ -12,24 +12,25 @@ class GeneralLeaderboard extends Component {
             fetchedData: undefined,
             fetching: false,
             fetched: false,
-
-            name : this.props.name,
+            currentLeaderboard : 0,
+            leaderboardName : "Meest Op Tijd Ingevuld",
+            fetchAdress : "http://localhost:8020/scoreboard/get-scoreboard-in-time",
         };
     }
 
     function;
 
     componentDidMount() {
-        this.GetScoreboardValues(this.props.fetchLocation);
+        this.GetScoreboardValues(this.state.fetchAdress);
     }
 
-    componentWillReceiveProps(nextProps, nextContext) {
-        this.setState({
-            fetchLocation : nextProps.fetchLocation,
-            name : nextProps.name,
-        });
-        this.GetScoreboardValues(nextProps.fetchLocation);
-    }
+    // componentWillReceiveProps(nextProps, nextContext) {
+    //     this.setState({
+    //         fetchLocation : nextProps.fetchLocation,
+    //         name : nextProps.name,
+    //     });
+    //     this.GetScoreboardValues(nextProps.fetchLocation);
+    // }
 
     GetScoreboardValues = (fetchAdress) => {
         this.setState({
@@ -48,12 +49,46 @@ class GeneralLeaderboard extends Component {
         });
     };
 
+    CycleLeaderboards(index){
+        switch (index) {
+            case 0:
+                this.GetScoreboardValues("http://localhost:8020/scoreboard/get-scoreboard-in-time");
+                this.setState({
+                    currentLeaderboard : 0,
+                    leaderboardName : "Meest Op Tijd Ingevuld",
+                    fetchAdress : "http://localhost:8020/scoreboard/get-scoreboard-in-time",
+                });
+
+                break;
+            case 1:
+                this.GetScoreboardValues("http://localhost:8020/scoreboard/get-scoreboard-most-eaten");
+                this.setState({
+                    currentLeaderboard : 1,
+                    leaderboardName : "Meest Mee Gegeten",
+                    fetchAdress : "http://localhost:8020/scoreboard/get-scoreboard-most-eaten",
+                });
+
+                break;
+            case 2:
+                this.GetScoreboardValues("http://localhost:8020/scoreboard/get-scoreboard-too-late");
+                this.setState({
+                    currentLeaderboard : 2,
+                    leaderboardName : "Minst Op Tijd Ingevuld",
+                    fetchAdress : "http://localhost:8020/scoreboard/get-scoreboard-too-late",
+                });
+
+                break;
+        }
+    }
+
 
 render() {
     return (
         <Container>
         <h5 className="text-center">
-        {this.state.name}
+            <button onClick={() => this.CycleLeaderboards(this.state.currentLeaderboard - 1)}>previous</button>
+            {this.state.leaderboardName}
+            <button onClick={() => this.CycleLeaderboards(this.state.currentLeaderboard + 1)}>next</button>
         </h5>
             <div className="text-center">
                 {this.state.fetched ? (
