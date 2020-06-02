@@ -14,7 +14,9 @@ export function getWeek() {
   return;
 }
 
-export const selectDay = (day) => ({
-  type: "SELECT_DAY",
-  payload: day,
-}); //UseSelector() UseDispatch()
+export function selectDay(day) {
+  return {
+    type: "SELECT_DAY",
+    payload: day,
+  };
+}
