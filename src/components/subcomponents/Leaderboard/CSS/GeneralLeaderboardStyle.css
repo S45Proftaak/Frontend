@@ -1,0 +1,20 @@
+@import url("../../CSS/Default.css");
+
+.rectangle{
+    width: 10px;
+    height: 20px;
+    background-color: #555555;
+    
+}
+
+.\0{
+    margin-top: 16px;
+}
+
+.\1{
+    margin-top: 16px; 
+}
+
+.\2{
+    margin-top: 16px;
+}

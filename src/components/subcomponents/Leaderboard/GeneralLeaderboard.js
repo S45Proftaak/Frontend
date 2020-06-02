@@ -53,22 +53,19 @@ render() {
     return (
         <Container>
         <h5 className="text-center">
-        {this.state.name}
+            {this.state.name}
         </h5>
             <div className="text-center">
                 {this.state.fetched ? (
-                <div>
-                   {this.state.fetchedData.map((res, id) => (
-                        <div key={id}>
-                            <ul>
-                                <li>
-                                    <div>{res.user.name} : {res.totalPoints}</div>
-                                </li>
-                            </ul>
-
-                        </div>
+                <Container>
+                    <Row>
+                   {this.state.fetchedData.map((res, id) => (  
+                        <Col md="4" key={id}>
+                            <div className={id}>{res.user.name} <br/> {res.totalPoints}<br/>  </div>
+                        </Col>
                     ))}
-                </div>
+                    </Row>
+                </Container>
             ) : (
             <div></div>
             )}
