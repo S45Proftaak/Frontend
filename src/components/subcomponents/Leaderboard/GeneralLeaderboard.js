@@ -4,6 +4,7 @@ import { requestTypes, makeHttpCall } from "../../../helpers/httpHelper.js";
 import { connect } from "react-redux";
 import { compose } from "redux";
 import { withTranslation } from "react-i18next";
+import "./CSS/GeneralLeaderboardStyle.css";
 
 class GeneralLeaderboard extends Component {
     constructor(props) {
@@ -84,7 +85,7 @@ class GeneralLeaderboard extends Component {
 
 render() {
     return (
-        <Container>
+        <Container className="container">
         <h5 className="text-center">
             <button onClick={() => this.CycleLeaderboards(this.state.currentLeaderboard - 1)}>previous</button>
             {this.state.leaderboardName}
@@ -92,11 +93,16 @@ render() {
         </h5>
             <div className="text-center">
                 {this.state.fetched ? (
-                <Container>
-                    <Row>
+                <Container className="container2">
+                    <Row className="row">
                    {this.state.fetchedData.map((res, id) => (  
-                        <Col md="4" key={id}>
-                            <div className={id}>{res.user.name} <br/> {res.totalPoints}<br/>  </div>
+                        <Col sm="4" key={id}>
+                            <div className={"Line" + id}>{res.user.name} 
+                            <br/> 
+                            {res.totalPoints}
+                            <br/>
+                   <div className={"rectangle rec" + id}>{id + 1}</div>
+                   </div>
                         </Col>
                     ))}
                     </Row>
