@@ -28,6 +28,9 @@ async function sendToServer(link, token, type, data) {
     });
   }
   if (response.status !== 200) {
+    if (response.status === 401) {
+      window.location.pathname = "/logout";
+    }
     console.log("Something went wrong! [Code is " + response.status + "]");
   }
   return await response.json();

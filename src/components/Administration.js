@@ -4,6 +4,7 @@ import CurrentSelectedUser from "./subcomponents/Administratie/CurrentSelectedUs
 import DatePicker from "./subcomponents/Administratie/DatePicker";
 import Overview from "./subcomponents/Administratie/Overview";
 import "../components/subcomponents/CSS/Default.css";
+import { CardBody } from "react-bootstrap/Card";
 
 class Administration extends Component {
   constructor(props) {
@@ -15,12 +16,19 @@ class Administration extends Component {
       <Container className="PageBackground">
         <Row>
             <Col md="4">
+            <Card>
               <Card>
-                <Card.Body className="DefaultCardLayer1">
+                <Card.Body className="SelectedUser">
                   <CurrentSelectedUser />
-                  <DatePicker/>
-                </Card.Body>
+                  </Card.Body>
               </Card>
+              <Card>
+                <Card.Body>
+                    <DatePicker>
+                    </DatePicker>  
+                  </Card.Body>
+              </Card>
+            </Card>
             </Col>
           <Col md="8">
               <Overview/>

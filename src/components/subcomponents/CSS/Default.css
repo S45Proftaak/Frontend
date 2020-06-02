@@ -24,20 +24,6 @@ html {
     background-color: var(--SelectedUserBackground);
 }
 
-.DefaultCardLayer2 {
-    background-color: var(--BackgroundLayer2);
-    color: var(--TextColor);
-    border-color: var(--BorderColor) !important;
-    font-family: var(--FontStyle);
-}
-
-.DefaultCardLayer1 {
-    background-color: var(--BackgroundLayer1);
-    color: var(--TextColor);
-    font-family: var(--FontStyle);
-    border-color: var(--BorderColor) !important;
-}
-
 .PageBackground{
     background-color: var(--PageBackGround);
 }
