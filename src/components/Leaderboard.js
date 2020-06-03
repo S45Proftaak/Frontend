@@ -2,14 +2,16 @@ import React, { Component } from "react";
 import { Col, Row, Container, Card } from "react-bootstrap";
 import GeneralLeaderboard from "./subcomponents/Leaderboard/GeneralLeaderboard";
 import UserLeaderboardScore from "./subcomponents/Leaderboard/UserLeaderboardScore";
-import CurrentSelectedUser from "./subcomponents/Administratie/CurrentSelectedUser";
+import CurrentUser from "./subcomponents/Leaderboard/CurrentUser";
 import "../components/subcomponents/CSS/Default.css";
 
 class Leaderboard extends Component {
     constructor(props) {
         super(props);
-        this.state = {};
+        this.state = {
+        };
     }
+
     render() {
         return (
             <Container>
@@ -21,31 +23,21 @@ class Leaderboard extends Component {
                         <Card>
                             <Card>
                                 <Card.Body className="SelectedUser">
-                                    <CurrentSelectedUser></CurrentSelectedUser> 
+                                    <CurrentUser fetchLocation={"http://localhost:8020/scoreboard/get-own-scores"}/>
                                 </Card.Body>
                             </Card>
                             <Card>
                                 <Card.Body>
-                                    <UserLeaderboardScore></UserLeaderboardScore>
+                                    <UserLeaderboardScore fetchLocation={"http://localhost:8020/scoreboard/get-own-scores"}/>
                                 </Card.Body>
                             </Card>
                         </Card>
                     </Col>
                     <Col md="8">
                         <Card>
-                            <GeneralLeaderboard name={"Meest Op Tijd Ingevuld"} fetchLocation={"http://localhost:8020/scoreboard/get-scoreboard-in-time"}/>
+                            <GeneralLeaderboard />
                         </Card>
                     </Col>
-                    {/*<Col md="4">*/}
-                    {/*    <Card>*/}
-                    {/*        <GeneralLeaderboard name={"Meest Mee Gegeten"} fetchLocation={"http://localhost:8020/scoreboard/get-scoreboard-most-eaten"}/>*/}
-                    {/*    </Card>*/}
-                    {/*</Col>*/}
-                    {/*<Col md="4">*/}
-                    {/*    <Card>*/}
-                    {/*        <GeneralLeaderboard name={"Minst Op tijd Ingevuld"} fetchLocation={"http://localhost:8020/scoreboard/get-scoreboard-too-late"}/>*/}
-                    {/*    </Card>*/}
-                    {/*</Col>*/}
                 </Row>
 
             </Container>

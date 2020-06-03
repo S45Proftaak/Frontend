@@ -4,63 +4,110 @@ import { requestTypes, makeHttpCall } from "../../../helpers/httpHelper.js";
 import { connect } from "react-redux";
 import { compose } from "redux";
 import { withTranslation } from "react-i18next";
+import "./CSS/GeneralLeaderboardStyle.css";
 
-class MinstOptijdIngevuldLeaderboard extends Component {
+class GeneralLeaderboard extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            fetchedData: undefined,
+            fetchedData: [],
             fetching: false,
             fetched: false,
+            currentLeaderboard : 0,
+            leaderboardName : "Meest Op Tijd Ingevuld",
+            fetchAdress : "http://localhost:8020/scoreboard/get-scoreboard-in-time",
         };
     }
 
-    function
+    function;
 
     componentDidMount() {
-        this.GetScoreboardValues();
+        this.GetScoreboardValues(this.state.fetchAdress);
     }
 
-    GetScoreboardValues = () => {
+    // componentWillReceiveProps(nextProps, nextContext) {
+    //     this.setState({
+    //         fetchLocation : nextProps.fetchLocation,
+    //         name : nextProps.name,
+    //     });
+    //     this.GetScoreboardValues(nextProps.fetchLocation);
+    // }
+
+    GetScoreboardValues = (fetchAdress) => {
         this.setState({
               fetching: true,
         });
         makeHttpCall(
-            this.props.fetchLocation,
+            fetchAdress,
             this.props.token,
             requestTypes.GET
             ).then((response) => {
+                console.log(response);
+                response.splice(1, 0, response.splice(0, 1)[0]);
             this.setState({
                       fetching: false,
                       fetched: true,
                       fetchedData: response,
             });
-            console.log(response);
-            console.log(this.state);
         });
     };
+
+    CycleLeaderboards(index){
+        switch (index) {
+            case 0:
+                this.GetScoreboardValues("http://localhost:8020/scoreboard/get-scoreboard-in-time");
+                this.setState({
+                    currentLeaderboard : 0,
+                    leaderboardName : "Meest Op Tijd Ingevuld",
+                    fetchAdress : "http://localhost:8020/scoreboard/get-scoreboard-in-time",
+                });
+
+                break;
+            case 1:
+                this.GetScoreboardValues("http://localhost:8020/scoreboard/get-scoreboard-most-eaten");
+                this.setState({
+                    currentLeaderboard : 1,
+                    leaderboardName : "Meest Mee Gegeten",
+                    fetchAdress : "http://localhost:8020/scoreboard/get-scoreboard-most-eaten",
+                });
+
+                break;
+            case 2:
+                this.GetScoreboardValues("http://localhost:8020/scoreboard/get-scoreboard-too-late");
+                this.setState({
+                    currentLeaderboard : 2,
+                    leaderboardName : "Minst Op Tijd Ingevuld",
+                    fetchAdress : "http://localhost:8020/scoreboard/get-scoreboard-too-late",
+                });
+
+                break;
+        }
+    }
 
 
 render() {
     return (
         <Container>
         <h5 className="text-center">
-        {this.props.name}
+            <button className="ArrowButton" onClick={() => this.CycleLeaderboards(this.state.currentLeaderboard - 1)}>{"<"}</button>
+            {this.state.leaderboardName}
+            <button className="ArrowButton" onClick={() => this.CycleLeaderboards(this.state.currentLeaderboard + 1)}>{">"}</button>
         </h5>
-            <div className="text-center">
+            <div>
                 {this.state.fetched ? (
-                <div>
-                   {this.state.fetchedData.map((res, id) => (
-                        <div key={id}>
-                            <ul>
-                                <li>
-                                    <div>{res.user.name} : {res.totalPoints}</div>
-                                </li>
-                            </ul>
-
-                        </div>
+                <Container>
+                    <Row className="row">
+                   {this.state.fetchedData.map((res, id) => (  
+                        <Col sm="4" key={id} className={"collum"}>
+                            <div className={"Line" + id}>{res.user.name} </div>
+                            <br/>
+                            {res.totalPoints}
+                            <br/>
+                            <div className={"rectangle rec" + id}>{id + 1 === 1 ? id + 2 : id + 1 === 2 ? id : id + 1}</div>
+                        </Col>
                     ))}
-                </div>
+                    </Row>
+                </Container>
             ) : (
             <div></div>
             )}
@@ -71,7 +118,6 @@ render() {
 }
 
 function mapStateToProps(state) {
-    console.log(state.loginReducer.payload.token);
     return {
         token: state.loginReducer.payload.token,
     };
@@ -80,6 +126,6 @@ function mapStateToProps(state) {
 const MyComponent = compose(
     withTranslation(),
     connect(mapStateToProps)
-)(MinstOptijdIngevuldLeaderboard);
+)(GeneralLeaderboard);
 
 export default MyComponent;

@@ -19,9 +19,9 @@ class CurrentSelectedUser extends Component {
     const { t } = this.props;
     return (
           <Container>
-            <h4 className="text-center">
-              {t("SelectedUser.CurrentlySelectedUser")}
-            </h4>
+              <h4>
+                {t("SelectedUser.CurrentlySelectedUser")}
+              </h4>
           </Container>
     );
   }
