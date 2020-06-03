@@ -50,15 +50,15 @@ render() {
                         <div className="YourScoreList">
                             <div className="YourScoreItem PaddedItem">
                                 <h5>Optijd ingevuld</h5>
-                                    <div>{this.state.fetchedData.positionInTime}nd place.     {this.state.fetchedData.inTimePoints} points</div>
+                                    <div>{this.state.fetchedData.positionInTime}nd place - {this.state.fetchedData.inTimePoints} points</div>
                             </div>
                             <div className="YourScoreItem PaddedItem">
                                 <h5>Telaat ingevuld</h5>
-                                {this.state.fetchedData.positionTooLate}st place.     {this.state.fetchedData.tooLatePoints} points
+                                {this.state.fetchedData.positionTooLate}st place - {this.state.fetchedData.tooLatePoints} points
                             </div>
                             <div className="YourScoreItem-Borderless PaddedItem">
                                 <h5>Meeste meegegeten</h5>
-                                {this.state.fetchedData.positionGeneralRanking}nd place.     {this.state.fetchedData.totalPoints} points
+                                {this.state.fetchedData.positionGeneralRanking}nd place - {this.state.fetchedData.totalPoints} points
                             </div>
                         </div>
                         
