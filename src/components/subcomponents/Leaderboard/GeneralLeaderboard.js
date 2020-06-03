@@ -10,7 +10,7 @@ class GeneralLeaderboard extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            fetchedData: undefined,
+            fetchedData: [],
             fetching: false,
             fetched: false,
             currentLeaderboard : 0,
@@ -42,6 +42,8 @@ class GeneralLeaderboard extends Component {
             this.props.token,
             requestTypes.GET
             ).then((response) => {
+                console.log(response);
+                response.splice(1, 0, response.splice(0, 1)[0]);
             this.setState({
                       fetching: false,
                       fetched: true,
@@ -85,24 +87,23 @@ class GeneralLeaderboard extends Component {
 
 render() {
     return (
-        <Container className="container">
+        <Container>
         <h5 className="text-center">
-            <button onClick={() => this.CycleLeaderboards(this.state.currentLeaderboard - 1)}>previous</button>
+            <button className="ArrowButton" onClick={() => this.CycleLeaderboards(this.state.currentLeaderboard - 1)}>{"<"}</button>
             {this.state.leaderboardName}
-            <button onClick={() => this.CycleLeaderboards(this.state.currentLeaderboard + 1)}>next</button>
+            <button className="ArrowButton" onClick={() => this.CycleLeaderboards(this.state.currentLeaderboard + 1)}>{">"}</button>
         </h5>
-            <div className="text-center">
+            <div>
                 {this.state.fetched ? (
-                <Container className="container2">
+                <Container>
                     <Row className="row">
                    {this.state.fetchedData.map((res, id) => (  
-                        <Col sm="4" key={id}>
-                            <div className={"Line" + id}>{res.user.name} 
-                            <br/> 
+                        <Col sm="4" key={id} className={"collum"}>
+                            <div className={"Line" + id}>{res.user.name} </div>
+                            <br/>
                             {res.totalPoints}
                             <br/>
-                   <div className={"rectangle rec" + id}>{id + 1}</div>
-                   </div>
+                            <div className={"rectangle rec" + id}>{id + 1 === 1 ? id + 2 : id + 1 === 2 ? id : id + 1}</div>
                         </Col>
                     ))}
                     </Row>

@@ -11,13 +11,37 @@
     padding-top: 5%;
     bottom:0;
     position: relative;
+    text-align: center;
 }
 
-.Line1 {
-    margin-top: 70%;
+.collum{
+    text-align: center;
+}
+
+.ArrowButton:hover{
+    background-color: rgb(96, 159, 184);
+}
+
+.ArrowButton {
+    background-color: var(--TableHeaderBackground);
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    font-weight: 900;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 10px;
 }
 
 .Line0 {
+    margin-top: 70%;
+}
+
+.Line1 {
     margin-top: 50%;
 }
 
@@ -25,7 +49,7 @@
     margin-top: 90%;
 }
 
-.rec1 {
+.rec0 {
     padding-bottom: 30%;
 }
 
@@ -34,6 +58,6 @@
 
 }
 
-.rec0{
+.rec1{
     padding-bottom: 50%;
 }
