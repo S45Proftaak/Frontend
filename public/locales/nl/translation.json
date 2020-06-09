@@ -42,5 +42,12 @@
     "weeknumber": "Week nummer",
     "participate": "Eet Mee",
     "participated": "✔️"
+  },
+  "LeaderBoardScore": {
+    "Points": "punten",
+    "filledInTime": "Optijd ingevuld",
+    "filledToLate": "Telaat ingevuld",
+    "MostEaten": "Meest meegegeten",
+    "yourScore":"Uw score"
   }
 }

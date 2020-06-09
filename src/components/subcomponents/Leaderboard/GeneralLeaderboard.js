@@ -84,30 +84,29 @@ class GeneralLeaderboard extends Component {
         }
     }
 
-
 render() {
     return (
-        <Container>
+        <Container className="footer">
         <h5 className="text-center">
             <button className="ArrowButton" onClick={() => this.CycleLeaderboards(this.state.currentLeaderboard - 1)}>{"<"}</button>
             {this.state.leaderboardName}
             <button className="ArrowButton" onClick={() => this.CycleLeaderboards(this.state.currentLeaderboard + 1)}>{">"}</button>
         </h5>
-            <div>
+            <div className="RowContainer">
                 {this.state.fetched ? (
-                <Container>
-                    <Row className="row">
-                   {this.state.fetchedData.map((res, id) => (  
-                        <Col sm="4" key={id} className={"collum"}>
-                            <div className={"Line" + id}>{res.user.name} </div>
-                            <br/>
-                            {res.totalPoints}
-                            <br/>
-                            <div className={"rectangle rec" + id}>{id + 1 === 1 ? id + 2 : id + 1 === 2 ? id : id + 1}</div>
-                        </Col>
-                    ))}
-                    </Row>
-                </Container>
+                        <Row className="row">
+                        {this.state.fetchedData.map((res, id) => (  
+                            <Col sm="4" key={id} className={"collum"}>
+                                <div className="Combi">
+                                    <div className={"Line" + id}>{res.user.name} </div>
+                                    <br/>
+                                    {res.totalPoints}
+                                    <br/>
+                                    <div className={"rectangle rec" + id}>{id + 1 === 1 ? id + 2 : id + 1 === 2 ? id : id + 1}</div>
+                                </div>
+                            </Col>
+                        ))}
+                        </Row>
             ) : (
             <div></div>
             )}
