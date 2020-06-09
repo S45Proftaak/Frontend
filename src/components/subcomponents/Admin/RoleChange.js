@@ -15,8 +15,8 @@ class RoleChange extends Component {
         super(props);
 
         this.state = {
-            user: [{ Id: "1", Email: "rico@test.nl", Name: "Rico Muijtjens", Role: "ROLE_ADMIN" },
-            { Id: "2", Email: "duncan@test.nl", Name: "Duncan Schoenmakers", Role: "ROLE_EMPLOYEE" }],
+            user: [{ Id: 1, Email: "rico@test.nl", Name: "Rico Muijtjens", Role: "ROLE_ADMIN" },
+            { Id: 2, Email: "duncan@test.nl", Name: "Duncan Schoenmakers", Role: "ROLE_EMPLOYEE" }],
             loadPage: false
         }
     }
@@ -44,52 +44,54 @@ class RoleChange extends Component {
     }
 
     componentDidMount() {
-        makeHttpCall("http://localhost:8020/admin/getAllUsers", this.props.token, requestTypes.GET, null).then
+        makeHttpCall("http://localhost:8020/admin/getAllUsers", this.props.token, requestTypes.GET).then
             ((res) => {
                 this.props.fetchedAdminData(res);
                 return res;
             })
     }
 
-    loadPage(){
+    loadPage() {
         this.setState({
             loadPage: true
         });
     }
 
-    checkProps(){
+    checkProps() {
         console.log(this.props.users);
     }
 
     render() {
         const { t, users } = this.props;
-                return (
-                    <div>
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>
-                                        {t("Admin.Email")}
-                                    </th>
-                                    <th>
-                                        {t("Admin.Name")}
-                                    </th>
-                                    <th>
-                                        {t("Admin.Role")}
-                                    </th>
-                                </tr>
-                            </thead>
-                            {this.props.users.map(user =>
-                                <tbody key={user.id}>
-                                    <tr>
-                                        <td>
-                                            {user.email}
-                                        </td>
-                                        <td>
-                                            {user.name}
-                                        </td>
-                                        <td>
-                                            <Dropdown>
+        
+        return (
+            <div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>
+                                {t("Admin.Email")}
+                            </th>
+                            <th>
+                                {t("Admin.Name")}
+                            </th>
+                            <th>
+                                {t("Admin.Role")}
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {this.checkProps()}
+                        {this.props.users.map(user =>
+                            <tr key={user.id}>
+                                <td>
+                                    {user.email}
+                                </td>
+                                <td>
+                                    {user.name}
+                                </td>
+                                <td>
+                                    <Dropdown>
                                                 <Dropdown.Toggle>
                                                     {t(this.handleRoleName(user.role.name))}
                                                 </Dropdown.Toggle>
@@ -99,15 +101,15 @@ class RoleChange extends Component {
                                                     <Dropdown.Item onSelect={() => this.handleSelect("ROLE_ADMIN", user.id)}>{t("Admin.Admin")}</Dropdown.Item>
                                                 </Dropdown.Menu>
                                             </Dropdown>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            )}
-                        </table>
-                    </div>
-                );
-        }
+                                </td>
+                            </tr>
+                        )}
+                    </tbody>
+                </table>
+            </div>
+        );
     }
+}
 
 const MyComponent = compose(
     withTranslation(),
@@ -116,6 +118,7 @@ const MyComponent = compose(
             return {
                 links: state.loginReducer.payload.links,
                 token: state.loginReducer.payload.token,
+                adminfetched: state.AdminReducer.fetchedAdminData,
                 users: state.AdminReducer.payload.users
             };
         },

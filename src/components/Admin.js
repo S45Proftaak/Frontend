@@ -9,7 +9,7 @@ class Admin extends Component {
     render() {
         return (
             <div>
-                {/*<RoleChange></RoleChange>*/}
+                <RoleChange></RoleChange>
                 <PriceChange/>
             </div>
         );
