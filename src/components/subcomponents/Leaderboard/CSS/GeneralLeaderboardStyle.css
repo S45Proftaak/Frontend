@@ -7,15 +7,33 @@
     border-color: var(--BorderColor);
     border-style: solid;
     color: var(--TextColor);
-    margin-top: 15%;
+    margin-top: 5vh;
     padding-top: 5%;
-    bottom:0;
-    position: relative;
     text-align: center;
+}
+
+.row {
+    height: 100%;
+}
+
+.text-center {
+    position: absolute;
+    width: 100%;
+    padding: 0px;
+    margin: 0px;
+}
+
+.RowContainer {
+    height: 100%;
+}
+
+.footer {
+    height: 60vh;
 }
 
 .collum{
     text-align: center;
+    margin-top: auto;
 }
 
 .ArrowButton:hover{
@@ -35,18 +53,6 @@
     margin-left: 10px;
     margin-right: 10px;
     margin-top: 10px;
-}
-
-.Line0 {
-    margin-top: 70%;
-}
-
-.Line1 {
-    margin-top: 50%;
-}
-
-.Line2 {
-    margin-top: 90%;
 }
 
 .rec0 {

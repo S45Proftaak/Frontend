@@ -27,3 +27,11 @@ html {
 .PageBackground{
     background-color: var(--PageBackGround);
 }
+
+.LeftBox {
+    height: 60vh;
+}
+
+.YourScoreCard{
+    height: 100%;
+}

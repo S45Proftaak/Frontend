@@ -20,13 +20,13 @@ class Leaderboard extends Component {
                 </h1>
                 <Row>
                     <Col md="4">
-                        <Card>
+                        <Card className="LeftBox">
                             <Card>
                                 <Card.Body className="SelectedUser">
                                     <CurrentUser fetchLocation={"http://localhost:8020/scoreboard/get-own-scores"}/>
                                 </Card.Body>
                             </Card>
-                            <Card>
+                            <Card className="YourScoreCard">
                                 <Card.Body>
                                     <UserLeaderboardScore fetchLocation={"http://localhost:8020/scoreboard/get-own-scores"}/>
                                 </Card.Body>
