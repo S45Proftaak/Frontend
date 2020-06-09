@@ -23,6 +23,7 @@ class RoleChange extends Component {
 
     handleSelect(role, Id) {
 
+        {/* Change role to new role */}
         var elementsIndex = this.props.users.findIndex(element => element.id === Id)
         var newArray = this.props.users
         newArray[elementsIndex].role.name = role;
