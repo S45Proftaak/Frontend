@@ -27,15 +27,6 @@ class PriceChange extends Component {
         this.GetValues(this.state.fetchAdress);
     }
 
-    // componentWillReceiveProps(nextProps, nextContext) {
-    //     this.setState({
-    //         fetchLocation : nextProps.fetchLocation,
-    //         name : nextProps.name,
-    //     });
-    //     this.GetScoreboardValues(nextProps.fetchLocation);
-    // }
-
-
     GetValues = (fetchAdress) => {
         this.setState({
             fetching: true,
