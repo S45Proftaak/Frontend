@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import RoleChange from './subcomponents/Admin/RoleChange';
+import PriceChange from './subcomponents/Admin/PriceChange';
 
 class Admin extends Component {
     constructor(props){
@@ -8,7 +9,8 @@ class Admin extends Component {
     render() {
         return (
             <div>
-                <RoleChange></RoleChange>
+                {/*<RoleChange></RoleChange>*/}
+                <PriceChange/>
             </div>
         );
     }
