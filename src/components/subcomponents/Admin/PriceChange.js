@@ -96,7 +96,7 @@ class PriceChange extends Component {
                     Current Price: {this.state.fetchedData}
                 </div>
                 <div>
-                    New Price: <input type="text" onChange={this.handleChange}/>
+                    New Price: <input type="number" onChange={this.handleChange}/>
                 </div>
                 <div>
                     <input type="submit" value="submit" onClick={this.handleSubmit}/>
