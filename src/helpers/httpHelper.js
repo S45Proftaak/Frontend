@@ -38,6 +38,7 @@ async function sendToServer(link, token, type, data) {
 export const requestTypes = Object.freeze({
   GET: "GET",
   POST: "POST",
+  PUT: "PUT",
 });
 
 export async function makeHttpCall(link, token, type, body) {

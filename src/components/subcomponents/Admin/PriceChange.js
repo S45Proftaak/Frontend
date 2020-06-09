@@ -4,7 +4,6 @@ import { requestTypes, makeHttpCall } from "../../../helpers/httpHelper.js";
 import { connect } from "react-redux";
 import { compose } from "redux";
 import { withTranslation } from "react-i18next";
-//import "./CSS/GeneralLeaderboardStyle.css";
 
 class PriceChange extends Component {
     constructor(props) {
@@ -13,8 +12,12 @@ class PriceChange extends Component {
             fetchedData: undefined,
             fetching: false,
             fetched: false,
-            fetchAdress : "http://localhost:8020/foodorder/getCurrentPrice",
+            fetchAdress: "http://localhost:8020/foodorder/getCurrentPrice",
             inputValue: 0,
+
+            posting: false,
+            posted: false,
+            postAdress:  "http://localhost:8020/admin/updatePrice",
         };
     }
 
@@ -32,9 +35,6 @@ class PriceChange extends Component {
     //     this.GetScoreboardValues(nextProps.fetchLocation);
     // }
 
-    HandlePriceInputChange(event){
-        this.setState({inputValue: event.target.value})
-    }
 
     GetValues = (fetchAdress) => {
         this.setState({
@@ -54,16 +54,55 @@ class PriceChange extends Component {
         });
     };
 
+    PostValues = (postAdress) => {
+        this.setState({
+           posting: true,
+        });
+        makeHttpCall(
+            postAdress,
+            this.props.token,
+            requestTypes.PUT,
+            {price: this.state.inputValue}
+        ).then(() => {
+            this.setState({
+                posting: false,
+                posted: true,
+            });
+        });
+};
+
+    handleChange = (event) => {
+        this.setState({
+            inputValue: event.target.value,
+        })
+};
+
+    handleSubmit = () => {
+        this.PostValues(this.state.postAdress);
+};
 
     render() {
+        const hasPosted = this.state.posted;
+        let postFeedback;
+        if(this.state.posted){
+            postFeedback = <div>Price updated successfully</div>;
+        }
+        else{
+            postFeedback = <div></div>;
+        }
         return (
             <Container>
                 <div>
                     Current Price: {this.state.fetchedData}
                 </div>
                 <div>
-                    New Price: <input type="text" value={this.state.inputValue} onChange={this.HandlePriceInputChange}/>
+                    New Price: <input type="text" onChange={this.handleChange}/>
                 </div>
+                <div>
+                    <input type="submit" value="submit" onClick={this.handleSubmit}/>
+                    {postFeedback}
+                </div>
+
             </Container>
         );
     }
