@@ -36,7 +36,8 @@
   "App": {
     "Home": "Hoofdpagina",
     "Administration": "Administratie",
-    "Leaderboard": "Ranglijst"
+    "Leaderboard": "Ranglijst",
+    "Logout":"Uitloggen"
   },
   "Week": {
     "weeknumber": "Week nummer",

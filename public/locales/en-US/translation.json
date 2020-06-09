@@ -36,7 +36,8 @@
   "App": {
     "Home": "Home",
     "Administration": "Administration",
-    "Leaderboard":"Leaderboard"
+    "Leaderboard":"Leaderboard",
+    "Logout":"Logout"
   },
   "Week": {
     "weeknumber": "Week number",

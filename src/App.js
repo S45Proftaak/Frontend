@@ -44,7 +44,7 @@ function App() {
               <Leaderboard />
             </Redirect>
           </Route>
-          <Route exact path="/logout">
+          <Route path={"/logout"}>
             <Redirect>
               <Logout />
             </Redirect>
