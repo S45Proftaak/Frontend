@@ -13,6 +13,10 @@ import { connect } from "react-redux";
 class RoleChange extends Component {
     constructor(props) {
         super(props);
+            userArray: this.props.users,
+            posting: false,
+            posted: false,
+            postAdress: "http://localhost:8020/admin/updateUserRole",
     }
 
     handleSelect(role, Id) {
@@ -21,6 +25,10 @@ class RoleChange extends Component {
         var elementsIndex = this.props.users.findIndex(element => element.id === Id)
         var newArray = this.props.users
         newArray[elementsIndex].role.name = role;
+
+        this.setState({
+            userArray: newArray,
+        });
 
         changeUserRole(newArray);
     }
@@ -42,7 +50,7 @@ class RoleChange extends Component {
         makeHttpCall("http://localhost:8020/admin/getAllUsers", this.props.token, requestTypes.GET).then
             ((res) => {
                 this.props.fetchedAdminData(res);
-                console.log(res);
+
                 return res;
             })
     }
@@ -55,6 +63,39 @@ class RoleChange extends Component {
 
     checkProps() {
         console.log(this.props.users);
+    }
+
+    handleSubmit = () => {
+        console.log(this.state.userArray);
+
+        this.submitRoleChanges();
+    }
+
+    submitRoleChanges() {
+        if(this.state.userArray != null){
+
+            for (var i = 0; i < this.state.userArray.length; i++) {
+                this.PostValues(this.state.postAdress, i);
+            }
+        }
+    }
+
+    PostValues = (postAdress, userId) => {
+        this.setState({
+                      posting: true,
+                      });
+        makeHttpCall(
+            postAdress,
+            this.props.token,
+            requestTypes.PUT,
+            {userID: this.state.userArray[userId].id,
+             roleID: this.state.userArray[userId].role.id,}
+        ).then(() => {
+            this.setState({
+                posting: false,
+                posted: true,
+            });
+        });
     }
 
     render() {
@@ -77,7 +118,6 @@ class RoleChange extends Component {
                         </tr>
                     </thead>
                     <tbody>
-                        {this.checkProps()}
                         {this.props.users !== undefined ? this.props.users.map(user =>
                             <tr key={user.id}>
                                 <td>
@@ -102,6 +142,7 @@ class RoleChange extends Component {
                         ) : <div></div>}
                     </tbody>
                 </table>
+                    <input type="submit" value="submit" onClick={this.handleSubmit}/>
             </div>
         );
     }

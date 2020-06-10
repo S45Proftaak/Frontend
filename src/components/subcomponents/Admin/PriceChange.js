@@ -36,7 +36,7 @@ class PriceChange extends Component {
             this.props.token,
             requestTypes.GET
         ).then((response) => {
-            console.log(response);
+            
             this.setState({
                 fetching: false,
                 fetched: true,
