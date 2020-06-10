@@ -20,6 +20,8 @@ class RoleChange extends Component {
             posting: false,
             posted: false,
             postAdress: "http://localhost:8020/admin/updateUserRole",
+
+            submitted: false,
         }
     }
 
@@ -108,6 +110,14 @@ class RoleChange extends Component {
     render() {
         const { t, users } = this.props;
         
+        let postFeedback;
+        if(this.state.posted){
+            postFeedback = <div>Roles updated successfully</div>;
+        }
+        else{
+            postFeedback = <div></div>;
+        }
+
         return (
             <div>
                 <table>
@@ -150,6 +160,7 @@ class RoleChange extends Component {
                     </tbody>
                 </table>
                     <input className="SubmitButton" type="submit" value="submit" onClick={this.handleSubmit}/>
+                    {postFeedback}
             </div>
         );
     }
