@@ -9,7 +9,7 @@ import {
 import { setDisabledDays } from "../../../redux/actions/DaySelectionActions.js";
 import { connect } from "react-redux";
 import { compose } from "redux";
-import "../CSS/Default.css"
+import "../CSS/Default.css";
 
 class EetMeeSelector extends Component {
   /* ------------------------------------ */

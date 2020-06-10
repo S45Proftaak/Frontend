@@ -4,6 +4,8 @@ import { requestTypes, makeHttpCall } from "../../../helpers/httpHelper.js";
 import { connect } from "react-redux";
 import { compose } from "redux";
 import { withTranslation } from "react-i18next";
+import "../CSS/Default.css";
+import "./CSS/PriceChangeStyle.css";
 
 class PriceChange extends Component {
     constructor(props) {
@@ -83,17 +85,22 @@ class PriceChange extends Component {
         }
         return (
             <Container>
-                <div>
-                    Current Price: {this.state.fetchedData}
-                </div>
-                <div>
-                    New Price: <input type="number" onChange={this.handleChange}/>
-                </div>
-                <div>
-                    <input type="submit" value="submit" onClick={this.handleSubmit}/>
-                    {postFeedback}
-                </div>
-
+                <Row>
+                    <div>
+                        Current Price: {this.state.fetchedData}
+                    </div>
+                </Row>
+                <Row>
+                    <div>
+                        New Price: <input type="number" onChange={this.handleChange}/>
+                    </div>
+                </Row>
+                <Row>                    
+                    <div>
+                        <input className="SubmitButton" type="submit" value="submit" onClick={this.handleSubmit}/>
+                        {postFeedback}
+                    </div>
+                </Row>
             </Container>
         );
     }

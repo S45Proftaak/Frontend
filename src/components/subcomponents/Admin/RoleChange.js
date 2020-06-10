@@ -9,6 +9,8 @@ import {
 } from "../../../redux/actions/AdminActions";
 import { compose } from "redux";
 import { connect } from "react-redux";
+import "./CSS/RoleChangeStyle.css";
+import "../CSS/Default.css";
 
 class RoleChange extends Component {
     constructor(props) {
@@ -144,7 +146,7 @@ class RoleChange extends Component {
                         ) : <div></div>}
                     </tbody>
                 </table>
-                    <input type="submit" value="submit" onClick={this.handleSubmit}/>
+                    <input className="SubmitButton" type="submit" value="submit" onClick={this.handleSubmit}/>
             </div>
         );
     }
