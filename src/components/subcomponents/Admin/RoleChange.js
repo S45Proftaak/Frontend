@@ -13,12 +13,6 @@ import { connect } from "react-redux";
 class RoleChange extends Component {
     constructor(props) {
         super(props);
-
-        this.state = {
-            user: [{ Id: 1, Email: "rico@test.nl", Name: "Rico Muijtjens", Role: "ROLE_ADMIN" },
-            { Id: 2, Email: "duncan@test.nl", Name: "Duncan Schoenmakers", Role: "ROLE_EMPLOYEE" }],
-            loadPage: false
-        }
     }
 
     handleSelect(role, Id) {
