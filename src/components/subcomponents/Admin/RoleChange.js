@@ -23,16 +23,19 @@ class RoleChange extends Component {
         }
     }
 
-    handleSelect(role, Id) {
+    handleSelect(role, roleId, Id) {
 
         {/* Change role to new role */}
         var elementsIndex = this.props.users.findIndex(element => element.id === Id)
         var newArray = this.props.users
         newArray[elementsIndex].role.name = role;
+        newArray[elementsIndex].role.id = roleId;
 
         this.setState({
+
             userArray: newArray,
         });
+        console.log(this.state.userArray);
 
         changeUserRole(newArray);
     }
@@ -136,9 +139,9 @@ class RoleChange extends Component {
                                                     {t(this.handleRoleName(user.role.name))}
                                                 </Dropdown.Toggle>
                                                 <Dropdown.Menu>
-                                                    <Dropdown.Item onSelect={() => this.handleSelect("ROLE_EMPLOYEE", user.id)}>{t("Admin.Employee")}</Dropdown.Item>
-                                                    <Dropdown.Item onSelect={() => this.handleSelect("ROLE_SECRETARY", user.id)}>{t("Admin.Secretary")}</Dropdown.Item>
-                                                    <Dropdown.Item onSelect={() => this.handleSelect("ROLE_ADMIN", user.id)}>{t("Admin.Admin")}</Dropdown.Item>
+                                                    <Dropdown.Item onSelect={() => this.handleSelect("ROLE_EMPLOYEE", 1, user.id)}>{t("Admin.Employee")}</Dropdown.Item>
+                                                    <Dropdown.Item onSelect={() => this.handleSelect("ROLE_SECRETARY", 3, user.id)}>{t("Admin.Secretary")}</Dropdown.Item>
+                                                    <Dropdown.Item onSelect={() => this.handleSelect("ROLE_ADMIN", 2, user.id)}>{t("Admin.Admin")}</Dropdown.Item>
                                                 </Dropdown.Menu>
                                             </Dropdown>
                                 </td>
