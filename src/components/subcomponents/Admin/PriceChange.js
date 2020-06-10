@@ -72,6 +72,7 @@ class PriceChange extends Component {
 
     handleSubmit = () => {
         this.PostValues(this.state.postAdress);
+        this.GetValues(this.state.fetchAdress);
     };
 
     render() {
