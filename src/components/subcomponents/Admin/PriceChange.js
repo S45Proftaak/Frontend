@@ -62,17 +62,17 @@ class PriceChange extends Component {
                 posted: true,
             });
         });
-};
+    };
 
     handleChange = (event) => {
         this.setState({
             inputValue: event.target.value,
         })
-};
+    };
 
     handleSubmit = () => {
         this.PostValues(this.state.postAdress);
-};
+    };
 
     render() {
         const hasPosted = this.state.posted;
