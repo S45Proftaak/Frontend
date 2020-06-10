@@ -13,10 +13,12 @@ import { connect } from "react-redux";
 class RoleChange extends Component {
     constructor(props) {
         super(props);
+        this.state = {
             userArray: this.props.users,
             posting: false,
             posted: false,
             postAdress: "http://localhost:8020/admin/updateUserRole",
+        }
     }
 
     handleSelect(role, Id) {
