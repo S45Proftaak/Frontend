@@ -48,6 +48,7 @@ class RoleChange extends Component {
         makeHttpCall("http://localhost:8020/admin/getAllUsers", this.props.token, requestTypes.GET).then
             ((res) => {
                 this.props.fetchedAdminData(res);
+                console.log(res);
                 return res;
             })
     }
@@ -83,7 +84,7 @@ class RoleChange extends Component {
                     </thead>
                     <tbody>
                         {this.checkProps()}
-                        {this.props.users.map(user =>
+                        {this.props.users !== undefined ? this.props.users.map(user =>
                             <tr key={user.id}>
                                 <td>
                                     {user.email}
@@ -104,7 +105,7 @@ class RoleChange extends Component {
                                             </Dropdown>
                                 </td>
                             </tr>
-                        )}
+                        ) : <div></div>}
                     </tbody>
                 </table>
             </div>
