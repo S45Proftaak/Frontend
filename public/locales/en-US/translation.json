@@ -59,5 +59,10 @@
     "filledToLate": "Filled to late",
     "MostEaten": "Most eaten",
     "yourScore":"Your score"
+  },
+  "AdministratieOverview":{
+    "date":"Date",
+    "name":"Name",
+    "intime":"In time"
   }
 }

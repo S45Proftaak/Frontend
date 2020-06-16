@@ -17,7 +17,13 @@ class Overview extends Component {
     return renderedOverview;
   }
 
+  
+
   render() {
+    const [sortedField, setSortedField] = useState(null);
+    
+    const t = withTranslation();
+
     return (
       <Card className="HeightContainer">
         <Card.Body className="DefaultCardLayer1">
@@ -25,20 +31,21 @@ class Overview extends Component {
             <table>
               <thead>
                 <tr>
-                  <th>Date</th>
-                  <th>Name</th>
-                  <th>In Time</th>
+                  <th><button type="button" onClick={() => setSortedField('date')}>{t("AdministratieOverview.Date")}</button></th>
+                  <th><button type="button" onClick={() => setSortedField('name')}>{t("AdministratieOverview.Name")}</button></th>
+                  <th><button type="button" onClick={() => setSortedField('intime')}>{t("AdministratieOverview.InTime")}</button></th>
                 </tr>
               </thead>
+              {this.props.payload !== undefined ?
               <tbody>
-                {this.props.payload.map((item, key) => (
+                 {this.props.payload.map((item, key) => (
                   <tr key={key}>
                     <td>{item.date}</td>
                     <td>{item.name}</td>
                     {!item.toLate ? <td>&#10003;</td> : <td>&#10005;</td>}
                   </tr>
                 ))}
-              </tbody>
+              </tbody> : <tbody></tbody> }
             </table>
           </Container>
         </Card.Body>
