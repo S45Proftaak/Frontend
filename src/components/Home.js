@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Col, Row, Container } from "react-bootstrap";
 import WeekSelection from "./subcomponents/Home/WeekSelection";
 import EetMeeSelector from "./subcomponents/Home/EetMeeSelector";
+import ShowCurrentPrice from  "./subcomponents/Home/ShowCurrentPrice";
 
 class Home extends Component {
   constructor(props) {
@@ -19,6 +20,7 @@ class Home extends Component {
         </Row>
         <Row>
           <Col lg>
+              <ShowCurrentPrice/>
             <EetMeeSelector />
           </Col>
         </Row>
