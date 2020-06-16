@@ -103,12 +103,15 @@ class EetMeeSelector extends Component {
       }
       //console.log("Checking the DisabledDates!");
       //console.log(this.props.disabledDates);
-      if (this.props.disabledDates.length > 0) {
-        if (this.props.disabledDates.includes(formatDateToString(date))) {
-          colorStyling = "success";
-          text = t("Week.participated");
+      if(this.props.disabledDates != null){
+        if (this.props.disabledDates.length > 0) {
+          if (this.props.disabledDates.includes(formatDateToString(date))) {
+            colorStyling = "success";
+            text = t("Week.participated");
+          }
         }
       }
+
       if (!this.state.isLoading) {
         renderedDays.push(
           <Col key={day.key}>
