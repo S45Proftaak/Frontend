@@ -8,5 +8,12 @@ export default function Logout(props) {
 
   dispatcher(out());
 
+  const setCoockie = (cname, cvalue) => {
+    var expires = "expires=Thu, 01 Jan 1970 00:00:01 GMT";
+    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+  }
+
+  setCoockie("LoginData", null);
+
   return <Redirect to="login" />;
 }
