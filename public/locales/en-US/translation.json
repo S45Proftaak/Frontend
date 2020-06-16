@@ -44,6 +44,15 @@
     "participate": "Participate",
     "participated": "✔️"
   },
+  "Admin" : {
+    "Admin" : "Admin",
+    "Secretary" : "Secretary",
+    "Employee" : "Employee",
+    "Email" : "Email",
+    "Name" : "Naam",
+    "Role" : "Rol",
+    "Home" : "Manage"
+  },
   "LeaderBoardScore": {
     "Points": "points",
     "filledInTime": "Filled in time",

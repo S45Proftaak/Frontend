@@ -50,5 +50,14 @@
     "filledToLate": "Telaat ingevuld",
     "MostEaten": "Meest meegegeten",
     "yourScore":"Uw score"
+  },
+  "Admin" : {
+    "Admin" : "Administrator",
+    "Secretary" : "Secretaris",
+    "Employee" : "Medewerker",
+    "Email" : "Email",
+    "Name" : "Name",
+    "Role" : "Role",
+    "Home" : "Beheer"
   }
 }

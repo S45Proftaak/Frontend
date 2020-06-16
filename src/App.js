@@ -9,6 +9,7 @@ import Administration from "./components/Administration";
 import Redirect from "./components/Redirect";
 import Leaderboard from "./components/Leaderboard";
 import Logout from "./components/Logout";
+import Admin from "./components/Admin";
 
 function App() {
   const { t } = useTranslation();
@@ -21,6 +22,7 @@ function App() {
             { link: "/", name: t("App.Home") },
             { link: "/administration", name: t("App.Administration") },
             { link: "/leaderboard", name: t("App.Leaderboard") },
+            { link: "/admin", name: t("Admin.Home")},
           ]}
         />
         <div style={{ margin: 30 }} />
@@ -47,6 +49,11 @@ function App() {
           <Route path={"/logout"}>
             <Redirect>
               <Logout />
+            </Redirect>
+          </Route>
+          <Route path="/admin">
+            <Redirect>
+              <Admin></Admin>
             </Redirect>
           </Route>
         </Switch>

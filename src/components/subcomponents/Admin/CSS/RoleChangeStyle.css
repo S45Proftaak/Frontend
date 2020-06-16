@@ -1,0 +1,10 @@
+@import url("../../CSS/Default.css");
+
+.btn {
+    background-color: var(--ButtonColor) !important;
+    border-color: var(--ButtonColor) !important;
+    color: var(--ButtonTextColor)!important;
+}
+.btn:hover {
+    background-color: var(--ButtonHoverColor) !important;
+}
