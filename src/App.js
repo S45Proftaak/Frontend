@@ -10,6 +10,7 @@ import Redirect from "./components/Redirect";
 import Leaderboard from "./components/Leaderboard";
 import Logout from "./components/Logout";
 import Admin from "./components/Admin";
+import LoginState from "./redux/states/LoginStatus";
 
 function App() {
   const { t } = useTranslation();
@@ -25,6 +26,7 @@ function App() {
             { link: "/admin", name: t("Admin.Home")},
           ]}
         />
+
         <div style={{ margin: 30 }} />
 
         <Switch>
@@ -55,11 +57,14 @@ function App() {
             <Redirect>
               <Admin></Admin>
             </Redirect>
-          </Route>
+          </Route>    
         </Switch>
+        
+
       </Router>
+         
     </div>
-  );
+  ); 
 }
 
 export default App;
