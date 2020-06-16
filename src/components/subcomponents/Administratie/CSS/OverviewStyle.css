@@ -1,9 +1,11 @@
+@import url("../../CSS/Default.css");
+ 
  th  {
     text-align: left;
     padding:5px;
     padding-left: 15px;
-    background-color: rgb(93, 150, 255);
-    color: rgb(241, 241, 241);
+    background-color: var(--TableHeaderBackground);
+    color: var(--WhiteText);
   }
 
   td {
@@ -11,7 +13,7 @@
     text-align: left;
     padding:5px;
     padding-left: 15px;
-    background-color: rgb(255, 255, 255) ;
+    background-color: var(--TableCellBackground) ;
   }
 
   table {

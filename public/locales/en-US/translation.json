@@ -35,11 +35,20 @@
   },
   "App": {
     "Home": "Home",
-    "Administration": "Administration"
+    "Administration": "Administration",
+    "Leaderboard":"Leaderboard",
+    "Logout":"Logout"
   },
   "Week": {
     "weeknumber": "Week number",
     "participate": "Participate",
     "participated": "✔️"
+  },
+  "LeaderBoardScore": {
+    "Points": "points",
+    "filledInTime": "Filled in time",
+    "filledToLate": "Filled to late",
+    "MostEaten": "Most eaten",
+    "yourScore":"Your score"
   }
 }

@@ -7,17 +7,20 @@ import Login from "./components/login";
 import Home from "./components/Home";
 import Administration from "./components/Administration";
 import Redirect from "./components/Redirect";
+import Leaderboard from "./components/Leaderboard";
+import Logout from "./components/Logout";
 
 function App() {
   const { t } = useTranslation();
 
   return (
-    <div className="App-header">
+    <div className="PageBackground">
       <Router>
         <Navbar
           Navs={[
             { link: "/", name: t("App.Home") },
             { link: "/administration", name: t("App.Administration") },
+            { link: "/leaderboard", name: t("App.Leaderboard") },
           ]}
         />
         <div style={{ margin: 30 }} />
@@ -34,6 +37,16 @@ function App() {
           <Route path="/administration">
             <Redirect>
               <Administration />
+            </Redirect>
+          </Route>
+          <Route path={"/leaderboard"}>
+            <Redirect>
+              <Leaderboard />
+            </Redirect>
+          </Route>
+          <Route path={"/logout"}>
+            <Redirect>
+              <Logout />
             </Redirect>
           </Route>
         </Switch>

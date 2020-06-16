@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { withTranslation } from "react-i18next";
 import { Card, Container } from "react-bootstrap";
 import "./CSS/CurrentSelectedUserStyle.css";
+import "../CSS/Default.css";
 
 class CurrentSelectedUser extends Component {
   constructor(props) {
@@ -17,15 +18,11 @@ class CurrentSelectedUser extends Component {
   render() {
     const { t } = this.props;
     return (
-      <Card style={{ margin: 5 }}>
-        <Card.Body>
           <Container>
-            <h4 className="text-center">
-              {t("SelectedUser.CurrentlySelectedUser")}
-            </h4>
+              <h4>
+                {t("SelectedUser.CurrentlySelectedUser")}
+              </h4>
           </Container>
-        </Card.Body>
-      </Card>
     );
   }
 }
