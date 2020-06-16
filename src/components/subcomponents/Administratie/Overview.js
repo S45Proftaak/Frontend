@@ -31,12 +31,6 @@ class Overview extends Component {
                 </tr>
               </thead>
               <tbody>
-              <tr>
-                  <td>test</td>
-                  <td>test</td>
-                  <td>test</td>
-                </tr>
-
                 {this.props.payload.map((item, key) => (
                   <tr key={key}>
                     <td>{item.date}</td>
