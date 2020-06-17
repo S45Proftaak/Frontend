@@ -11,21 +11,54 @@ import Leaderboard from "./components/Leaderboard";
 import Logout from "./components/Logout";
 import Admin from "./components/Admin";
 import LoginState from "./redux/states/LoginStatus";
+import { useSelector } from "react-redux";
+import JwtDecode from "jwt-decode";
 
 function App() {
   const { t } = useTranslation();
+  const token = useSelector((state) => state.loginReducer.payload);
 
-  return (
-    <div className="PageBackground">
-      <Router>
-        <Navbar
-          Navs={[
+  const showNav = () => {
+    if (token !== null || token !== undefined) {
+      let model = undefined;
+      try {
+        model = JwtDecode(token.token);
+      } catch {
+        model = "logout";
+      }
+      switch (model.role) {
+        case "ROLE_EMPLOYEE": {
+          return [
+            { link: "/", name: t("App.Home") },
+            { link: "/leaderboard", name: t("App.Leaderboard") },
+          ];
+        }
+        case "ROLE_SECRETARY": {
+          return [
+            { link: "/", name: t("App.Home") },
+            { link: "/administration", name: t("App.Administration") },
+            { link: "/leaderboard", name: t("App.Leaderboard") },
+          ];
+        }
+        case "ROLE_ADMIN": {
+          return [
             { link: "/", name: t("App.Home") },
             { link: "/administration", name: t("App.Administration") },
             { link: "/leaderboard", name: t("App.Leaderboard") },
             { link: "/admin", name: t("Admin.Home") },
-          ]}
-        />
+          ];
+        }
+        default: {
+          return [{ link: "/", name: t("App.Home") }];
+        }
+      }
+    }
+  };
+
+  return (
+    <div className="PageBackground">
+      <Router>
+        <Navbar Navs={showNav()} />
 
         <div style={{ margin: 30 }} />
 

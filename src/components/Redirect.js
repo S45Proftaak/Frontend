@@ -11,8 +11,12 @@ class Redirect extends Component {
 
   checkForRole = () => {
     if (this.props.loggedin && this.props.token !== undefined) {
-      var model = jwt(this.props.token.token);
-      return model;
+      try {
+        var model = jwt(this.props.token.token);
+        return model;
+      } catch {
+        return undefined;
+      }
     } else {
       return undefined;
     }
