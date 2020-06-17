@@ -23,8 +23,15 @@
     margin: 0px;
 }
 
+.title{
+    width: 100%;
+    padding: 0px;
+    margin: 0px;
+    text-align: center;
+}
+
 .RowContainer {
-    height: 100%;
+    height: 89%;
 }
 
 .footer {

@@ -87,6 +87,9 @@ class GeneralLeaderboard extends Component {
 render() {
     return (
         <Container className="footer">
+            <h1 className="title">
+                Leaderboard
+            </h1>
         <h5 className="text-center">
             <button className="ArrowButton" onClick={() => this.CycleLeaderboards(this.state.currentLeaderboard - 1)}>{"<"}</button>
             {this.state.leaderboardName}
