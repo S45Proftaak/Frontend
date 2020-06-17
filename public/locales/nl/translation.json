@@ -31,7 +31,8 @@
     "Password": "Wachtwoord",
     "Login": "Inloggen",
     "UsernameError": "Gebruikersnaam is niet ingevuld!",
-    "PasswordError": "Wachtwoord is niet ingevuld"
+    "PasswordError": "Wachtwoord is niet ingevuld",
+    "Error" : "Verkeerd email en/of wachtwoord"
   },
   "App": {
     "Home": "Hoofdpagina",
