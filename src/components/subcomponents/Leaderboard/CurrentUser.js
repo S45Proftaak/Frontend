@@ -5,6 +5,7 @@ import "../CSS/Default.css";
 import { compose } from "redux";
 import { connect } from "react-redux";
 import { makeHttpCall, requestTypes } from "../../../helpers/httpHelper";
+import handleRoleName from '../../../ChangeRoleName';
 
 class CurrentUser extends Component {
   constructor(props) {
@@ -46,7 +47,7 @@ class CurrentUser extends Component {
         {this.state.fetched ? (
           <div>
             <div>{this.state.fetchedData.name}</div>
-            <div>{this.state.fetchedData.role}</div>
+            <div>{t(handleRoleName(this.state.fetchedData.role))}</div>
             <div>{this.state.fetchedData.email}</div>
           </div>
         ) : (
