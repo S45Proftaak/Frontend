@@ -32,6 +32,7 @@ async function sendToServer(link, token, type, data) {
       window.location.pathname = "/logout";
     }
     console.log("Something went wrong! [Code is " + response.status + "]");
+    return response.status;
   }
   return await response.json();
 }

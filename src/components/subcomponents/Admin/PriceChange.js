@@ -19,6 +19,7 @@ class PriceChange extends Component {
 
             posting: false,
             posted: false,
+            postResponse: undefined,
             postAdress:  "http://localhost:8020/admin/updatePrice",
         };
     }
@@ -56,10 +57,11 @@ class PriceChange extends Component {
             this.props.token,
             requestTypes.PUT,
             {price: this.state.inputValue}
-        ).then(() => {
+        ).then((response) => {
             this.setState({
                 posting: false,
                 posted: true,
+                postResponse: response,
             });
         });
     };
@@ -76,10 +78,12 @@ class PriceChange extends Component {
     };
 
     render() {
-        const hasPosted = this.state.posted;
         let postFeedback;
-        if(this.state.posted){
+        if(this.state.posted && this.state.postResponse === null){
             postFeedback = <div>Price updated successfully</div>;
+        }
+        else if(this.state.postResponse === 400){
+            postFeedback = <div className="invalidPrice">Price change invalid</div>
         }
         else{
             postFeedback = <div></div>;
