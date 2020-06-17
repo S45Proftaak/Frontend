@@ -41,7 +41,7 @@ class ShowCurrentPrice extends Component {
 
   render() {
     const {t} = this.props;
-    let text = t("App.CurrentPrice");
+    let text = t("PriceChange.CurrentPrice");
     return (
       <Container>
         <Row>

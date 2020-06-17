@@ -72,22 +72,33 @@ class PriceChange extends Component {
   };
 
   render() {
+    const { t } = this.props;
+
+    let validPrice = t("PriceChange.ValidPrice");
+    let invalidPrice = t("PriceChange.InvalidPrice");
+
     let postFeedback;
     if (this.state.posted && this.state.postResponse === null) {
-      postFeedback = <div>Price updated successfully</div>;
+      postFeedback = <div>{validPrice}</div>;
     } else if (this.state.postResponse === 400) {
-      postFeedback = <div className="invalidPrice">Price change invalid</div>;
+      postFeedback = <div className="invalidPrice">{invalidPrice}</div>;
     } else {
-      postFeedback = <div></div>;
+      postFeedback = <div/>;
     }
+
+    let currentPrice = t("PriceChange.CurrentPrice");
+    let newPrice = t("PriceChange.NewPrice");
+    let submit = t("PriceChange.Submit");
+
+
     return (
       <Container>
         <Row>
-          <div>Current Price: {this.state.fetchedData}</div>
+          <div>{currentPrice}: {this.state.fetchedData}</div>
         </Row>
         <Row>
           <div>
-            New Price: <input type="number" onChange={this.handleChange} />
+            {newPrice}: <input type="number" onChange={this.handleChange} />
           </div>
         </Row>
         <Row>
@@ -95,7 +106,7 @@ class PriceChange extends Component {
             <input
               className="SubmitButton"
               type="submit"
-              value="submit"
+              value={submit}
               onClick={this.handleSubmit}
             />
             {postFeedback}

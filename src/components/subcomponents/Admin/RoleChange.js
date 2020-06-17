@@ -103,6 +103,8 @@ class RoleChange extends Component {
   render() {
     const { t } = this.props;
 
+    let submit = t("PriceChange.Submit");
+
     let postFeedback;
     if (this.state.posted) {
       postFeedback = <div>Roles updated successfully</div>;
@@ -166,7 +168,7 @@ class RoleChange extends Component {
         <input
           className="SubmitButton"
           type="submit"
-          value="submit"
+          value={submit}
           onClick={this.handleSubmit}
         />
         {postFeedback}

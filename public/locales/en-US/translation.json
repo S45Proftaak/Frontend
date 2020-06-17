@@ -38,7 +38,7 @@
     "Administration": "Administration",
     "Leaderboard":"Leaderboard",
     "Logout":"Logout",
-    "CurrentPrice": "Current Price"
+
   },
   "Week": {
     "weeknumber": "Week number",
@@ -65,5 +65,12 @@
     "Date": "Date",
     "Name": "Name",
     "InTime": "In Time"
+  },
+  "PriceChange" : {
+    "CurrentPrice": "Current Price",
+    "NewPrice": "New Price",
+    "Submit": "Submit",
+    "ValidPrice": "Price updated successfully",
+    "InvalidPrice": "Price change invalid"
   }
 }
