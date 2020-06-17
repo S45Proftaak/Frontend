@@ -37,7 +37,8 @@
     "Home": "Home",
     "Administration": "Administration",
     "Leaderboard":"Leaderboard",
-    "Logout":"Logout"
+    "Logout":"Logout",
+    "CurrentPrice": "Current Price"
   },
   "Week": {
     "weeknumber": "Week number",

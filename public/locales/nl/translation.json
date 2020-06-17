@@ -38,7 +38,8 @@
     "Home": "Hoofdpagina",
     "Administration": "Administratie",
     "Leaderboard": "Ranglijst",
-    "Logout":"Uitloggen"
+    "Logout":"Uitloggen",
+    "CurrentPrice": "Huidige Prijs"
   },
   "Week": {
     "weeknumber": "Week nummer",
