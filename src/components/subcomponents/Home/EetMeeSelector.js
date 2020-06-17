@@ -32,19 +32,6 @@ class EetMeeSelector extends Component {
       /*this.state.formattedStringDays.push(formatDateToString(day.date));*/
     }
   }
-<<<<<<< HEAD
-=======
-  /*componentDidMount() {
-    makeHttpCall(
-      "http://localhost:8020/foodorder/all-orders-per-week",
-      this.props.token,
-      requestTypes.GET,
-      { dates: this.state.formattedStringDays }
-    ).then((response) => {
-      this.setState({ disabledDates: response });
-    });
-  }*/
->>>>>>> 5bd0b8e8ec72dee40ca2b1fc0ec732653450f563
   formatStringDays(week) {
     let stringDays = [];
     for (let day of this.state.days) {
@@ -74,12 +61,8 @@ class EetMeeSelector extends Component {
         requestTypes.GET,
         { dates: stringDays }
       ).then((response) => {
-<<<<<<< HEAD
         model[day].isLoading = false;
         this.setState({ days: model });
-=======
-        this.setState({ isLoading: false });
->>>>>>> 5bd0b8e8ec72dee40ca2b1fc0ec732653450f563
         this.props.dispatch(setDisabledDays(response));
       });
     });
