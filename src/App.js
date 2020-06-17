@@ -10,7 +10,6 @@ import Redirect from "./components/Redirect";
 import Leaderboard from "./components/Leaderboard";
 import Logout from "./components/Logout";
 import Admin from "./components/Admin";
-import LoginState from "./redux/states/LoginStatus";
 import { useSelector } from "react-redux";
 import JwtDecode from "jwt-decode";
 

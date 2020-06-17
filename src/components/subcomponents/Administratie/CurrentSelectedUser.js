@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { withTranslation } from "react-i18next";
-import { Card, Container } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 import "./CSS/CurrentSelectedUserStyle.css";
 import "../CSS/Default.css";
 
@@ -18,11 +18,9 @@ class CurrentSelectedUser extends Component {
   render() {
     const { t } = this.props;
     return (
-          <Container>
-              <h4>
-                {t("SelectedUser.CurrentlySelectedUser")}
-              </h4>
-          </Container>
+      <Container>
+        <h4>{t("SelectedUser.CurrentlySelectedUser")}</h4>
+      </Container>
     );
   }
 }
