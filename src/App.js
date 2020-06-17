@@ -23,7 +23,7 @@ function App() {
             { link: "/", name: t("App.Home") },
             { link: "/administration", name: t("App.Administration") },
             { link: "/leaderboard", name: t("App.Leaderboard") },
-            { link: "/admin", name: t("Admin.Home")},
+            { link: "/admin", name: t("Admin.Home") },
           ]}
         />
 
@@ -31,7 +31,7 @@ function App() {
 
         <Switch>
           <Route exact path="/">
-            <Redirect>
+            <Redirect roles={["ROLE_EMPLOYEE", "ROLE_ADMIN", "ROLE_SECRETARY"]}>
               <Home />
             </Redirect>
           </Route>
@@ -39,32 +39,29 @@ function App() {
             <Login />
           </Route>
           <Route path="/administration">
-            <Redirect>
+            <Redirect roles={["ROLE_ADMIN", "ROLE_SECRETARY"]}>
               <Administration />
             </Redirect>
           </Route>
           <Route path={"/leaderboard"}>
-            <Redirect>
+            <Redirect roles={["ROLE_EMPLOYEE", "ROLE_ADMIN", "ROLE_SECRETARY"]}>
               <Leaderboard />
             </Redirect>
           </Route>
           <Route path={"/logout"}>
-            <Redirect>
+            <Redirect roles={["ROLE_EMPLOYEE", "ROLE_ADMIN", "ROLE_SECRETARY"]}>
               <Logout />
             </Redirect>
           </Route>
           <Route path="/admin">
-            <Redirect>
+            <Redirect roles={["ROLE_ADMIN"]}>
               <Admin></Admin>
             </Redirect>
-          </Route>    
+          </Route>
         </Switch>
-        
-
       </Router>
-         
     </div>
-  ); 
+  );
 }
 
 export default App;
