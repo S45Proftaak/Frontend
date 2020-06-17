@@ -9,6 +9,16 @@ export const fetchedLoginData = (token) => ({
     payload: token
 });
 
+export const fetchedError = (error) => ({
+    type: "LOGIN_ERROR",
+    error: error
+});
+
+export const resetError = (error) => ({
+    type: "RESET_ERROR",
+    error: error
+});
+
 export const logout = () => ({
     type: "LOGOUT",
     payload: null
