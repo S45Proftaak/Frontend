@@ -60,5 +60,11 @@
     "Name" : "Name",
     "Role" : "Role",
     "Home" : "Beheer"
+  },
+  "AdministratieOverview":{
+    "date":"Datum",
+    "name":"Naam",
+    "intime":"Optijd",
+    "defaultvalue":"Zoeken op naam..."
   }
 }
