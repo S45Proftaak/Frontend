@@ -3,7 +3,7 @@ import { Row, Container } from "react-bootstrap";
 import { requestTypes, makeHttpCall } from "../../../helpers/httpHelper.js";
 import { connect } from "react-redux";
 import { compose } from "redux";
-import {useTranslation, withTranslation} from "react-i18next";
+import { withTranslation } from "react-i18next";
 import "../CSS/Default.css";
 import "../Admin/CSS/PriceChangeStyle.css";
 
@@ -40,12 +40,15 @@ class ShowCurrentPrice extends Component {
   };
 
   render() {
-    const {t} = this.props;
+    const { t } = this.props;
     let text = t("PriceChange.CurrentPrice");
     return (
       <Container>
         <Row>
-          <div> {text} : {this.state.fetchedData}</div>
+          <div>
+            {" "}
+            {text} : {this.state.fetchedData}
+          </div>
         </Row>
       </Container>
     );
