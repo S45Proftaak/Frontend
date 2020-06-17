@@ -13,7 +13,7 @@ import {
 } from "../../../helpers/dateHelpers.js";
 import { connect } from "react-redux";
 import { compose } from "redux";
-import "../CSS/Default.css"
+import "../CSS/Default.css";
 
 class WeekSelection extends React.Component {
   // Constructor including properties
@@ -51,16 +51,12 @@ class WeekSelection extends React.Component {
     if (week >= getCurrentWeek() - 2 && week < getCurrentWeek() + 6) {
       this.setState({ selectedWeek: week });
       const stringDays = this.formatStringDays(week);
-      console.log("[WeekSelection] FormattedStringDays is the following:");
-      console.log(stringDays);
       makeHttpCall(
         "http://localhost:8020/foodorder/all-orders-per-week",
         this.props.token,
         requestTypes.GET,
         { dates: stringDays }
       ).then((response) => {
-        console.log("[WeekSelection] The response is the following:");
-        console.log(response);
         this.props.dispatch(setDisabledDays(response));
         this.props.dispatch(selectWeek(week));
       });
@@ -125,7 +121,6 @@ class WeekSelection extends React.Component {
 }
 
 function mapStateToProps(state) {
-  console.log("[WeekSelection] Mapping state to props!!");
   return {
     token: state.loginReducer.payload.token,
   };
@@ -158,7 +153,6 @@ export default function WeekSelection(props) {
   const setSelectedWeek = (event, week) => {
     if (week >= getCurrentWeek() - 2 && week < getCurrentWeek() + 6) {
       selectedWeek = week;
-      console.log("Gewijzigd naar " + selectedWeek + " hoor!");
       this.forceRerender();
     }
   };
@@ -171,7 +165,6 @@ export default function WeekSelection(props) {
       if (week === 0) {
         styling = "underline";
       }
-      console.log(getCurrentWeek() + week + "Halloooo en " + selectedWeek);
       renderedWeeks.push(
         <Pagination.Item
           active={getCurrentWeek() + week === selectedWeek}

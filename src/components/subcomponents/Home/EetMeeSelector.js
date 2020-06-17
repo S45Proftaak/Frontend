@@ -31,8 +31,20 @@ class EetMeeSelector extends Component {
       day.date = getDayOfMonthByWeekAndDay(this.props.selectedWeek, day.key);
       /*this.state.formattedStringDays.push(formatDateToString(day.date));*/
     }
-    console.log(this.props);
   }
+<<<<<<< HEAD
+=======
+  /*componentDidMount() {
+    makeHttpCall(
+      "http://localhost:8020/foodorder/all-orders-per-week",
+      this.props.token,
+      requestTypes.GET,
+      { dates: this.state.formattedStringDays }
+    ).then((response) => {
+      this.setState({ disabledDates: response });
+    });
+  }*/
+>>>>>>> 5bd0b8e8ec72dee40ca2b1fc0ec732653450f563
   formatStringDays(week) {
     let stringDays = [];
     for (let day of this.state.days) {
@@ -55,7 +67,6 @@ class EetMeeSelector extends Component {
       requestTypes.POST,
       { date: formatDateToString(date) }
     ).then((response) => {
-      console.log(response);
       const stringDays = this.formatStringDays(this.props.selectedWeek);
       makeHttpCall(
         "http://localhost:8020/foodorder/all-orders-per-week",
@@ -63,8 +74,12 @@ class EetMeeSelector extends Component {
         requestTypes.GET,
         { dates: stringDays }
       ).then((response) => {
+<<<<<<< HEAD
         model[day].isLoading = false;
         this.setState({ days: model });
+=======
+        this.setState({ isLoading: false });
+>>>>>>> 5bd0b8e8ec72dee40ca2b1fc0ec732653450f563
         this.props.dispatch(setDisabledDays(response));
       });
     });
@@ -138,7 +153,6 @@ class EetMeeSelector extends Component {
         );
       }
     }
-    //console.log(renderedDays);
     return renderedDays;
   }
   render() {
@@ -159,9 +173,6 @@ class EetMeeSelector extends Component {
 }
 
 function mapStateToProps(state) {
-  console.log("[EetMeeSelector] Mapping state to props!!");
-  console.log("[EetMeeSelector] disabledDays is the following:");
-  console.log(state.daySelectionReducer.disabledDays);
   return {
     selectedWeek: state.daySelectionReducer.selectedWeek,
     disabledDates: state.daySelectionReducer.disabledDays,

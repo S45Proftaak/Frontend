@@ -39,7 +39,6 @@ class GeneralLeaderboard extends Component {
     });
     makeHttpCall(fetchAdress, this.props.token, requestTypes.GET).then(
       (response) => {
-        console.log(response);
         response.splice(1, 0, response.splice(0, 1)[0]);
         this.setState({
           fetching: false,

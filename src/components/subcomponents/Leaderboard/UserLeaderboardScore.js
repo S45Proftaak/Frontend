@@ -23,7 +23,6 @@ class UserLeaderboardScore extends Component {
     this.setState({
       fetching: true,
     });
-    console.log(fetchAdress);
     makeHttpCall(fetchAdress, this.props.token, requestTypes.GET).then(
       (response) => {
         this.setState({
@@ -31,8 +30,6 @@ class UserLeaderboardScore extends Component {
           fetched: true,
           fetchedData: response,
         });
-        console.log(response);
-        console.log(this.state);
       }
     );
   };
