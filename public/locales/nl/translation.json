@@ -61,5 +61,10 @@
     "Name" : "Name",
     "Role" : "Role",
     "Home" : "Beheer"
+  },
+  "Administration": {
+    "Date": "Datum",
+    "Name": "Naam",
+    "InTime": "Op Tijd"
   }
 }

@@ -60,5 +60,10 @@
     "filledToLate": "Filled to late",
     "MostEaten": "Most eaten",
     "yourScore":"Your score"
+  },
+  "Administration": {
+    "Date": "Date",
+    "Name": "Name",
+    "InTime": "In Time"
   }
 }

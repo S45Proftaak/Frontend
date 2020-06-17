@@ -18,6 +18,10 @@ class Overview extends Component {
   }
 
   render() {
+    const {t} = this.props;
+    let date = t("Administration.Date");
+    let name = t("Administration.Name");
+    let inTime = t("Administration.InTime");
     return (
       <Card className="HeightContainer">
         <Card.Body className="DefaultCardLayer1">
@@ -25,9 +29,9 @@ class Overview extends Component {
             <table>
               <thead>
                 <tr>
-                  <th>Date</th>
-                  <th>Name</th>
-                  <th>In Time</th>
+                  <th>{date}</th>
+                  <th>{name}</th>
+                  <th>{inTime}</th>
                 </tr>
               </thead>
               <tbody>
