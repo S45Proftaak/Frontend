@@ -3,9 +3,12 @@ import { Container, Row, Col, Card } from "react-bootstrap";
 import Form from "./subcomponents/login/form";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
+import { Alert } from 'react-bootstrap';
 import {
   fetchLoginData,
   fetchedLoginData,
+  fetchedError,
+  resetError
 } from "../redux/actions/LoginActions";
 import { Redirect } from "react-router-dom";
 
@@ -13,6 +16,7 @@ export default function Login() {
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const loggedin = useSelector((store) => store.loginReducer.loggedin);
+  let error = useSelector((store) => store.loginReducer.error);
 
   function Submit(event) {
     const form = document.getElementById("LoginForm");
@@ -37,10 +41,11 @@ export default function Login() {
       .then((res) => res.json())
       .then(
         (result) => {
+          dispatch(resetError(false));
           dispatch(fetchedLoginData(result));
         },
         (error) => {
-          console.error(error);
+          dispatch(fetchedError(true));
         }
       );
   };
@@ -58,6 +63,13 @@ export default function Login() {
                 <Form onSubmit={Submit} />
               </Card.Body>
             </Card>
+            {error === true &&
+              <div style={{marginTop : '2%'}}>
+                <Alert key='danger' variant='danger'>
+                  {t("Login.Error")}
+            </Alert>
+              </div>
+            }
           </Col>
         </Row>
       </Container>
@@ -65,7 +77,7 @@ export default function Login() {
   }
   else {
     return (
-      <Redirect to="/"/>
+      <Redirect to="/" />
     );
   }
 }
