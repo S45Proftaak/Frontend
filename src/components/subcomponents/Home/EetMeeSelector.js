@@ -19,15 +19,13 @@ class EetMeeSelector extends Component {
     super(props);
     this.state = {
       days: [
-        { key: 0, tName: "Utils.Monday", disabled: false },
-        { key: 1, tName: "Utils.Tuesday", disabled: false },
-        { key: 2, tName: "Utils.Wednesday", disabled: false },
-        { key: 3, tName: "Utils.Thursday", disabled: false },
-        { key: 4, tName: "Utils.Friday", disabled: false },
+        { key: 0, tName: "Utils.Monday", disabled: false, isLoading: false },
+        { key: 1, tName: "Utils.Tuesday", disabled: false, isLoading: false },
+        { key: 2, tName: "Utils.Wednesday", disabled: false, isLoading: false },
+        { key: 3, tName: "Utils.Thursday", disabled: false, isLoading: false },
+        { key: 4, tName: "Utils.Friday", disabled: false, isLoading: false },
       ],
       isLoading: false,
-      //lastClickedDate: null,
-      //formattedStringDays: [],
     };
     for (let day of this.state.days) {
       day.date = getDayOfMonthByWeekAndDay(this.props.selectedWeek, day.key);
@@ -35,18 +33,6 @@ class EetMeeSelector extends Component {
     }
     console.log(this.props);
   }
-  /*componentDidMount() {
-    makeHttpCall(
-      "http://localhost:8020/foodorder/all-orders-per-week",
-      this.props.token,
-      requestTypes.GET,
-      { dates: this.state.formattedStringDays }
-    ).then((response) => {
-      console.log("The response is the following:");
-      console.log(response);
-      this.setState({ disabledDates: response });
-    });
-  }*/
   formatStringDays(week) {
     let stringDays = [];
     for (let day of this.state.days) {
@@ -59,8 +45,10 @@ class EetMeeSelector extends Component {
   /* --------------------------------------- */
   // When clicking on a "Take part" button
   /* --------------------------------------- */
-  submitDay(date) {
-    this.setState({ isLoading: true });
+  submitDay(date, day) {
+    let model = this.state.days;
+    model[day].isLoading = true;
+    this.setState({ days: model });
     makeHttpCall(
       "http://localhost:8020/foodorder/add-order",
       this.props.token,
@@ -75,12 +63,10 @@ class EetMeeSelector extends Component {
         requestTypes.GET,
         { dates: stringDays }
       ).then((response) => {
-        this.setState({ isLoading: false });
-        console.log("[WeekSelection] The response is the following:");
-        console.log(response);
+        model[day].isLoading = false;
+        this.setState({ days: model });
         this.props.dispatch(setDisabledDays(response));
       });
-      //this.props.dispatch(selectDay(date));
     });
   }
   /* ------------------------------------------------- */
@@ -101,9 +87,7 @@ class EetMeeSelector extends Component {
       ) {
         fontWeightStyling = "bold";
       }
-      //console.log("Checking the DisabledDates!");
-      //console.log(this.props.disabledDates);
-      if(this.props.disabledDates != null){
+      if (this.props.disabledDates != null) {
         if (this.props.disabledDates.length > 0) {
           if (this.props.disabledDates.includes(formatDateToString(date))) {
             colorStyling = "success";
@@ -112,7 +96,7 @@ class EetMeeSelector extends Component {
         }
       }
 
-      if (!this.state.isLoading) {
+      if (!day.isLoading) {
         renderedDays.push(
           <Col key={day.key}>
             <Card>
@@ -126,8 +110,8 @@ class EetMeeSelector extends Component {
               <Card.Body>
                 <Button
                   variant={colorStyling}
-                  onClick={(event) => this.submitDay(date)}
-                  disabled={this.state.isLoading}
+                  onClick={(event) => this.submitDay(date, day.key)}
+                  disabled={day.isLoading}
                 >
                   {text}
                 </Button>
