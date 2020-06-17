@@ -63,6 +63,7 @@
   "AdministratieOverview":{
     "date":"Date",
     "name":"Name",
-    "intime":"In time"
+    "intime":"In time",
+    "defaultvalue":"Search by name..."
   }
 }
