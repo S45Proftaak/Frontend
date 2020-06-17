@@ -17,12 +17,12 @@ class PriceChange extends Component {
       fetchAdress: "http://localhost:8020/foodorder/getCurrentPrice",
       inputValue: 0,
 
-            posting: false,
-            posted: false,
-            postResponse: undefined,
-            postAdress:  "http://localhost:8020/admin/updatePrice",
-        };
-    }
+      posting: false,
+      posted: false,
+      postResponse: undefined,
+      postAdress: "http://localhost:8020/admin/updatePrice",
+    };
+  }
 
   function;
 
@@ -45,23 +45,20 @@ class PriceChange extends Component {
     );
   };
 
-    PostValues = (postAdress) => {
-        this.setState({
-           posting: true,
-        });
-        makeHttpCall(
-            postAdress,
-            this.props.token,
-            requestTypes.PUT,
-            {price: this.state.inputValue}
-        ).then((response) => {
-            this.setState({
-                posting: false,
-                posted: true,
-                postResponse: response,
-            });
-        });
-    };
+  PostValues = (postAdress) => {
+    this.setState({
+      posting: true,
+    });
+    makeHttpCall(postAdress, this.props.token, requestTypes.PUT, {
+      price: this.state.inputValue,
+    }).then((response) => {
+      this.setState({
+        posting: false,
+        posted: true,
+        postResponse: response,
+      });
+    });
+  };
 
   handleChange = (event) => {
     this.setState({
@@ -74,17 +71,14 @@ class PriceChange extends Component {
     this.GetValues(this.state.fetchAdress);
   };
 
-    render() {
-        let postFeedback;
-        if(this.state.posted && this.state.postResponse === null){
-            postFeedback = <div>Price updated successfully</div>;
-        }
-        else if(this.state.postResponse === 400){
-            postFeedback = <div className="invalidPrice">Price change invalid</div>
-        }
-        else{
-            postFeedback = <div></div>;
-        }
+  render() {
+    let postFeedback;
+    if (this.state.posted && this.state.postResponse === null) {
+      postFeedback = <div>Price updated successfully</div>;
+    } else if (this.state.postResponse === 400) {
+      postFeedback = <div className="invalidPrice">Price change invalid</div>;
+    } else {
+      postFeedback = <div></div>;
     }
     return (
       <Container>
