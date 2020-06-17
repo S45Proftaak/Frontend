@@ -33,9 +33,10 @@ function getCookie(cname) {
 
 function writeToLocalStorage(state) {
   try {
+    const loginToken = JSON.stringify(state.loginReducer.payload);
     const serializedState = JSON.stringify(state);
-    setCookie("LoginData", serializedState, 2);
-    //localStorage.setItem('state', serializedState);
+    setCookie("LoginData", loginToken, 2);
+    sessionStorage.setItem('state', serializedState);
   } catch (error) {
     console.error(error);
   }
@@ -43,8 +44,7 @@ function writeToLocalStorage(state) {
 
 function readFromLocalStorage() {
   try {
-    //const serializedState = localStorage.getItem('state');
-    const serializedState = getCookie("LoginData");
+    const serializedState = sessionStorage.getItem('state');
     if (serializedState === null) return undefined;
     return JSON.parse(serializedState);
   } catch (error) {
@@ -53,10 +53,20 @@ function readFromLocalStorage() {
   }
 }
 
+function checkLoginDate(store){
+  if(getCookie('LoginData') !== null){
+    store.dispatch({
+      type : 'LOGIN_DATA_FETCHED',
+      payload: JSON.parse(getCookie('LoginData'))
+    })
+  }
+}
+
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const middleware = composeEnhancers(applyMiddleware());
 const persistedState = readFromLocalStorage();
 let store = createStore(rootReducer, persistedState, middleware);
+checkLoginDate(store);
 
 store.subscribe(() => writeToLocalStorage(store.getState()));
 
