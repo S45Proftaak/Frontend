@@ -19,6 +19,11 @@ class Overview extends Component {
   render() {
     const {t} = this.props;
 
+  render() {
+    const {t} = this.props;
+    let date = t("Administration.Date");
+    let name = t("Administration.Name");
+    let inTime = t("Administration.InTime");
     function priceFormatter(column, colIndex, { sortElement, filterElement }) {
       return (
         <div style={ { flexDirection: 'collum' } }>
@@ -95,6 +100,32 @@ class Overview extends Component {
     return (
       <Card className="HeightContainer">
         <Card.Body className="DefaultCardLayer1">
+          <Container>
+            <table>
+              <thead>
+                <tr>
+                  <th>{date}</th>
+                  <th>{name}</th>
+                  <th>{inTime}</th>
+                </tr>
+              </thead>
+              <tbody>
+              <tr>
+                  <td>test</td>
+                  <td>test</td>
+                  <td>test</td>
+                </tr>
+
+                {this.props.payload.map((item, key) => (
+                  <tr key={key}>
+                    <td>{item.date}</td>
+                    <td>{item.name}</td>
+                    {!item.toLate ? <td>&#10003;</td> : <td>&#10005;</td>}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </Container>
           <BootstrapTable keyField='id' data={ FormatPayload(this.props) } columns={ columns } defaultSorted={ defaultSorted } filter={ filterFactory() }  bordered={ true } striped hover condensed/>
         </Card.Body>
       </Card>

@@ -37,7 +37,8 @@
     "Home": "Home",
     "Administration": "Administration",
     "Leaderboard":"Leaderboard",
-    "Logout":"Logout"
+    "Logout":"Logout",
+
   },
   "Week": {
     "weeknumber": "Week number",
@@ -60,10 +61,16 @@
     "MostEaten": "Most eaten",
     "yourScore":"Your score"
   },
-  "AdministratieOverview":{
-    "date":"Date",
-    "name":"Name",
-    "intime":"In time",
-    "defaultvalue":"Search by name..."
+  "Administration": {
+    "Date": "Date",
+    "Name": "Name",
+    "InTime": "In Time"
+  },
+  "PriceChange" : {
+    "CurrentPrice": "Current Price",
+    "NewPrice": "New Price",
+    "Submit": "Submit",
+    "ValidPrice": "Price updated successfully",
+    "InvalidPrice": "Price change invalid"
   }
 }
