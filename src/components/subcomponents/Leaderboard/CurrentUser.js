@@ -24,7 +24,6 @@ class CurrentUser extends Component {
     this.setState({
       fetching: true,
     });
-    console.log(fetchAdress);
     makeHttpCall(fetchAdress, this.props.token, requestTypes.GET).then(
       (response) => {
         this.setState({
@@ -32,8 +31,6 @@ class CurrentUser extends Component {
           fetched: true,
           fetchedData: response,
         });
-        console.log(response);
-        console.log(this.state);
       }
     );
   };

@@ -26,8 +26,6 @@ class RoleChange extends Component {
   }
 
   handleSelect(role, roleId, Id) {
-    /* Change role to new role */
-
     var elementsIndex = this.props.users.findIndex(
       (element) => element.id === Id
     );
@@ -38,7 +36,6 @@ class RoleChange extends Component {
     this.setState({
       userArray: newArray,
     });
-    console.log(this.state.userArray);
 
     changeUserRole(newArray);
   }
@@ -74,13 +71,9 @@ class RoleChange extends Component {
     });
   }
 
-  checkProps() {
-    console.log(this.props.users);
-  }
+  checkProps() {}
 
   handleSubmit = () => {
-    console.log(this.state.userArray);
-
     this.submitRoleChanges();
   };
 

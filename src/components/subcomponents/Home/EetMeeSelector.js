@@ -33,7 +33,6 @@ class EetMeeSelector extends Component {
       day.date = getDayOfMonthByWeekAndDay(this.props.selectedWeek, day.key);
       /*this.state.formattedStringDays.push(formatDateToString(day.date));*/
     }
-    console.log(this.props);
   }
   /*componentDidMount() {
     makeHttpCall(
@@ -42,8 +41,6 @@ class EetMeeSelector extends Component {
       requestTypes.GET,
       { dates: this.state.formattedStringDays }
     ).then((response) => {
-      console.log("The response is the following:");
-      console.log(response);
       this.setState({ disabledDates: response });
     });
   }*/
@@ -67,7 +64,6 @@ class EetMeeSelector extends Component {
       requestTypes.POST,
       { date: formatDateToString(date) }
     ).then((response) => {
-      console.log(response);
       const stringDays = this.formatStringDays(this.props.selectedWeek);
       makeHttpCall(
         "http://localhost:8020/foodorder/all-orders-per-week",
@@ -76,8 +72,6 @@ class EetMeeSelector extends Component {
         { dates: stringDays }
       ).then((response) => {
         this.setState({ isLoading: false });
-        console.log("[WeekSelection] The response is the following:");
-        console.log(response);
         this.props.dispatch(setDisabledDays(response));
       });
       //this.props.dispatch(selectDay(date));
@@ -101,9 +95,7 @@ class EetMeeSelector extends Component {
       ) {
         fontWeightStyling = "bold";
       }
-      //console.log("Checking the DisabledDates!");
-      //console.log(this.props.disabledDates);
-      if(this.props.disabledDates != null){
+      if (this.props.disabledDates != null) {
         if (this.props.disabledDates.length > 0) {
           if (this.props.disabledDates.includes(formatDateToString(date))) {
             colorStyling = "success";
@@ -154,7 +146,6 @@ class EetMeeSelector extends Component {
         );
       }
     }
-    //console.log(renderedDays);
     return renderedDays;
   }
   render() {
@@ -175,9 +166,6 @@ class EetMeeSelector extends Component {
 }
 
 function mapStateToProps(state) {
-  console.log("[EetMeeSelector] Mapping state to props!!");
-  console.log("[EetMeeSelector] disabledDays is the following:");
-  console.log(state.daySelectionReducer.disabledDays);
   return {
     selectedWeek: state.daySelectionReducer.selectedWeek,
     disabledDates: state.daySelectionReducer.disabledDays,
