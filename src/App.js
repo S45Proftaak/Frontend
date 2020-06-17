@@ -11,27 +11,60 @@ import Leaderboard from "./components/Leaderboard";
 import Logout from "./components/Logout";
 import Admin from "./components/Admin";
 import LoginState from "./redux/states/LoginStatus";
+import { useSelector } from "react-redux";
+import JwtDecode from "jwt-decode";
 
 function App() {
   const { t } = useTranslation();
+  const token = useSelector((state) => state.loginReducer.payload);
+
+  const showNav = () => {
+    if (token !== null || token !== undefined) {
+      let model = undefined;
+      try {
+        model = JwtDecode(token.token);
+      } catch {
+        model = "logout";
+      }
+      switch (model.role) {
+        case "ROLE_EMPLOYEE": {
+          return [
+            { link: "/", name: t("App.Home") },
+            { link: "/leaderboard", name: t("App.Leaderboard") },
+          ];
+        }
+        case "ROLE_SECRETARY": {
+          return [
+            { link: "/", name: t("App.Home") },
+            { link: "/administration", name: t("App.Administration") },
+            { link: "/leaderboard", name: t("App.Leaderboard") },
+          ];
+        }
+        case "ROLE_ADMIN": {
+          return [
+            { link: "/", name: t("App.Home") },
+            { link: "/administration", name: t("App.Administration") },
+            { link: "/leaderboard", name: t("App.Leaderboard") },
+            { link: "/admin", name: t("Admin.Home") },
+          ];
+        }
+        default: {
+          return [{ link: "/", name: t("App.Home") }];
+        }
+      }
+    }
+  };
 
   return (
     <div className="PageBackground">
       <Router>
-        <Navbar
-          Navs={[
-            { link: "/", name: t("App.Home") },
-            { link: "/administration", name: t("App.Administration") },
-            { link: "/leaderboard", name: t("App.Leaderboard") },
-            { link: "/admin", name: t("Admin.Home")},
-          ]}
-        />
+        <Navbar Navs={showNav()} />
 
         <div style={{ margin: 30 }} />
 
         <Switch>
           <Route exact path="/">
-            <Redirect>
+            <Redirect roles={["ROLE_EMPLOYEE", "ROLE_ADMIN", "ROLE_SECRETARY"]}>
               <Home />
             </Redirect>
           </Route>
@@ -39,32 +72,29 @@ function App() {
             <Login />
           </Route>
           <Route path="/administration">
-            <Redirect>
+            <Redirect roles={["ROLE_ADMIN", "ROLE_SECRETARY"]}>
               <Administration />
             </Redirect>
           </Route>
           <Route path={"/leaderboard"}>
-            <Redirect>
+            <Redirect roles={["ROLE_EMPLOYEE", "ROLE_ADMIN", "ROLE_SECRETARY"]}>
               <Leaderboard />
             </Redirect>
           </Route>
           <Route path={"/logout"}>
-            <Redirect>
+            <Redirect roles={["ROLE_EMPLOYEE", "ROLE_ADMIN", "ROLE_SECRETARY"]}>
               <Logout />
             </Redirect>
           </Route>
           <Route path="/admin">
-            <Redirect>
+            <Redirect roles={["ROLE_ADMIN"]}>
               <Admin></Admin>
             </Redirect>
-          </Route>    
+          </Route>
         </Switch>
-        
-
       </Router>
-         
     </div>
-  ); 
+  );
 }
 
 export default App;
