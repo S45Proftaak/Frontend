@@ -11,11 +11,11 @@ export default function LoginReducer(state=Login, action){
         case "LOGOUT": {
             return {...state, loggedin: false, payload: [], fetched: false};
         }
-        case  "LOGIN_ERROR": {
-            return{...state, loggedin: false, payload: [], fetched: true, error: true}
+        case "LOGIN_ERROR": {
+            return{...state, loggedin: false, payload: [], fetched: false, fetching: false, error: true}
         }
         case "RESET_ERROR" : {
-            return{...state, loggedin: false, payload: [], fetched: true, error: false}
+            return{...state, loggedin: false, payload: [], fetched: false, fetching: false, error: false}
         }
         default: {
             return state;

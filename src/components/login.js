@@ -16,7 +16,6 @@ export default function Login() {
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const loggedin = useSelector((store) => store.loginReducer.loggedin);
-  let error = useSelector((store) => store.loginReducer.error);
 
   function Submit(event) {
     const form = document.getElementById("LoginForm");
@@ -30,7 +29,6 @@ export default function Login() {
 
   let FetchLoginData = async (formData) => {
     const serializedData = JSON.stringify(formData);
-    dispatch(fetchLoginData());
     fetch("http://localhost:8020/auth/login", {
       method: "post",
       headers: {
@@ -41,13 +39,11 @@ export default function Login() {
       .then((res) => res.json())
       .then(
         (result) => {
-          dispatch(resetError(false));
           dispatch(fetchedLoginData(result));
-        },
-        (error) => {
-          dispatch(fetchedError(true));
-        }
-      );
+        })
+        .catch(er => {
+          alert(t("Login.Error"))
+        })
   };
 
   if (!loggedin) {
@@ -63,13 +59,6 @@ export default function Login() {
                 <Form onSubmit={Submit} />
               </Card.Body>
             </Card>
-            {error === true &&
-              <div style={{marginTop : '2%'}}>
-                <Alert key='danger' variant='danger'>
-                  {t("Login.Error")}
-            </Alert>
-              </div>
-            }
           </Col>
         </Row>
       </Container>
