@@ -94,7 +94,7 @@ class PriceChange extends Component {
     return (
       <Container>
         <Row>
-          <div>{currentPrice}: {this.state.fetchedData}</div>
+          <div>{currentPrice}: €{this.state.fetchedData}</div>
         </Row>
         <Row>
           <div>

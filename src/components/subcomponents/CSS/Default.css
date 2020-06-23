@@ -57,3 +57,8 @@ html {
 .YourScoreCard{
     height: 100%;
 }
+
+.floatRight{
+    margin-left: auto !important;
+    align-content: flex-end !important;
+}

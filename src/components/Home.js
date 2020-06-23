@@ -20,7 +20,7 @@ class Home extends Component {
         </Row>
         <Row>
           <Col lg>
-              <ShowCurrentPrice/>
+              {/*<ShowCurrentPrice/>*/}
             <EetMeeSelector />
           </Col>
         </Row>
