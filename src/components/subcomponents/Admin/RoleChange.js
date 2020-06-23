@@ -103,6 +103,8 @@ class RoleChange extends Component {
   render() {
     const { t } = this.props;
 
+    let submit = t("PriceChange.Submit");
+
     let postFeedback;
     if (this.state.posted) {
       postFeedback = <div>Roles updated successfully</div>;
@@ -121,8 +123,8 @@ class RoleChange extends Component {
             </tr>
           </thead>
           <tbody>
-            {this.props.users !== undefined ? (
-              this.props.users.map((user) => (
+            {this.props.adminReducer.fetched && this.props.adminReducer.payload !== null ? (
+              this.props.adminReducer.payload.users.map((user) => (
                 <tr key={user.id}>
                   <td>{user.email}</td>
                   <td>{user.name}</td>
@@ -166,7 +168,7 @@ class RoleChange extends Component {
         <input
           className="SubmitButton"
           type="submit"
-          value="submit"
+          value={submit}
           onClick={this.handleSubmit}
         />
         {postFeedback}
@@ -183,7 +185,7 @@ const MyComponent = compose(
         links: state.loginReducer.payload.links,
         token: state.loginReducer.payload.token,
         adminfetched: state.AdminReducer.fetchedAdminData,
-        users: state.AdminReducer.payload.users,
+        adminReducer: state.AdminReducer,
       };
     },
     {

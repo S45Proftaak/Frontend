@@ -38,7 +38,10 @@
     "Home": "Hoofdpagina",
     "Administration": "Administratie",
     "Leaderboard": "Ranglijst",
-    "Logout":"Uitloggen"
+    "Logout":"Uitloggen",
+    "CurrentPrice": "Huidige Prijs",
+    "NewPrice": "Nieuwe Prijs",
+    "Submit": "Bevestigen"
   },
   "Week": {
     "weeknumber": "Week nummer",
@@ -57,8 +60,20 @@
     "Secretary" : "Secretaris",
     "Employee" : "Medewerker",
     "Email" : "Email",
-    "Name" : "Name",
-    "Role" : "Role",
+    "Name" : "Naam",
+    "Role" : "Rol",
     "Home" : "Beheer"
+  },
+  "Administration": {
+    "Date": "Datum",
+    "Name": "Naam",
+    "InTime": "Op Tijd"
+  },
+  "PriceChange": {
+    "CurrentPrice": "Huidige Prijs",
+    "NewPrice": "Nieuwe Prijs",
+    "Submit": "Bevestigen",
+    "ValidPrice": "Prijs Bijgewerkt",
+    "InvalidPrice": "Ongeldige Nieuwe Prijs"
   }
 }

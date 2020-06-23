@@ -38,7 +38,8 @@
     "Home": "Home",
     "Administration": "Administration",
     "Leaderboard":"Leaderboard",
-    "Logout":"Logout"
+    "Logout":"Logout",
+
   },
   "Week": {
     "weeknumber": "Week number",
@@ -60,5 +61,17 @@
     "filledToLate": "Filled to late",
     "MostEaten": "Most eaten",
     "yourScore":"Your score"
+  },
+  "Administration": {
+    "Date": "Date",
+    "Name": "Name",
+    "InTime": "In Time"
+  },
+  "PriceChange" : {
+    "CurrentPrice": "Current Price",
+    "NewPrice": "New Price",
+    "Submit": "Submit",
+    "ValidPrice": "Price updated successfully",
+    "InvalidPrice": "Price change invalid"
   }
 }

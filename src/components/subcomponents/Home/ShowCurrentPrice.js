@@ -40,10 +40,15 @@ class ShowCurrentPrice extends Component {
   };
 
   render() {
+    const { t } = this.props;
+    let text = t("PriceChange.CurrentPrice");
     return (
       <Container>
         <Row>
-          <div>Current Price: {this.state.fetchedData}</div>
+          <div>
+            {" "}
+            {text} : {this.state.fetchedData}
+          </div>
         </Row>
       </Container>
     );
