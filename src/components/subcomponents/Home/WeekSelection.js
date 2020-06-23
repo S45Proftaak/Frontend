@@ -48,7 +48,7 @@ class WeekSelection extends React.Component {
 
   // Setter methods
   setSelectedWeek(week) {
-    if (week >= getCurrentWeek() - 2 && week < getCurrentWeek() + 100) {
+    if (week >= getCurrentWeek() - 2 && week < getCurrentWeek() + 6) {
       this.setState({ selectedWeek: week });
       const stringDays = this.formatStringDays(week);
       makeHttpCall(
