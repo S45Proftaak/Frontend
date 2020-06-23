@@ -10,7 +10,7 @@ export function getDayOfMonthByWeekAndDay(week, day) {
   const oneJan = new Date(now.getFullYear(), 0, 1);
   const dayAmount = (week - 1) * 7 - oneJan.getDate() + day;
   //console.log("DayAmount is " + dayAmount);
-  const myDate = new Date(oneJan.setDate(dayAmount));
+  let myDate = new Date(oneJan.setDate(dayAmount));
   //myDate.setDate(dayAmount * 24 * 60 * 60 * 1000);
   //console.log("Final time is the following:");
   //console.log(myDate);
