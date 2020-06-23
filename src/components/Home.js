@@ -13,14 +13,13 @@ class Home extends Component {
     return (
       <Container className="PageBackground">
         <Row>
-          <Col sm="3"></Col>
+          <Col sm="2"></Col>
           <Col md="8">
             <WeekSelection />
           </Col>
         </Row>
         <Row>
           <Col lg>
-              {/*<ShowCurrentPrice/>*/}
             <EetMeeSelector />
           </Col>
         </Row>
