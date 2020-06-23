@@ -27,7 +27,7 @@ class RoleChange extends Component {
 
   handleSelect(role, roleId, Id) {
     var elementsIndex = this.props.users.findIndex(
-      (element) => element.id === Id
+        (element) => element.id === Id
     );
     var newArray = this.props.users;
     newArray[elementsIndex].role.name = role;
@@ -55,9 +55,9 @@ class RoleChange extends Component {
 
   componentDidMount() {
     makeHttpCall(
-      "http://localhost:8020/admin/getAllUsers",
-      this.props.token,
-      requestTypes.GET
+        "http://localhost:8020/admin/getAllUsers",
+        this.props.token,
+        requestTypes.GET
     ).then((res) => {
       this.props.fetchedAdminData(res);
 
@@ -113,95 +113,95 @@ class RoleChange extends Component {
     }
 
     return (
-      <div>
-        <table>
-          <thead>
+        <div>
+          <table>
+            <thead>
             <tr>
               <th>{t("Admin.Email")}</th>
               <th>{t("Admin.Name")}</th>
               <th>{t("Admin.Role")}</th>
             </tr>
-          </thead>
-          <tbody>
-            {this.props.adminReducer.fetched && this.props.adminReducer.payload !== null ? (
-              this.props.adminReducer.payload.users.map((user) => (
-                <tr key={user.id}>
-                  <td>{user.email}</td>
-                  <td>{user.name}</td>
-                  <td>
-                    <Dropdown>
-                      <Dropdown.Toggle>
-                        {t(this.handleRoleName(user.role.name))}
-                      </Dropdown.Toggle>
-                      <Dropdown.Menu>
-                        <Dropdown.Item
-                          onSelect={() =>
-                            this.handleSelect("ROLE_EMPLOYEE", 1, user.id)
-                          }
-                        >
-                          {t("Admin.Employee")}
-                        </Dropdown.Item>
-                        <Dropdown.Item
-                          onSelect={() =>
-                            this.handleSelect("ROLE_SECRETARY", 3, user.id)
-                          }
-                        >
-                          {t("Admin.Secretary")}
-                        </Dropdown.Item>
-                        <Dropdown.Item
-                          onSelect={() =>
-                            this.handleSelect("ROLE_ADMIN", 2, user.id)
-                          }
-                        >
-                          {t("Admin.Admin")}
-                        </Dropdown.Item>
-                      </Dropdown.Menu>
-                    </Dropdown>
-                  </td>
-                </tr>
-              ))
+            </thead>
+            <tbody>
+            {this.props.users !== undefined ? (
+                this.props.users.map((user) => (
+                    <tr key={user.id}>
+                      <td>{user.email}</td>
+                      <td>{user.name}</td>
+                      <td>
+                        <Dropdown>
+                          <Dropdown.Toggle>
+                            {t(this.handleRoleName(user.role.name))}
+                          </Dropdown.Toggle>
+                          <Dropdown.Menu>
+                            <Dropdown.Item
+                                onSelect={() =>
+                                    this.handleSelect("ROLE_EMPLOYEE", 1, user.id)
+                                }
+                            >
+                              {t("Admin.Employee")}
+                            </Dropdown.Item>
+                            <Dropdown.Item
+                                onSelect={() =>
+                                    this.handleSelect("ROLE_SECRETARY", 3, user.id)
+                                }
+                            >
+                              {t("Admin.Secretary")}
+                            </Dropdown.Item>
+                            <Dropdown.Item
+                                onSelect={() =>
+                                    this.handleSelect("ROLE_ADMIN", 2, user.id)
+                                }
+                            >
+                              {t("Admin.Admin")}
+                            </Dropdown.Item>
+                          </Dropdown.Menu>
+                        </Dropdown>
+                      </td>
+                    </tr>
+                ))
             ) : (
-              <div></div>
+                <div></div>
             )}
-          </tbody>
-        </table>
-        <input
-          className="SubmitButton"
-          type="submit"
-          value={submit}
-          onClick={this.handleSubmit}
-        />
-        {postFeedback}
-      </div>
+            </tbody>
+          </table>
+          <input
+              className="SubmitButton"
+              type="submit"
+              value={submit}
+              onClick={this.handleSubmit}
+          />
+          {postFeedback}
+        </div>
     );
   }
 }
 
 const MyComponent = compose(
-  withTranslation(),
-  connect(
-    (state) => {
-      return {
-        links: state.loginReducer.payload.links,
-        token: state.loginReducer.payload.token,
-        adminfetched: state.AdminReducer.fetchedAdminData,
-        adminReducer: state.AdminReducer,
-      };
-    },
-    {
-      fetchAdminData,
-      fetchedAdminData,
-      changeUserRole,
-    }
-  )
+    withTranslation(),
+    connect(
+        (state) => {
+          return {
+            links: state.loginReducer.payload.links,
+            token: state.loginReducer.payload.token,
+            adminfetched: state.AdminReducer.fetchedAdminData,
+            users: state.AdminReducer.payload.users,
+          };
+        },
+        {
+          fetchAdminData,
+          fetchedAdminData,
+          changeUserRole,
+        }
+    )
 )(RoleChange);
 
 // i18n translations might still be loaded by the xhr backend
 // use react's Suspense
 export default function App() {
   return (
-    <React.Suspense fallback="loading">
-      <MyComponent />
-    </React.Suspense>
+      <React.Suspense fallback="loading">
+        <MyComponent />
+      </React.Suspense>
   );
 }
