@@ -47,7 +47,7 @@ class ShowCurrentPrice extends Component {
         <Row>
           <div>
             {" "}
-            {text} : {this.state.fetchedData}
+            {text}  : €{this.state.fetchedData}
           </div>
         </Row>
       </Container>
