@@ -3,12 +3,8 @@ import { Container, Row, Col, Card } from "react-bootstrap";
 import Form from "./subcomponents/login/form";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
-import { Alert } from 'react-bootstrap';
 import {
-  fetchLoginData,
   fetchedLoginData,
-  fetchedError,
-  resetError
 } from "../redux/actions/LoginActions";
 import { Redirect } from "react-router-dom";
 
