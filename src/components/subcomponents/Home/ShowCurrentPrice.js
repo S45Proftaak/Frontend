@@ -45,7 +45,7 @@ class ShowCurrentPrice extends Component {
     return (
       <Container>
         <Row>
-          <div>
+          <div className="ml-auto">
             {" "}
             {text}  : €{this.state.fetchedData}
           </div>

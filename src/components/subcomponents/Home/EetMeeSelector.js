@@ -153,7 +153,7 @@ class EetMeeSelector extends Component {
               <Col md="4">
                 <h4 className="text-center">Eet Mee Selector</h4>
               </Col>
-              <Col md="4" className="">
+              <Col md="4">
                 <ShowCurrentPrice/>
               </Col>
             </Row>
