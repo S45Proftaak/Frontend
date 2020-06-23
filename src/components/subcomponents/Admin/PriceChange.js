@@ -50,7 +50,7 @@ class PriceChange extends Component {
       posting: true,
     });
     makeHttpCall(postAdress, this.props.token, requestTypes.PUT, {
-      price: this.state.inputValue,
+      price: this.state.inputValue.replace(",", "."),
     }).then((response) => {
       this.setState({
         posting: false,
