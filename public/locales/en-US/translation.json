@@ -65,7 +65,8 @@
   "Administration": {
     "Date": "Date",
     "Name": "Name",
-    "InTime": "In Time"
+    "InTime": "In Time",
+    "DefaultValue": "Search by name..."
   },
   "PriceChange" : {
     "CurrentPrice": "Current Price",

@@ -67,7 +67,8 @@
   "Administration": {
     "Date": "Datum",
     "Name": "Naam",
-    "InTime": "Op Tijd"
+    "InTime": "Op Tijd",
+    "DefaultValue": "Zoeken op naam..."
   },
   "PriceChange": {
     "CurrentPrice": "Huidige Prijs",
