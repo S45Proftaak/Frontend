@@ -48,7 +48,7 @@ class WeekSelection extends React.Component {
 
   // Setter methods
   setSelectedWeek(week) {
-    if (week >= getCurrentWeek() - 2 && week < getCurrentWeek() + 6) {
+    if (week >= getCurrentWeek() - 2 && week < getCurrentWeek() + 100) {
       this.setState({ selectedWeek: week });
       const stringDays = this.formatStringDays(week);
       makeHttpCall(
@@ -71,6 +71,7 @@ class WeekSelection extends React.Component {
       if (week === 0) {
         styling = "underline";
       }
+      console.log(this.state.selectedWeek);
       renderedWeeks.push(
         <Pagination.Item
           active={getCurrentWeek() + week === this.state.selectedWeek}
@@ -80,11 +81,18 @@ class WeekSelection extends React.Component {
             textDecoration: styling,
           }}
         >
-          {getCurrentWeek() + week}
+          {this.displayWeek(getCurrentWeek(), week)}
         </Pagination.Item>
       );
     }
     return renderedWeeks;
+  }
+
+  displayWeek(currentWeek, weekNumber){
+    if(currentWeek + weekNumber >= 54){
+        return currentWeek - 53 + weekNumber;
+    }
+    return currentWeek + weekNumber;
   }
 
   /* --------------------------------------- */

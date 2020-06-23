@@ -41,6 +41,15 @@ class EetMeeSelector extends Component {
     return stringDays;
   }
 
+  renderWeekNumber(currentWeek) {
+    for (let week = 0; week < 6; week++) {
+      if (currentWeek + week >= 54) {
+        return currentWeek - 53 + week;
+      }
+      return currentWeek + week;
+    }
+  }
+
   /* --------------------------------------- */
   // When clicking on a "Take part" button
   /* --------------------------------------- */
@@ -145,7 +154,7 @@ class EetMeeSelector extends Component {
           <Container>
             <h4 className="text-center">Eet Mee Selector</h4>
             <p style={{ textDecoration: "underline" }}>
-              Week {this.props.selectedWeek}
+              Week {this.renderWeekNumber(this.props.selectedWeek)}
             </p>
             <Row style={{ marginTop: 20 }}>{this.renderDays()}</Row>
           </Container>
