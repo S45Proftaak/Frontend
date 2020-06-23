@@ -10,6 +10,7 @@ import { setDisabledDays } from "../../../redux/actions/DaySelectionActions.js";
 import { connect } from "react-redux";
 import { compose } from "redux";
 import "../CSS/Default.css";
+import ShowCurrentPrice from  "./ShowCurrentPrice";
 
 class EetMeeSelector extends Component {
   /* ------------------------------------ */
@@ -152,10 +153,19 @@ class EetMeeSelector extends Component {
       <Card style={{ margin: 5 }}>
         <Card.Body className="DefaultCardLayer1">
           <Container>
-            <h4 className="text-center">Eet Mee Selector</h4>
-            <p style={{ textDecoration: "underline" }}>
-              Week {this.renderWeekNumber(this.props.selectedWeek)}
-            </p>
+            <Row>
+              <Col md="4">
+                <p style={{ textDecoration: "underline" }}>
+                  Week {this.renderWeekNumber(this.props.selectedWeek)}
+                </p>
+              </Col>
+              <Col md="4">
+                <h4 className="text-center">Eet Mee Selector</h4>
+              </Col>
+              <Col md="4">
+                <ShowCurrentPrice/>
+              </Col>
+            </Row>
             <Row style={{ marginTop: 20 }}>{this.renderDays()}</Row>
           </Container>
         </Card.Body>

@@ -21,6 +21,7 @@ class Overview extends Component {
     let date = t("Administration.Date");
     let name = t("Administration.Name");
     let inTime = t("Administration.InTime");
+    let defaultValue = t("Administration.DefaultValue")
     function priceFormatter(column, colIndex, { sortElement, filterElement }) {
       return (
         <div style={{ flexDirection: "collum" }}>
@@ -55,10 +56,10 @@ class Overview extends Component {
       },
       {
         dataField: "name",
-        text: t("AdministratieOverview.name"),
+        text: name,
         sort: true,
         filter: textFilter({
-          placeholder: t("AdministratieOverview.defaultvalue"),
+          placeholder: defaultValue,
         }),
         headerFormatter: priceFormatter,
         sortCaret: (order, column) => {
@@ -80,7 +81,7 @@ class Overview extends Component {
       },
       {
         dataField: "date",
-        text: t("AdministratieOverview.date"),
+        text: date,
         sort: true,
         sortCaret: (order, column) => {
           if (!order) return <span>&nbsp;&nbsp;&#x2191;/&#x2193;</span>;
@@ -101,7 +102,7 @@ class Overview extends Component {
       },
       {
         dataField: "intime",
-        text: t("AdministratieOverview.intime"),
+        text: inTime,
       },
     ];
 
@@ -136,32 +137,6 @@ class Overview extends Component {
     return (
       <Card className="HeightContainer">
         <Card.Body className="DefaultCardLayer1">
-          <Container>
-            <table>
-              <thead>
-                <tr>
-                  <th>{date}</th>
-                  <th>{name}</th>
-                  <th>{inTime}</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>test</td>
-                  <td>test</td>
-                  <td>test</td>
-                </tr>
-
-                {this.props.payload.map((item, key) => (
-                  <tr key={key}>
-                    <td>{item.date}</td>
-                    <td>{item.name}</td>
-                    {!item.toLate ? <td>&#10003;</td> : <td>&#10005;</td>}
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </Container>
           <BootstrapTable
             keyField="id"
             data={FormatPayload(this.props)}
