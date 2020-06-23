@@ -31,7 +31,8 @@
     "Password": "Password",
     "Login": "Login",
     "UsernameError": "Username is empty",
-    "PasswordError": "Password is empty"
+    "PasswordError": "Password is empty",
+    "Error" : "Wrong username and/or password"
   },
   "App": {
     "Home": "Home",

@@ -3,7 +3,8 @@ const Login = {
     fetching: false,
     fetched: false,
     payload: [],
-    loggedin: false
+    loggedin: false,
+    error: false
 }
 
 export default Login;
